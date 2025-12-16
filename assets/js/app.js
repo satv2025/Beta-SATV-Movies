@@ -13,58 +13,33 @@ searchInput.addEventListener("input", () => {
     });
 });
 
-/* FILTERS */
+/* FILTERS (BOTONES) */
 document.querySelectorAll(".filters button").forEach(b => {
-    b.onclick = () => {
-        document.querySelectorAll(".filters button").forEach(x => x.classList.remove("active"));
-        b.classList.add("active");
-        const f = b.dataset.filter;
-        cards.forEach(c => {
-            c.style.display = f === "all" || c.dataset.type === f ? "block" : "none";
-        });
-    };
+    b.onclick = () => applyFilter(b.dataset.filter, b);
 });
 
-/* HOVER VIDEO: IMG → VIDEO */
-document.querySelectorAll(".card").forEach(card => {
-    const img = card.querySelector("img");
-    const video = card.querySelector("video");
-    const media = card.querySelector(".media");
-
-    const MUTE = "https://movies.solargentinotv.com.ar/assets/media/images/modal-vol-mute.svg";
-    const ON = "https://movies.solargentinotv.com.ar/assets/media/images/modal-vol-on.svg";
-
-    let btn, icon;
-
-    card.addEventListener("mouseenter", () => {
-        if (!video.src) video.src = video.dataset.src;
-
-        img.style.opacity = 0;
-        video.muted = true;
-        video.currentTime = 0;
-        video.play().catch(() => { });
-
-        if (!btn) {
-            btn = document.createElement("div");
-            btn.className = "sound-btn";
-
-            icon = document.createElement("img");
-            icon.src = MUTE;
-            btn.appendChild(icon);
-            media.appendChild(btn);
-
-            btn.addEventListener("click", e => {
-                e.stopPropagation();
-                video.muted = !video.muted;
-                icon.src = video.muted ? MUTE : ON;
-            });
-        }
-    });
-
-    card.addEventListener("mouseleave", () => {
-        video.pause();
-        video.muted = true;
-        img.style.opacity = 1;
-        if (icon) icon.src = MUTE;
-    });
+/* NAV (MISMA LÓGICA QUE FILTERS) */
+document.querySelectorAll(".nav .nav-link").forEach(n => {
+    n.onclick = () => applyFilter(n.dataset.filter, n);
 });
+
+/* FUNCIÓN CENTRAL */
+function applyFilter(filter, source) {
+
+    // nav active
+    document.querySelectorAll(".nav .nav-link")
+        .forEach(n => n.classList.remove("active"));
+    if (source.classList.contains("nav-link")) source.classList.add("active");
+
+    // filters active
+    document.querySelectorAll(".filters button")
+        .forEach(b => b.classList.remove("active"));
+    document.querySelector(`.filters button[data-filter="${filter}"]`)?.classList.add("active");
+
+    // filtrar cards
+    cards.forEach(c => {
+        c.style.display = filter === "all" || c.dataset.type === filter
+            ? "block"
+            : "none";
+    });
+}

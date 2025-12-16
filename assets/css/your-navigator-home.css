@@ -15,15 +15,28 @@
   font-family: 'Netflix Sans';
 }
 
+svg {
+  zoom: 1.2;
+  margin-top: 0.2em;
+}
+
+p.synopsis {
+  margin-top: 1.5em;
+  font-size: 15px;
+}
+
+meta p {
+  position: absolute;
+}
+
 body {
   margin: 0;
   background: #141414;
   color: var(--text);
 }
 
-/* Encabezado Sticky */
+/* Encabezado */
 header {
-  /* Ya no será sticky, se desplazará con el scroll */
   position: relative;
   top: 0;
   background: rgba(22, 22, 22, .9);
@@ -32,7 +45,82 @@ header {
   z-index: 50;
 }
 
-/* Contenedor del header */
+/* Estilos para dispositivos móviles y verticales */
+@media (max-width: 768px),
+(max-height: 600px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    background: rgba(22, 22, 22, 0.9);
+    border-bottom: 1px solid var(--stroke);
+  }
+
+  /* Contenedor wrap para apilar elementos */
+  .wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Logo grande y centrado */
+  .logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  /* Navegación en línea, centrada y en fila */
+  .nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav span {
+    font-size: 0.9rem;
+  }
+
+  /* Buscar en línea, ajustado */
+  .search {
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+  }
+
+  #searchInput {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: var(--radius);
+    border: 0.04em solid var(--stroke);
+    background: var(--panel);
+    color: var(--text);
+  }
+
+  /* Botón con ícono lupa en línea, centrado */
+  .searchTab {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .search-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--muted);
+  }
+}
+
 .wrap {
   max-width: 1200px;
   margin: auto;
@@ -40,85 +128,102 @@ header {
   display: flex;
   gap: 20px;
   align-items: center;
-  flex-wrap: wrap;
-  /* Para que los elementos envuelvan en pantallas pequeñas */
 }
 
-/* Logo */
 .logo {
   font-weight: 800;
-  font-size: 1.2rem;
-  /* Añadido para mejor tamaño en móviles */
 }
 
-/* Navegación */
 .nav {
   display: flex;
   gap: 14px;
-  flex-wrap: wrap;
-  /* Para evitar que se salga en pantallas pequeñas */
 }
 
-.nav a {
+.nav span {
   color: var(--muted);
   text-decoration: none;
   font-size: .85rem;
 }
 
-.nav a:hover {
+span.nav-link {
+  cursor: pointer;
+}
+
+.nav span:hover {
   color: var(--text);
 }
 
-/* Buscador */
 .search {
   flex: 1;
-  min-width: 200px;
-  /* Para que no sea demasiado pequeño en pantallas muy estrechas */
+  position: relative;
 }
 
-.search input {
+/* Input búsqueda */
+#searchInput {
   width: 100%;
   padding: 10px 14px;
+  padding-right: 35px;
   border-radius: var(--radius);
   border: 0.04em solid var(--stroke);
   background: var(--panel);
   color: var(--text);
   font-size: 1rem;
-  /* Mejorar legibilidad en móviles */
 }
 
-/* Main */
+#searchInput::placeholder {
+  color: #fff;
+}
+
+.searchTab {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.search-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+#searchInput:focus+.searchTab .search-icon {
+  color: #fff;
+}
+
+#searchInput:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+
 main {
   max-width: 1200px;
   margin: auto;
   padding: 18px;
-  box-sizing: border-box;
 }
 
 /* Hero */
 .hero {
   height: 420px;
-  background: linear-gradient(to top, #181818, rgb(22 22 22 / 2%)),
-    url(https://movies.solargentinotv.com.ar/assets/media/images/mpthumb.jpg);
+  background: linear-gradient(to top, #181818, rgb(22 22 22 / 2%)), url(https://movies.solargentinotv.com.ar/assets/media/images/mpthumb.jpg);
   background-size: cover;
   border-radius: var(--radius);
   padding: 32px;
   display: flex;
   align-items: flex-end;
   margin-bottom: 32px;
-  flex-wrap: wrap;
-  /* Para adaptarse en pantallas pequeñas */
 }
 
-/* Acciones en hero */
+/* Acciones en Hero */
 .hero-actions {
   display: flex;
   gap: 12px;
-  flex-wrap: wrap;
-  width: 100%;
-  /* Para que los botones no se salgan */
-  margin-top: 10px;
-  /* Espacio en móviles */
 }
 
 /* Botones */
@@ -140,68 +245,68 @@ main {
   margin-left: 0.5em;
 }
 
-/* Ajustes en móviles y verticales */
+/* Adaptaciones para dispositivos móviles y verticales */
 @media (max-width: 768px),
 (max-height: 600px) {
 
-  /* Botón primary más grande y padding ajustado para pantallas pequeñas */
-  .btn.primary {
-    font-size: 1.2rem;
-    padding: 10px 20px;
-  }
-
-  /* Botón en línea en móviles */
-  .btn {
-    display: inline-block;
-  }
-
-  /* Header wrap y navegación */
-  .wrap {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .nav {
-    justify-content: space-around;
-  }
-
-  /* Logo y otros elementos en fila en pantallas muy estrechas */
-  .logo {
-    font-size: 1.5rem;
-  }
-
-  /* Hero ajustado para pantallas pequeñas */
+  /* Hero en modo móvil */
   .hero {
     height: auto;
     padding: 20px;
     flex-direction: column;
+    align-items: flex-start;
   }
 
-  /* Hero actions en columna */
+  /* Acciones en columna */
   .hero-actions {
+    flex-direction: column;
     width: 100%;
-    justify-content: center;
-    margin-top: 20px;
+    gap: 10px;
   }
 
-  /* Grid de tarjetas */
+  /* Botones más grandes y en columna */
+  .btn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Grid de tarjetas en una columna */
   .grid {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
-  /* Tarjetas */
-  .card {
-    /* Sin cambios necesarios, ya que grid ajusta tamaño */
+  /* Ajustar tamaño de media en tarjetas */
+  .media {
+    aspect-ratio: auto;
   }
+
+  /* Ajustar tamaño de imágenes/video */
+  .media img,
+  .media video {
+    height: auto;
+    max-height: 200px;
+  }
+
+  /* Otros ajustes específicos si deseas */
 }
 
-/* Filtro buttons */
+/* Otros estilos existentes para componentes */
+
+.btn.secondary:disabled {
+  background: #141414c4;
+  cursor: auto;
+  opacity: 1;
+  transform: translate(-5.91em, -20.4em);
+  font-weight: 500;
+}
+
 .filters {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
-  flex-wrap: wrap;
-  /* Para que en pantallas pequeñas no se salga */
 }
 
 .filters button {
@@ -211,8 +316,6 @@ main {
   background: var(--panel);
   color: var(--text);
   cursor: pointer;
-  font-size: 0.85rem;
-  /* Mejor legibilidad en móviles */
 }
 
 .filters .active {
@@ -220,14 +323,12 @@ main {
   color: #000;
 }
 
-/* Grid de tarjetas */
 .grid {
   display: grid;
   gap: 18px;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 }
 
-/* Tarjeta */
 .card {
   background: var(--card);
   border-radius: var(--radius);
@@ -241,7 +342,6 @@ main {
   z-index: 10;
 }
 
-/* Media / Video */
 .media {
   position: relative;
   aspect-ratio: 16/9;
@@ -306,17 +406,57 @@ main {
   opacity: 1 !important;
 }
 
-/* Meta info */
 .meta {
   padding: 14px;
 }
 
 .meta h3 {
   margin: 0 0 6px;
-  font-size: .95rem;
+  font-size: 18px;
 }
 
 .meta span {
   font-size: .75rem;
   color: var(--muted);
+  margin-top: -0.6em;
+}
+
+span.film-type {
+  position: absolute;
+  margin-top: -2px;
+}
+
+/* Links activos en navegación */
+.nav .nav-link.active {
+  color: #fff;
+}
+
+@media (max-width: 768px),
+(max-height: 600px) {
+
+  /* Ajuste en la sección hero para móviles */
+  .hero {
+    height: auto !important;
+    padding: 20px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Botones en hero en móvil - más pequeños y en columna */
+  .hero-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  /* Cambia los estilos de los botones en hero para móviles */
+  .btn {
+    font-size: 0.9rem !important;
+    /* tamaño más pequeño */
+    padding: 8px 14px !important;
+    /* padding reducido */
+    width: 100% !important;
+    /* que ocupen todo el ancho si quieres */
+    box-sizing: border-box !important;
+  }
 }

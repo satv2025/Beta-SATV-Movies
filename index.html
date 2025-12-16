@@ -15,12 +15,22 @@
     <div class="wrap">
       <div class="logo">Sol Argentino TV Movies</div>
       <nav class="nav">
-        <a href="#">Inicio</a>
-        <a href="#">Películas</a>
-        <a href="#">Series</a>
+        <span class="nav-link active" data-filter="all">Inicio</span>
+        <span class="nav-link" data-filter="all">Todo</span>
+        <span class="nav-link" data-filter="Película">Películas</span>
+        <span class="nav-link" data-filter="Serie">Series</span>
       </nav>
       <div class="search">
         <input id="searchInput" placeholder="Buscar…">
+        <!-- SVG de la lupa con color blanco -->
+        <button class="searchTab" tabindex="0" aria-label="Buscar" data-uia="search-box-launcher">
+          <svg viewBox="0 0 24 24" width="24" height="24" data-icon="MagnifyingGlassMedium" data-icon-id=":r33:"
+            aria-hidden="true" class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" role="img">
+            <path fill="currentColor" fill-rule="evenodd"
+              d="M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0m-1.38 7.03a9 9 0 1 1 1.41-1.41l5.68 5.67-1.42 1.42z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
@@ -33,7 +43,7 @@
         <p>Película · 2022 · 1 h</p>
         <div class="hero-actions">
           <button class="btn primary" onclick="go('matiponcepeli')">▶ Ver</button>
-          <button class="btn secondary" disabled>Esta es nuestra recomendación</button>
+          <button class="btn secondary">Esta es nuestra recomendación</button>
         </div>
       </div>
     </section>
@@ -55,12 +65,12 @@
         </div>
         <div class="meta">
           <h3>Matias Ponce – La Película</h3>
-          <p>
+          <span class="film-type">Película · 2022 · 1 h</span>
+          <p class="synopsis">
             Matías Ponce, creador de contenido en redes, se enfrenta a alienígenas y hackers
             tras la misteriosa suspensión de su canal de YouTube, o como él lo llama “Yutun”,
             desatando una hilarante y absurda aventura.
           </p>
-          <span>Película · 2022 · 1 h</span>
         </div>
       </div>
 
@@ -73,11 +83,11 @@
         </div>
         <div class="meta">
           <h3>100% Lucha – La Película</h3>
-          <p>
+          <span class="film-type">Película · 2008 · 1 h 20 min</span>
+          <p class="synopsis">
             Koshe Plostenko, un mafioso implacable, secuestra a los luchadores de 100% Lucha
             para obligarlos a pelear en su club clandestino, desatando caos y rivalidades inesperadas.
           </p>
-          <span>Película · 2008 · 1 h 20 min</span>
         </div>
       </div>
 
@@ -90,12 +100,12 @@
             data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/100_LUCHA_EL_AMO_DE_LOS_CLONES__Tr%C3%A1iler__HD_.mp4"></video>
         </div>
         <div class="meta">
-          <h3>100% Lucha – El Amo de los Clones</h3>
-          <p>
+          <h3>100% Lucha – El Amo De Los Clones</h3>
+          <span class="film-type">Película · 2009 · 1 h 20 min</span>
+          <p class="synopsis">
             Damián Castillo, un doctor obsesionado, crea clones de los luchadores de 100% Lucha
             para arruinar a su ídolo, desatando caos y rivalidades inesperadas.
           </p>
-          <span>Película · 2009 · 1 h 20 min</span>
         </div>
       </div>
 
@@ -109,11 +119,11 @@
         </div>
         <div class="meta">
           <h3>Mi Pobre Angelito</h3>
-          <p>
+          <span class="film-type">Película · 1990 · 1 h 45 min</span>
+          <p class="synopsis">
             En este clásico, Macaulay Culkin es Kevin McCallister, un niño olvidado en casa
             en Navidad que debe enfrentarse a dos torpes y despiadados ladrones.
           </p>
-          <span>Película · 1990 · 1 h 45 min</span>
         </div>
       </div>
 
@@ -127,11 +137,11 @@
         </div>
         <div class="meta">
           <h3>Mi Pobre Angelito 2</h3>
-          <p>
+          <span class="film-type">Película · 1992 · 2 h</span>
+          <p class="synopsis">
             En este clásico secuela, Kevin McCallister toma un avión incorrecto y termina
             varado en Nueva York, donde debe nuevamente sortear a los torpes ladrones.
           </p>
-          <span>Película · 1992 · 2 h</span>
         </div>
       </div>
 
@@ -143,12 +153,12 @@
             data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/Asesinato_para_principiantes__Tr%C3%A1iler_oficial__Netflix.mp4"></video>
         </div>
         <div class="meta">
-          <h3>Asesinato para Principiantes</h3>
-          <p>
-            Un grupo de jóvenes se ve envuelto en un asesinato inesperado,
-            mezclando misterio, humor y situaciones cada vez más absurdas.
+          <h3>Asesinato Para Principiantes</h3>
+          <span class="film-type">Serie · 2024 · 6 episodios</span>
+          <p class="synopsis">
+            Una estudiante empieza a investigar un asesinato para su proyecto escolar, pero a alguien no le gusta tanto
+            la idea. Ahora, es ella quien corre peligro...
           </p>
-          <span>Serie · 2024 · 6 episodios</span>
         </div>
       </div>
 
@@ -161,11 +171,11 @@
         </div>
         <div class="meta">
           <h3>Nivel X</h3>
-          <p>
+          <span class="film-type">Serie · 2009 · 2 temporadas</span>
+          <p class="synopsis">
             Lionel Campoy y Natalia Dim enfrentan situaciones absurdas en Nivel X,
             una parodia caótica e imposible de ignorar.
           </p>
-          <span>Serie · 2009 · 2 temporadas</span>
         </div>
       </div>
 
@@ -178,15 +188,16 @@
         </div>
         <div class="meta">
           <h3>Fears to Fathom: Norwood Hitchhike</h3>
-          <p>
+          <span class="film-type">Película · 2025 · 20 min</span>
+          <p class="synopsis">
             En este cortometraje basado en el videojuego Fears To Fathom, una adolescente es acechada en la noche
             mientras conduce de regreso a casa tras una convención de juegos..
           </p>
-          <span>Película · 2025 · 20 min</span>
         </div>
       </div>
     </div>
   </main>
+
   <script src="assets/js/app.js"></script>
 </body>
 
