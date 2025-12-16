@@ -91,6 +91,8 @@
       <div class="dropdown-menu">
         <button data-season="1">Temporada 1 <span>(29 episodios)</span></button>
         <button data-season="2">Temporada 2 <span>(3 episodios)</span></button>
+        <span class="separator"></span>
+        <button data-season="all-episodes">Ver todos los episodios</button>
       </div>
     </div>
     <!-- PROGRAMAS (T1 E1-E15) -->
@@ -622,27 +624,22 @@
 
       currentIndex = index;
 
-      // UI activa
       document.querySelectorAll('.episode.active')
         .forEach(e => e.classList.remove('active'));
       ep.classList.add('active');
 
-      // Guardar episodio activo de la temporada actual
       const currentSeason = ep.closest('.season');
       if (currentSeason) {
         activeBySeason[currentSeason.dataset.season] = src;
       }
 
-      // Pausar player
       player.pause();
 
-      // Limpiar HLS previo
       if (hls) {
         hls.destroy();
         hls = null;
       }
 
-      // Cargar episodio
       if (Hls.isSupported()) {
         hls = new Hls();
         hls.loadSource(src);
@@ -689,7 +686,7 @@
     });
 
     // ==========================
-    // DROPDOWN TEMPORADAS (FIX)
+    // DROPDOWN TEMPORADAS
     // ==========================
 
     const dropdown = document.querySelector('.season-dropdown');
@@ -700,7 +697,6 @@
 
     toggle.addEventListener('click', () => {
       const isOpen = menu.style.display === 'block';
-
       menu.style.display = isOpen ? 'none' : 'block';
       dropdown.classList.toggle('open', !isOpen);
     });
@@ -709,7 +705,29 @@
       btn.addEventListener('click', () => {
         const season = btn.dataset.season;
 
-        // Guardar episodio activo de la temporada actual visible
+        // ==========================
+        // VER TODOS LOS EPISODIOS
+        // ==========================
+        if (season === 'all-episodes') {
+          seasons.forEach(s => {
+            s.style.display = 'grid';
+          });
+
+          toggle.textContent = 'Ver todos los episodios';
+
+          episodes = getVisibleEpisodes();
+
+          menu.style.display = 'none';
+          dropdown.classList.remove('open');
+          return;
+        }
+
+        // ==========================
+        // TEMPORADA NORMAL
+        // ==========================
+
+        toggle.textContent = `Temporada ${season}`;
+
         const visibleSeason = document.querySelector(
           '.season:not([style*="display: none"])'
         );
@@ -721,14 +739,12 @@
           }
         }
 
-        // Mostrar temporada seleccionada
         seasons.forEach(s => {
           s.style.display = s.dataset.season === season ? 'grid' : 'none';
         });
 
         episodes = getVisibleEpisodes();
 
-        // Restaurar episodio activo si existía
         let restored = false;
 
         if (activeBySeason[season]) {
@@ -739,12 +755,10 @@
           }
         }
 
-        // Si no había episodio previo, cargar el primero
         if (!restored && episodes.length) {
           loadEpisode(0, false);
         }
 
-        // Cerrar dropdown + reset flecha
         menu.style.display = 'none';
         dropdown.classList.remove('open');
       });
@@ -757,6 +771,12 @@
     episodes = getVisibleEpisodes();
     if (episodes.length) {
       loadEpisode(0, false);
+
+      const firstSeason =
+        document.querySelector('.season:not([style*="display: none"])');
+      if (firstSeason) {
+        toggle.textContent = `Temporada ${firstSeason.dataset.season}`;
+      }
     }
   </script>
 </body>
