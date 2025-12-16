@@ -21,6 +21,7 @@ body {
   color: var(--text);
 }
 
+/* Encabezado Sticky */
 header {
   position: sticky;
   top: 0;
@@ -30,6 +31,7 @@ header {
   z-index: 50;
 }
 
+/* Contenedor del header */
 .wrap {
   max-width: 1200px;
   margin: auto;
@@ -37,15 +39,23 @@ header {
   display: flex;
   gap: 20px;
   align-items: center;
+  flex-wrap: wrap;
+  /* Para que los elementos envuelvan en pantallas pequeñas */
 }
 
+/* Logo */
 .logo {
   font-weight: 800;
+  font-size: 1.2rem;
+  /* Añadido para mejor tamaño en móviles */
 }
 
+/* Navegación */
 .nav {
   display: flex;
   gap: 14px;
+  flex-wrap: wrap;
+  /* Para evitar que se salga en pantallas pequeñas */
 }
 
 .nav a {
@@ -58,8 +68,11 @@ header {
   color: var(--text);
 }
 
+/* Buscador */
 .search {
   flex: 1;
+  min-width: 200px;
+  /* Para que no sea demasiado pequeño en pantallas muy estrechas */
 }
 
 .search input {
@@ -69,30 +82,45 @@ header {
   border: 0.04em solid var(--stroke);
   background: var(--panel);
   color: var(--text);
+  font-size: 1rem;
+  /* Mejorar legibilidad en móviles */
 }
 
+/* Main */
 main {
   max-width: 1200px;
   margin: auto;
   padding: 18px;
+  box-sizing: border-box;
 }
 
+/* Hero */
 .hero {
   height: 420px;
-  background: linear-gradient(to top, #181818, rgb(22 22 22 / 2%)), url(https://movies.solargentinotv.com.ar/assets/media/images/mpthumb.jpg);
+  background: linear-gradient(to top, #181818, rgb(22 22 22 / 2%)),
+    url(https://movies.solargentinotv.com.ar/assets/media/images/mpthumb.jpg);
   background-size: cover;
   border-radius: var(--radius);
   padding: 32px;
   display: flex;
   align-items: flex-end;
   margin-bottom: 32px;
+  flex-wrap: wrap;
+  /* Para adaptarse en pantallas pequeñas */
 }
 
+/* Acciones en hero */
 .hero-actions {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
+  width: 100%;
+  /* Para que los botones no se salgan */
+  margin-top: 10px;
+  /* Espacio en móviles */
 }
 
+/* Botones */
 .btn {
   padding: 10px 18px;
   border-radius: var(--radius);
@@ -101,9 +129,7 @@ main {
   color: var(--text);
   cursor: pointer;
   font-size: 1rem;
-  /* tamaño base */
   white-space: nowrap;
-  /* evita que el texto se divida en varias líneas */
 }
 
 .btn.primary {
@@ -113,34 +139,68 @@ main {
   margin-left: 0.5em;
 }
 
-/* Ajuste en dispositivos móviles y verticales */
+/* Ajustes en móviles y verticales */
 @media (max-width: 768px),
 (max-height: 600px) {
+
+  /* Botón primary más grande y padding ajustado para pantallas pequeñas */
   .btn.primary {
     font-size: 1.2rem;
-    /* letra más grande */
     padding: 10px 20px;
-    /* ajustar padding si es necesario */
   }
 
-  /* Opcional: asegurarse que no se divida en dos líneas */
+  /* Botón en línea en móviles */
   .btn {
     display: inline-block;
   }
+
+  /* Header wrap y navegación */
+  .wrap {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav {
+    justify-content: space-around;
+  }
+
+  /* Logo y otros elementos en fila en pantallas muy estrechas */
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  /* Hero ajustado para pantallas pequeñas */
+  .hero {
+    height: auto;
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  /* Hero actions en columna */
+  .hero-actions {
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  /* Grid de tarjetas */
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  /* Tarjetas */
+  .card {
+    /* Sin cambios necesarios, ya que grid ajusta tamaño */
+  }
 }
 
-.btn.secondary:disabled {
-  background: #141414c4;
-  cursor: auto;
-  opacity: 1;
-  transform: translate(-5.91em, -20.4em);
-  font-weight: 500;
-}
-
+/* Filtro buttons */
 .filters {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+  /* Para que en pantallas pequeñas no se salga */
 }
 
 .filters button {
@@ -150,6 +210,8 @@ main {
   background: var(--panel);
   color: var(--text);
   cursor: pointer;
+  font-size: 0.85rem;
+  /* Mejor legibilidad en móviles */
 }
 
 .filters .active {
@@ -157,12 +219,14 @@ main {
   color: #000;
 }
 
+/* Grid de tarjetas */
 .grid {
   display: grid;
   gap: 18px;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 }
 
+/* Tarjeta */
 .card {
   background: var(--card);
   border-radius: var(--radius);
@@ -176,6 +240,7 @@ main {
   z-index: 10;
 }
 
+/* Media / Video */
 .media {
   position: relative;
   aspect-ratio: 16/9;
@@ -236,11 +301,11 @@ main {
   opacity: 0.4 !important;
 }
 
-/* Cuando el hover está sobre el botón, gana sobre el hover de la card */
 .card:hover .sound-btn:hover {
   opacity: 1 !important;
 }
 
+/* Meta info */
 .meta {
   padding: 14px;
 }
