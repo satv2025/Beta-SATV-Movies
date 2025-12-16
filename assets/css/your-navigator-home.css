@@ -1,8 +1,5 @@
-@import url('https://solargentinotv.com.ar/assets/fonts/NetflixSans/netflixsans.css');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
 
-/* =========================
-   VARIABLES BASE
-========================= */
 :root {
   --bg: #141414;
   --panel: #1e1e1e;
@@ -13,39 +10,24 @@
   --radius: .3em;
 }
 
-/* =========================
-   RESET / BASE
-========================= */
 * {
   box-sizing: border-box;
-  font-family: 'Netflix Sans' !important;
-
-  font-feature-settings: "ss01" 1;
-  font-variant-alternates: stylistic(ss01);
-}
-
-span.separator {
-  margin: 1rem 0.8em;
-  border: 1px solid rgb(77, 77, 77);
-  display: block;
+  font-family: 'Google Sans';
 }
 
 body {
   margin: 0;
-  background: linear-gradient(#141414);
+  background: #141414;
   color: var(--text);
 }
 
-/* =========================
-   HEADER
-========================= */
 header {
   position: sticky;
   top: 0;
-  z-index: 20;
   background: rgba(22, 22, 22, .9);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--stroke);
+  z-index: 50;
 }
 
 .wrap {
@@ -53,27 +35,42 @@ header {
   margin: auto;
   padding: 14px 18px;
   display: flex;
-  gap: 16px;
+  gap: 20px;
   align-items: center;
-}
-
-.back {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: .9rem;
-}
-
-.back:hover {
-  color: var(--text);
 }
 
 .logo {
   font-weight: 800;
 }
 
-/* =========================
-   MAIN LAYOUT
-========================= */
+.nav {
+  display: flex;
+  gap: 14px;
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: .85rem;
+}
+
+.nav a:hover {
+  color: var(--text);
+}
+
+.search {
+  flex: 1;
+}
+
+.search input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--stroke);
+  background: var(--panel);
+  color: var(--text);
+}
+
 main {
   max-width: 1200px;
   margin: auto;
@@ -81,416 +78,159 @@ main {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 18px;
-}
-
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* =========================
-   PLAYER / MEDIA
-========================= */
-.media {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  background: #000;
+  height: 420px;
+  background: linear-gradient(to top, #181818, rgb(22 22 22 / 2%)), url(https://movies.solargentinotv.com.ar/assets/media/images/mpthumb.jpg);
+  background-size: cover;
   border-radius: var(--radius);
-  outline: 1px solid var(--stroke);
-  overflow: hidden;
-}
-
-.media video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* =========================
-   INFO CARD
-========================= */
-.card {
-  background: var(--panel);
-  border: 1px solid var(--stroke);
-  border-radius: var(--radius);
-  padding: 18px;
-  width: 29em;
-}
-
-/* =========================
-   TITLES & TEXT
-========================= */
-h1 {
-  margin: 0 0 10px;
-  font-size: 1.4rem;
-  font-weight: 800;
-}
-
-p {
-  color: #ffff;
-  line-height: 1.5;
-  margin: 0 0 14px;
-}
-
-/* =========================
-   KEY VALUES / BADGES
-========================= */
-.kv {
+  padding: 32px;
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 14px;
+  align-items: flex-end;
+  margin-bottom: 32px;
 }
 
-.badge {
-  font-size: .75rem;
-  padding: 4px 10px;
+.hero-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 10px 18px;
   border-radius: var(--radius);
-  border: 1px solid var(--stroke);
-  background: var(--card);
-  white-space: nowrap;
-}
-
-.age {
-  font-weight: 800;
-}
-
-/* =========================
-   DEFINITION LIST
-========================= */
-dl {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 10px;
-  margin: 0;
-}
-
-@media (max-width: 640px) {
-  dl {
-    grid-template-columns: 1fr;
-  }
-}
-
-dt {
-  font-weight: 700;
-}
-
-dd {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.45;
-}
-
-/* =========================
-   LINKS
-========================= */
-a {
-  color: #fff;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* =========================
-   PLYR FIXES (SATV)
-========================= */
-/* Mantiene el player dentro del radio */
-.plyr {
-  height: 100%;
-  font-family: Acto;
-}
-
-.plyr video {
-  border-radius: var(--radius);
-}
-
-/* Evita overflow en fullscreen mobile */
-.plyr--fullscreen-active video {
-  object-fit: contain;
-}
-
-strong {
-  font-weight: 700;
-}
-
-.plyr__time,
-.plyr__menu__container,
-.plyr__control,
-.plyr__tooltip {
-  font-family: 'Acto', sans-serif;
-
-  font-feature-settings: "ss01" 1;
-  font-variant-numeric: lining-nums;
-}
-
-.plyr--fullscreen-active {
-  border-radius: 0 !important;
-}
-
-/* ==============================
-   EPISODIOS – SERIES
-============================== */
-
-.episodes {
-  max-width: 1400px;
-  margin: 3rem auto 4rem;
-  padding: 0 1.5rem;
-  margin-top: -6.6em;
-}
-
-.episodes h2 {
-  font-size: 1.6rem;
-  font-weight: 600;
-  margin-bottom: 7.1rem;
-  color: #ffffff;
-  margin-top: 1.5em;
-  margin-left: 0.76em;
-}
-
-/* ======================
-   LIST / TEMPORADAS
-====================== */
-
-.episodes-list {
-  width: 100%;
-}
-
-/* GRID REAL (corrigido) */
-.episodes.season {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.6rem;
-}
-
-/* ======================
-   CARD
-====================== */
-
-.episode {
-  background: #181818;
-  border-radius: 0.3em;
-  overflow: hidden;
+  border: none;
+  background: var(--panel);
+  color: var(--text);
   cursor: pointer;
-  position: relative;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
 }
 
-.episode:hover {
-  transform: scale(1.24);
-  z-index: 9;
+.btn.primary {
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+  margin-left: 0.5em;
 }
 
-/* ❌ desactiva animación hover si está activo */
-.episode.active:hover {
-  transform: none;
-}
-
-/* ======================
-   THUMB
-====================== */
-
-.ep-thumb {
-  position: relative;
-  overflow: hidden;
-}
-
-.ep-thumb img {
-  width: 100%;
-  height: 213px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.35s ease;
-}
-
-/* ======================
-   PLAY OVERLAY
-====================== */
-
-.ep-thumb::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 52px;
-  height: 52px;
-  background: #181818a1;
-  border-radius: 50%;
-  border: 1px solid #fff;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ▶ PLAY */
-.ep-thumb::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 36px;
-  height: 36px;
-  background-color: #ffffff;
-  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 2.7a1 1 0 0 1 1.48-.88l16.93 9.3a1 1 0 0 1 0 1.76l-16.93 9.3A1 1 0 0 1 5 21.31z'/%3E%3C/svg%3E") center / contain no-repeat;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 2.7a1 1 0 0 1 1.48-.88l16.93 9.3a1 1 0 0 1 0 1.76l-16.93 9.3A1 1 0 0 1 5 21.31z'/%3E%3C/svg%3E") center / contain no-repeat;
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* ⏸️ PAUSE */
-.episode.active .ep-thumb::before {
-  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='6' y='4' width='4' height='16'/%3E%3Crect x='14' y='4' width='4' height='16'/%3E%3C/svg%3E") center / contain no-repeat;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='6' y='4' width='4' height='16'/%3E%3Crect x='14' y='4' width='4' height='16'/%3E%3C/svg%3E") center / contain no-repeat;
-}
-
-/* VISIBILIDAD */
-.episode:not(.active):hover .ep-thumb::after,
-.episode:not(.active):hover .ep-thumb::before,
-.episode.active .ep-thumb::after,
-.episode.active .ep-thumb::before {
+.btn.secondary:disabled {
+  background: #18181894;
+  cursor: auto;
   opacity: 1;
-  transform: scale(1);
-}
-
-/* ======================
-   INFO
-====================== */
-
-.ep-info {
-  padding: 1rem 1rem 1.2rem;
-}
-
-.ep-info h3 {
-  font-size: 0.95rem;
+  transform: translate(-5.91em, -24.4em);
   font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 0.35rem;
-  margin-top: -0.5em;
 }
 
-.ep-info p {
-  font-size: 0.85rem;
-  line-height: 1.4;
-  color: #bdbdbd;
-  margin-bottom: 0.5rem;
-}
-
-.ep-info span {
-  font-size: 0.75rem;
-  color: #8a8a8a;
-}
-
-/* ======================
-   RESPONSIVE
-====================== */
-
-@media (max-width: 600px) {
-  .ep-thumb img {
-    height: 140px;
-  }
-
-  .episodes h2 {
-    font-size: 1.4rem;
-  }
-}
-
-/* ======================
-   ACTIVE (DEBUG / ESTADO)
-====================== */
-
-.episode.active {
-  outline: 3px solid #f00;
-}
-
-/* ======================
-   DROPDOWN
-====================== */
-
-.season-dropdown {
-  position: relative;
+.filters {
+  display: flex;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
-.dropdown-toggle {
-  background: #242424;
-  color: #fff;
-  padding: 10px 14px;
-  border: none;
+.filters button {
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--stroke);
+  background: var(--panel);
+  color: var(--text);
   cursor: pointer;
-  border-radius: 0.10em;
+}
+
+.filters .active {
+  background: #fff;
+  color: #000;
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: .25s;
   position: relative;
-  font-size: 19px;
-  width: 11.56em;
-  text-align: left;
-  border: 0.04em solid rgb(77, 77, 77);
-  font-weight: 700;
-  margin-left: 47.2em;
-  margin-bottom: 2em;
-  margin-top: 0.7em;
 }
 
-.dropdown-toggle::after {
-  content: "▾";
+.card:hover {
+  transform: scale(1.08);
+  z-index: 10;
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #000;
+  overflow: hidden;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+
+.media img,
+.media video {
   position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%) rotate(0deg);
-  transition: transform .25s ease;
-  font-size: 30px;
-  opacity: .8;
-  color: #fff;
-}
-
-.season-dropdown.open .dropdown-toggle::after {
-  transform: translateY(-50%) rotate(180deg);
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  background: #242424;
-  margin-top: -34px;
-  z-index: 3;
-  border: 0.04em solid rgb(77, 77, 77);
-  padding-top: 1em;
-  padding-bottom: 1em;
-  margin-left: 67.3em;
-  font-size: 13px;
-}
-
-.dropdown-menu button {
-  display: block;
+  inset: 0;
   width: 100%;
-  padding: 10px 14px;
-  background: none;
-  color: #fff;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  font-size: 19px;
-  font-weight: 700;
+  height: 100%;
+  object-fit: cover;
 }
 
-.dropdown-menu button:hover {
-  background-color: rgb(66, 66, 66);
+.sound-btn img {
+  width: 27px;
+  height: 27px;
+  filter: brightness(0) saturate(100%) invert(97%) sepia(98%) saturate(40%) hue-rotate(99deg) brightness(108%) contrast(100%);
+  padding-top: 0.5em;
+  margin-left: 0.345em;
 }
 
-.dropdown-menu button span {
+.media video {
+  z-index: 2;
+  opacity: 0;
+  transition: .25s;
+  pointer-events: none;
+}
+
+.card:hover .media video {
   opacity: 1;
-  font-size: 14px;
-  position: relative;
-  top: -0.2em;
-  font-weight: 400;
+}
+
+.sound-btn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  z-index: 3;
+  opacity: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: rgb(42 42 42 / 60%) !important;
+  border: 2px solid #fff !important;
+  transition: opacity 0.2s;
+}
+
+.sound-btn:hover {
+  opacity: 1 !important;
+}
+
+.card:hover .sound-btn {
+  opacity: 0.4 !important;
+}
+
+/* IMPORTANT: Cuando el hover está sobre el botón, gana sobre el hover de la card */
+.card:hover .sound-btn:hover {
+  opacity: 1 !important;
+}
+
+.meta {
+  padding: 14px;
+}
+
+.meta h3 {
+  margin: 0 0 6px;
+  font-size: .95rem;
+}
+
+.meta span {
+  font-size: .75rem;
+  color: var(--muted);
 }
