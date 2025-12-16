@@ -25,54 +25,46 @@ document.querySelectorAll(".filters button").forEach(b => {
     };
 });
 
-/* VIDEO PREVIEW + SOUND BUTTON (dynamic) */
+/* HOVER VIDEO: IMG → VIDEO */
 document.querySelectorAll(".card").forEach(card => {
+    const img = card.querySelector("img");
     const video = card.querySelector("video");
     const media = card.querySelector(".media");
 
     const MUTE = "https://movies.solargentinotv.com.ar/assets/media/images/modal-vol-mute.svg";
     const ON = "https://movies.solargentinotv.com.ar/assets/media/images/modal-vol-on.svg";
 
-    let btn = null;
-    let icon = null;
+    let btn, icon;
 
     card.addEventListener("mouseenter", () => {
         if (!video.src) video.src = video.dataset.src;
 
+        img.style.opacity = 0;
         video.muted = true;
         video.currentTime = 0;
-        video.play().then(() => {
-            // Crear botón solo si no existe
-            if (!btn) {
-                btn = document.createElement("div");
-                btn.className = "sound-btn";
+        video.play().catch(() => { });
 
-                icon = document.createElement("img");
-                icon.src = MUTE;
-                btn.appendChild(icon);
+        if (!btn) {
+            btn = document.createElement("div");
+            btn.className = "sound-btn";
 
-                media.appendChild(btn);
+            icon = document.createElement("img");
+            icon.src = MUTE;
+            btn.appendChild(icon);
+            media.appendChild(btn);
 
-                // Toggle sonido
-                btn.addEventListener("click", e => {
-                    e.stopPropagation();
-                    video.muted = !video.muted;
-                    icon.src = video.muted ? MUTE : ON;
-                });
-            }
-
-            // Mostrar botón
-            btn.style.opacity = 1;
-        }).catch(err => {
-            console.warn("Error al reproducir video:", err);
-        });
+            btn.addEventListener("click", e => {
+                e.stopPropagation();
+                video.muted = !video.muted;
+                icon.src = video.muted ? MUTE : ON;
+            });
+        }
     });
 
     card.addEventListener("mouseleave", () => {
         video.pause();
         video.muted = true;
-
+        img.style.opacity = 1;
         if (icon) icon.src = MUTE;
-        if (btn) btn.style.opacity = 0;
     });
 });
