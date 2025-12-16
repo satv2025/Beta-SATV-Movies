@@ -2,9 +2,9 @@
 
 :root {
   --bg: #141414;
-  --panel: #1e1e1e;
+  --panel: #242424;
   --card: #242424;
-  --stroke: #2f2f2f;
+  --stroke: #4d4d4d;
   --text: #f2f2f2;
   --muted: #b5b5b5;
   --radius: .3em;
@@ -66,7 +66,7 @@ header {
   width: 100%;
   padding: 10px 14px;
   border-radius: var(--radius);
-  border: 1px solid var(--stroke);
+  border: 0.04em solid var(--stroke);
   background: var(--panel);
   color: var(--text);
 }
@@ -100,6 +100,10 @@ main {
   background: var(--panel);
   color: var(--text);
   cursor: pointer;
+  font-size: 1rem;
+  /* tamaño base */
+  white-space: nowrap;
+  /* evita que el texto se divida en varias líneas */
 }
 
 .btn.primary {
@@ -109,12 +113,28 @@ main {
   margin-left: 0.5em;
 }
 
+/* Ajuste en dispositivos móviles y verticales */
+@media (max-width: 768px),
+(max-height: 600px) {
+  .btn.primary {
+    font-size: 1.2rem;
+    /* letra más grande */
+    padding: 10px 20px;
+    /* ajustar padding si es necesario */
+  }
+
+  /* Opcional: asegurarse que no se divida en dos líneas */
+  .btn {
+    display: inline-block;
+  }
+}
+
 .btn.secondary:disabled {
-  background: #18181894;
+  background: #141414c4;
   cursor: auto;
   opacity: 1;
-  transform: translate(-5.91em, -24.4em);
-  font-weight: 600;
+  transform: translate(-5.91em, -20.4em);
+  font-weight: 500;
 }
 
 .filters {
@@ -126,7 +146,7 @@ main {
 .filters button {
   padding: 6px 14px;
   border-radius: var(--radius);
-  border: 1px solid var(--stroke);
+  border: 0.04em solid var(--stroke);
   background: var(--panel);
   color: var(--text);
   cursor: pointer;
@@ -216,7 +236,7 @@ main {
   opacity: 0.4 !important;
 }
 
-/* IMPORTANT: Cuando el hover está sobre el botón, gana sobre el hover de la card */
+/* Cuando el hover está sobre el botón, gana sobre el hover de la card */
 .card:hover .sound-btn:hover {
   opacity: 1 !important;
 }
