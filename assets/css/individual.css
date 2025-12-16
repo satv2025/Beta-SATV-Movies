@@ -242,6 +242,7 @@ strong {
   font-weight: 600;
   margin-bottom: 1.5rem;
   color: #ffffff;
+  margin-top: 5em;
 }
 
 /* ======================
@@ -420,11 +421,12 @@ strong {
   padding: 10px 14px;
   border: none;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 0.10em;
   position: relative;
   font-size: 20px;
-  width: 11.7em;
+  width: 11.56em;
   text-align: left;
+  outline: 1px solid #333;
 }
 
 .dropdown-toggle::after {
@@ -445,10 +447,10 @@ strong {
 .dropdown-menu {
   display: none;
   position: absolute;
-  background: #1c1c1c;
-  border-radius: 6px;
-  margin-top: 6px;
-  z-index: 10;
+  background: #222;
+  margin-top: 5px;
+  z-index: 3;
+  outline: 1px solid #333;
 }
 
 .dropdown-menu button {
@@ -464,7 +466,7 @@ strong {
 }
 
 .dropdown-menu button:hover {
-  background: #222;
+  background: #2c2c2c;
 }
 
 .dropdown-menu button span {
