@@ -689,16 +689,20 @@
     });
 
     // ==========================
-    // DROPDOWN TEMPORADAS
+    // DROPDOWN TEMPORADAS (FIX)
     // ==========================
 
+    const dropdown = document.querySelector('.season-dropdown');
     const toggle = document.querySelector('.dropdown-toggle');
     const menu = document.querySelector('.dropdown-menu');
     const seasonButtons = document.querySelectorAll('.dropdown-menu button');
     const seasons = document.querySelectorAll('.season');
 
     toggle.addEventListener('click', () => {
-      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+      const isOpen = menu.style.display === 'block';
+
+      menu.style.display = isOpen ? 'none' : 'block';
+      dropdown.classList.toggle('open', !isOpen);
     });
 
     seasonButtons.forEach(btn => {
@@ -730,8 +734,7 @@
         if (activeBySeason[season]) {
           const ep = episodes.find(e => e.dataset.src === activeBySeason[season]);
           if (ep) {
-            const index = episodes.indexOf(ep);
-            loadEpisode(index, false);
+            loadEpisode(episodes.indexOf(ep), false);
             restored = true;
           }
         }
@@ -741,7 +744,9 @@
           loadEpisode(0, false);
         }
 
+        // Cerrar dropdown + reset flecha
         menu.style.display = 'none';
+        dropdown.classList.remove('open');
       });
     });
 
@@ -749,7 +754,6 @@
     // INICIAL
     // ==========================
 
-    // Carga primer episodio visible sin autoplay
     episodes = getVisibleEpisodes();
     if (episodes.length) {
       loadEpisode(0, false);
