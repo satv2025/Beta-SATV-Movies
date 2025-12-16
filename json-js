@@ -1,0 +1,45 @@
+reite666: {
+type: "serie",
+year: "2018",
+duration: "2 temporadas",
+description: "<span class='curiosity-synopsis'>Cilio, en España, recibe un mensaje que lo obliga a volver a Argentina
+        para un juego macabro. Un error inesperado desata sucesos perturbadores que lo regresan de forma
+        inexplicable.</span>",
+cast: "<strong>Elenco:</strong> Franco Crivera, Julián Iurchuk, Facundo Duré, <button id='scrollAbout'>más</button>",
+title: "<span class='about reite-modal-title'>Acerca de</span> <strong
+        class='titulo reite-modal-title'>Reite666</strong>",
+episodelist: "<strong class='eplist'>Episodios</strong>",
+genres: "<strong>Géneros:</strong> De España, Youtubers, Thriller psicológico",
+titleType: "<strong>Este título es:</strong> Misterioso, Perturbador, Inquietante",
+ageRating: "<span class='age'>16+</span> lenguaje inapropiado",
+curiosity: "<strong class='curiosidad'>Es oficial: Se estrenará otra temporada</strong>",
+background: `
+<video class='reite-video' autoplay loop playsinline style="width:100%; height:100%; object-fit:cover;"
+        oncontextmenu="return false;" onmousedown="return false;" onselectstart="return false;"
+        ondragstart="return false;">
+        <source src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/trailer.mp4?ref_type=heads"
+                type="video/mp4">
+        Tu navegador no soporta el video.
+</video>
+`,
+link: "<a id='watch-button' class='ver-modal' href='https://movies.solargentinotv.com.ar/watch/title/0194753295'
+        target='_self'>Reproducir</a>",
+createdBy: "<div class='modal-createdBy reite-modal-createdBy'><span class='fcbprefix reite-fcbprefix'>Creado
+                por:</span> <span class='fcbcontent reite-fcbcontent'>Franco Crivera</span></div>",
+fullcast: "<div class='fullcast reite-fullcast'><span class='fcprefix reite-fcprefix'>Elenco:</span> <span
+                class='fccontent reite-fccontent'>Franco Crivera, Julián Iurchuk, Facundo Duré, Roger Cascón Segura,
+                Andrés
+                Ilopo Bollero, Laura Guerra, Marta Guerra</span></div>",
+fullscript: "<div class='fullscript reite-fullscript'><span class='fsprefix reite-fsprefix'>Guión:</span> <span
+                class='fscontent reite-fscontent'>Franco Crivera, Andrés Ilopo Bollero</span></div>",
+fullgenres: "<div class='fullgenres reite-fullgenres'><span class='fgprefix reite-fgprefix'>Géneros:</span><span
+                class='fgcontent reite-fgcontent'> De España, Thriller psicológico, Youtubers Aventura, Paranormal,
+                Suspenso,
+                Misterio, Terror urbano</span></div>",
+fulltitletype: "<div class='fulltitletype reite-fulltitletype'><span class='fttprefix reite-fttprefix'>Este título
+                es:</span> <span class='fttcontent reite-fttcontent'>Misterioso, Perturbador, Inquietante</span></div>",
+fullage: "<div class='fullage reite-fullage'><span class='faprefix reite-faprefix'>Clasificación por edad: </span> <span
+                class='facontent reite-facontent'><span class='age reite-age'>16+</span> lenguaje inapropiado</span>
+        <span class='facontent2 reite-facontent2'>Apta para mayores de 16 años</span>
+</div>"
+},

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100% Lucha – El Amo de los Clones | Sol Argentino TV Movies</title>
+
+  <!-- Base individual -->
+  <link rel="stylesheet" href="../assets/css/individual.css">
+
+  <!-- Plyr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css" />
+  <link rel="stylesheet" href="https://movies.solargentinotv.com.ar/assets/css/plyr/satvplyr.css" />
+
+  <!-- Plyr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.polyfilled.min.js"></script>
+
+  <!-- HLS.js -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap">
+      <a href="../" class="back">← Volver</a>
+      <div class="logo">Sol Argentino TV Movies</div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+
+      <!-- PLAYER -->
+      <div class="media">
+        <video id="player" playsinline controls
+          poster="https://media.minutouno.com/p/8f27c301f5e629ec8dab0477e7a75ae0/adjuntos/150/imagenes/026/947/0026947782/1200x675/smart/lucha.png">
+        </video>
+      </div>
+
+      <!-- INFO -->
+      <article class="card">
+
+        <h1>100% Lucha – El Amo de los Clones</h1>
+
+        <div class="kv">
+          <span class="badge">Película</span>
+          <span class="badge">2009</span>
+          <span class="badge">1 h 20 min</span>
+          <span class="badge age">12+</span>
+        </div>
+
+        <p>
+          Damián Castillo, un doctor obsesionado, crea clones de los luchadores de
+          100% Lucha para arruinar a su ídolo, desatando caos y rivalidades
+          inesperadas.
+        </p>
+
+        <!-- METADATA -->
+        <div class="meta">
+
+          <p>
+            <strong>Elenco:</strong>
+            <span>
+              Pablo Rago, Roberto Carnaghi, Juan Pablo Varsky, Leo Montero,
+              Norberto Adrián Fernández, Delfina Gerez Bosco, La Masa,
+              Osvaldo Príncipi, Berta Muñiz, Eduardo Husni, Natalia Kim,
+              Daniel Casablanca, Walter Cornás, Rocío Rodríguez Presedo,
+              Esteban Rojas, Dallys Ferreyra Enciso, Julia Lenzberg
+            </span>
+          </p>
+
+          <p>
+            <strong>Guión:</strong>
+            <span>
+              <a href="https://cine.ar/" target="_blank">CineAR</a>,
+              <a href="https://www.incaa.gob.ar/" target="_blank">INCAA</a>
+            </span>
+          </p>
+
+          <p>
+            <strong>Géneros:</strong>
+            <span>
+              Humor, Lucha Libre, Sci-Fi, Clonación, Rivalidades, Venganza
+            </span>
+          </p>
+
+          <p>
+            <strong>Este título es:</strong>
+            <span>
+              Intenso, Delirante, Divertido, Ingenioso, Excéntrico
+            </span>
+          </p>
+
+          <p>
+            <strong>Clasificación por edad:</strong>
+            <span>
+              <span class="age">12+</span> lenguaje inapropiado, violencia,
+              humor absurdo · Apta para mayores de 16 años
+            </span>
+          </p>
+
+        </div>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- PLAYER INIT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.getElementById('player');
+      const source =
+        'https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/cpcl/damianc/100Lucha%20El%20Amo%20de%20los%20Clones.m3u8';
+
+      if (Hls.isSupported()) {
+        const hls = new Hls({
+          enableWorker: true,
+          lowLatencyMode: true,
+        });
+        hls.loadSource(source);
+        hls.attachMedia(video);
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = source;
+      }
+
+      new Plyr(video, {
+        controls: [
+          'play-large',
+          'play',
+          'progress',
+          'current-time',
+          'mute',
+          'volume',
+          'settings',
+          'fullscreen'
+        ],
+        settings: ['speed'],
+        speed: {
+          selected: 1,
+          options: [0.5, 0.75, 1, 1.25, 1.5, 2]
+        },
+        ratio: '16:9'
+      });
+    });
+  </script>
+
+</body>
+
+</html>

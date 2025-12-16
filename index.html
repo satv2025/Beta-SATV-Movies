@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sol Argentino TV Movies</title>
+  <link rel="stylesheet" href="assets/css/your-navigator-home.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap">
+      <div class="logo">Sol Argentino TV Movies</div>
+      <nav class="nav">
+        <a href="#">Inicio</a>
+        <a href="#">Películas</a>
+        <a href="#">Series</a>
+      </nav>
+      <div class="search">
+        <input id="searchInput" placeholder="Buscar…">
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-info">
+        <h1>Matias Ponce – La Película</h1>
+        <p>Película · 2022 · 1 h</p>
+        <div class="hero-actions">
+          <button class="btn primary" onclick="go('matiponcepeli/index.html')">▶ Ver</button>
+          <button class="btn secondary" disabled>
+            Esta es nuestra recomendación
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="filters">
+      <button data-filter="all" class="active">Todo</button>
+      <button data-filter="Película">Películas</button>
+      <button data-filter="Serie">Series</button>
+    </div>
+
+    <div class="grid">
+
+      <!-- 1 -->
+      <div class="card" data-type="Película" onclick="go('matiponcepeli/index.html')">
+        <div class="media">
+          <img src="https://movies.solargentinotv.com.ar/assets/media/images/mpthumb.jpg">
+          <video muted loop playsinline preload="none"
+            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/MATIAS_PONCE_-_LA_PEL%C3%8DCULA__TR%C3%81ILER_OFICIAL_2022.webm"></video>
+        </div>
+        <div class="meta">
+          <h3>Matias Ponce – La Película</h3><span>Película · 2022 · 1 h</span>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="card" data-type="Película" onclick="go('100lucha/index.html')">
+        <div class="media">
+          <img src="https://movies.solargentinotv.com.ar/assets/media/images/100luchathumb.jpg">
+          <video muted loop playsinline preload="none"
+            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/100_LUCHA_LA_PEL%C3%8DCULA__Tr%C3%A1iler__HD_.mp4"></video>
+        </div>
+        <div class="meta">
+          <h3>100% Lucha – La Película</h3><span>Película · 2008 · 1 h 20 min</span>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="card" data-type="Película" onclick="go('100luchaeadc/index.html')">
+        <div class="media">
+          <img
+            src="https://media.minutouno.com/p/8f27c301f5e629ec8dab0477e7a75ae0/adjuntos/150/imagenes/026/947/0026947782/1200x675/smart/lucha.png">
+          <video muted loop playsinline preload="none"
+            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/100_LUCHA_EL_AMO_DE_LOS_CLONES__Tr%C3%A1iler__HD_.mp4"></video>
+        </div>
+        <div class="meta">
+          <h3>100% Lucha – El Amo de los Clones</h3><span>Película · 2009 · 1 h 20 min</span>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="card" data-type="Película" onclick="go('homealone/index.html')">
+        <div class="media">
+          <img
+            src="https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/a3242080-601c-488b-afd2-1f9bed5f5d99/compose">
+          <video muted loop playsinline preload="none"
+            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/Mi_Pobre_Angelito_1_trailer.mp4"></video>
+        </div>
+        <div class="meta">
+          <h3>Mi Pobre Angelito</h3><span>Película · 1990 · 1 h 45 min</span>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="card" data-type="Película" onclick="go('homealone2/index.html')">
+        <div class="media">
+          <img
+            src="https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/5046911a-aaf2-4d52-8127-438643a35b24/compose">
+          <video muted loop playsinline preload="none"
+            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/Mi_Pobre_Angelito_2_trailer.mp4"></video>
+        </div>
+        <div class="meta">
+          <h3>Mi Pobre Angelito 2</h3><span>Película · 1992 · 2 h</span>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="card" data-type="Serie" onclick="go('asesinatoparaprincipiantes/index.html')">
+        <div class="media">
+          <img src="https://movies.solargentinotv.com.ar/assets/media/images/appthumb.webp">
+          <video muted loop playsinline preload="none"
+            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/Asesinato_para_principiantes__Tr%C3%A1iler_oficial__Netflix.mp4"></video>
+        </div>
+        <div class="meta">
+          <h3>Asesinato para Principiantes</h3><span>Serie · 2024 · 6 episodios</span>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="card" data-type="Serie" onclick="go('nivelx-maritokids/index.html')">
+        <div class="media">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1zZywXvdxB1f0L7CVvNzN4Z3Yfiy4IZU6TQ">
+          <video muted loop playsinline preload="none"
+            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/trailer_persons_T1E1-26_order.mp4"></video>
+        </div>
+        <div class="meta">
+          <h3>Nivel X</h3><span>Serie · 2009 · 2 temporadas</span>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="card" data-type="Película" onclick="go('f2fnh/index.html')">
+        <div class="media">
+          <img
+            src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1763050/capsule_616x353.jpg?t=1761626891">
+          <video muted loop playsinline preload="none"
+            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/F2FNHTrailer.mp4"></video>
+        </div>
+        <div class="meta">
+          <h3>Fears to Fathom: Norwood Hitchhike</h3><span>Película · 2025 · 20 min</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="assets/js/app.js"></script>
+</body>
+
+</html>

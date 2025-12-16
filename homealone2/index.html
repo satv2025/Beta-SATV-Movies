@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Pobre Angelito 2: Perdido en Nueva York | Sol Argentino TV Movies</title>
+
+  <!-- Base individual -->
+  <link rel="stylesheet" href="../assets/css/individual.css">
+
+  <!-- Plyr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css" />
+  <link rel="stylesheet" href="https://movies.solargentinotv.com.ar/assets/css/plyr/satvplyr.css" />
+
+  <!-- Plyr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.polyfilled.min.js"></script>
+
+  <!-- HLS.js -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap">
+      <a href="../" class="back">← Volver</a>
+      <div class="logo">Sol Argentino TV Movies</div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+
+      <!-- PLAYER -->
+      <div class="media">
+        <video id="player" playsinline controls
+          poster="https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/5046911a-aaf2-4d52-8127-438643a35b24/compose">
+        </video>
+      </div>
+
+      <!-- INFO -->
+      <article class="card">
+
+        <h1>Mi Pobre Angelito 2: Perdido en Nueva York</h1>
+
+        <div class="kv">
+          <span class="badge">Película</span>
+          <span class="badge">1992</span>
+          <span class="badge">2 h</span>
+          <span class="badge age">7+</span>
+        </div>
+
+        <p>
+          En este clásico secuelar, Kevin McCallister toma un avión incorrecto y
+          termina varado en Nueva York donde debe nuevamente sortear a los torpes
+          ladrones.
+        </p>
+
+        <!-- METADATA -->
+        <div class="meta">
+
+          <p>
+            <strong>Elenco:</strong>
+            <span>
+              Macaulay Culkin, Joe Pesci, John Heard, Tim Curry, Devin Ratray,
+              Catherine O'Hara, Rob Schneider, Kieran Culkin, Dana Ivey,
+              Eddie Bracken, Ally Sheedy, Brenda Fricker, Leigh Zimmerman,
+              Anna Slotky, Hillary Wolf, Clarke Devereux, Terrie Snell,
+              Fred Krause, James Cole, Jedidiah Cohen, Rod Sell, Clare Hoak,
+              Gerry Bamman, Monica Devereux, Eleanor Columbus, Fran McGee,
+              Mark Morettini, Ralph Foody, Jimmie Walker, Rip Taylor,
+              Karen Giordano, Ron Canada, Senta Moses, Cedric Young,
+              Michael C. Maronna, Venessia Valentino, Mario Todisco,
+              Joe Liss, Abdoulaye N'Gom, Donald Trump, Diana Rein,
+              Bob Eubanks, Frank Oz.
+            </span>
+          </p>
+
+          <p>
+            <strong>Guión:</strong>
+            <span>
+              John Hughes
+            </span>
+          </p>
+
+          <p>
+            <strong>Géneros:</strong>
+            <span>
+              Infantil, Comedia, Aventuras, Fiestas navideñas
+            </span>
+          </p>
+
+          <p>
+            <strong>Este título es:</strong>
+            <span>
+              Divertido, Familiar, Emotivo
+            </span>
+          </p>
+
+          <p>
+            <strong>Clasificación por edad:</strong>
+            <span>
+              <span class="age">7+</span> humor slapstick, situaciones de
+              riesgo cómicas · Apta para todo público
+            </span>
+          </p>
+
+        </div>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- PLAYER INIT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.getElementById('player');
+      const source =
+        'https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/mpa/mpa2/Mi_Pobre_Angelito_2.m3u8';
+
+      if (Hls.isSupported()) {
+        const hls = new Hls({
+          enableWorker: true,
+          lowLatencyMode: true,
+        });
+        hls.loadSource(source);
+        hls.attachMedia(video);
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = source;
+      }
+
+      new Plyr(video, {
+        controls: [
+          'play-large',
+          'play',
+          'progress',
+          'current-time',
+          'mute',
+          'volume',
+          'settings',
+          'fullscreen'
+        ],
+        settings: ['speed'],
+        speed: {
+          selected: 1,
+          options: [0.5, 0.75, 1, 1.25, 1.5, 2]
+        },
+        ratio: '16:9'
+      });
+    });
+  </script>
+
+</body>
+
+</html>
