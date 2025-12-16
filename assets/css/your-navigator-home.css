@@ -238,6 +238,17 @@ main {
   white-space: nowrap;
 }
 
+button.btn.secondary {
+  pointer-events: none;
+  /* Desactiva la interacción del cursor */
+  user-select: none;
+  /* Desactiva la selección de texto */
+  outline: none;
+  /* Elimina los bordes de enfoque */
+  -webkit-user-drag: none;
+  /* Desactiva el arrastre en navegadores Webkit */
+}
+
 .btn.primary {
   background: #fff;
   color: #000;
