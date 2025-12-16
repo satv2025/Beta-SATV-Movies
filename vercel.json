@@ -1,13 +1,9 @@
 {
     "trailingSlash": false,
-    "cleanUrls": true,
-    "routes": [
+    "rewrites": [
         {
-            "handle": "filesystem"
-        },
-        {
-            "src": "/(.+)",
-            "dest": "/$1/index.html"
+            "source": "/:folder",
+            "destination": "/:folder/index.html"
         }
     ]
 }
