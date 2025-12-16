@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+@import url('https://solargentinotv.com.ar/assets/fonts/NetflixSans/netflixsans.css');
 
 :root {
   --bg: #141414;
@@ -12,7 +12,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Google Sans';
+  font-family: 'Netflix Sans';
 }
 
 body {
