@@ -1,0 +1,98 @@
+@import url('https://solargentinotv.com.ar/assets/fonts/NetflixSans/netflixsans.css');
+
+/* Fuente global */
+* {
+    font-family: 'Netflix Sans';
+}
+
+/* ──────────────────────────
+   MODAL Y CAPA DE FONDO
+   ────────────────────────── */
+
+/* Capa traslúcida (overlay) */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, .55);
+    /* oscurece el fondo */
+    z-index: 1000;
+    width: 100%;
+
+    /* Permite scroll y clics en el contenido de fondo */
+    overflow: visible;
+    pointer-events: none;
+    /* la capa NO intercepta eventos */
+}
+
+/* Oculto por defecto */
+.hidden {
+    display: none;
+}
+
+/* Contenedor interno del diálogo */
+.modal-content {
+    pointer-events: auto;
+    /* el cuadro SÍ intercepta eventos */
+    max-width: 680px;
+    /* antes 420px – ajusta a tu gusto */
+    width: 90%;
+    background: #181818;
+    padding: 1.75rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+    text-align: justify;
+}
+
+/* Texto destacado dentro del modal */
+.question {
+    font-weight: 600;
+    margin-top: 1.25rem;
+}
+
+/* Botonera del diálogo */
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Botones genéricos */
+.copybtn {
+    padding: .5rem 1.25rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: .95rem;
+}
+
+/* Botón principal (Aceptar) */
+.copybtn.primary {
+    background: #04a756;
+    color: #fff;
+}
+
+.copybtn.primary:hover {
+    background: #025843;
+    color: #fff;
+}
+
+/* Botón secundario (Salir) */
+.copybtn.secondary {
+    background: #ff0505;
+    color: #fff;
+}
+
+.copybtn.secondary:hover {
+    background: #570000;
+    color: #fff;
+}
+
+/* Elimina contorno de enfoque por defecto */
+.copybtn:focus {
+    border: none;
+    outline: none;
+}

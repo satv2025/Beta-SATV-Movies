@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sol Argentino TV Movies</title>
   <link rel="stylesheet" href="assets/css/your-navigator-home.css">
+  <link rel="stylesheet" href="assets/css/copyright.css">
   <link rel="icon" href="https://movies.solargentinotv.com.ar/assets/media/images/SolArgentinoTVMOVIES.ico">
 </head>
 
@@ -33,6 +34,29 @@
       </div>
     </div>
   </header>
+
+  <!--  CC MODAL -->
+  <!-- Modal de consentimiento -->
+  <div id="copyrightModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="copyrightTitle">
+
+    <div class="modal-content">
+      <h3 id="copyrightTitle">Aviso de derechos de autor</h3>
+
+      <p>
+        Este sitio pone a tu disposición contenido audiovisual protegido por derechos de autor.<br>
+        Podés disfrutarlo exclusivamente para uso personal y privado.<br>
+        Queda estrictamente prohibido copiar, grabar, distribuir o publicar el material por cualquier medio.<br>
+        Ante la verificación de un uso no autorizado, la plataforma se reserva el derecho de iniciar acciones legales.
+      </p>
+
+      <p class="question">¿Aceptás estas condiciones y deseás continuar?</p>
+
+      <div class="modal-actions">
+        <button id="btnAccept" class="primary copybtn">Sí, acepto</button>
+        <button id="btnDecline" class="secondary copybtn">No, salir</button>
+      </div>
+    </div>
+  </div>
 
   <main>
 
@@ -210,6 +234,7 @@
   <script src="assets/js/filters.js"></script>
   <script src="assets/js/searcher.js"></script>
   <script src="assets/js/card.js"></script>
+  <script src="assets/js/copyright.js"></script>
 
 </body>
 

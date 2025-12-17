@@ -247,6 +247,7 @@ button.btn.secondary {
   /* Elimina los bordes de enfoque */
   -webkit-user-drag: none;
   /* Desactiva el arrastre en navegadores Webkit */
+  background: #6d6d6e66 !important;
 }
 
 .btn.primary {
@@ -306,7 +307,7 @@ button.btn.secondary {
 /* Otros estilos existentes para componentes */
 
 .btn.secondary:disabled {
-  background: #141414c4;
+  background: #6d6d6e66;
   cursor: auto;
   opacity: 1;
   transform: translate(-5.91em, -20.4em);
