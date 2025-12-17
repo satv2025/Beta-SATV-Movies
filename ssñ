@@ -9,17 +9,3 @@ https: //movies.solargentinotv.com.ar/assets/media/images/appthumb.webp
 https: //encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1zZywXvdxB1f0L7CVvNzN4Z3Yfiy4IZU6TQ
 
 https: //movies.solargentinotv.com.ar/assets/media/images/Logo%20Reite666%202.png
-
-
-
-      <!-- 7 -->
-      <div class="card" data-type="Serie" onclick="go('reite666/index.html')">
-        <div class="media">
-          <img src="https://movies.solargentinotv.com.ar/assets/media/images/Logo%20Reite666%202.png">
-          <video muted loop playsinline preload="none"
-            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/trailer.mp4"></video>
-        </div>
-        <div class="meta">
-          <h3>Reite666</h3><span>Serie · 2018 · 2 temporadas</span>
-        </div>
-      </div>

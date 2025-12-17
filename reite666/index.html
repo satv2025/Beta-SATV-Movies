@@ -4,41 +4,213 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>REITE666 | Sol Argentino TV MOVIES</title>
+  <title>Reite666 | Sol Argentino TV Movies</title>
+
   <link rel="stylesheet" href="../assets/css/individual.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css" />
+  <link rel="stylesheet" href="https://movies.solargentinotv.com.ar/assets/css/plyr/satvplyr.css" />
+
+  <link rel="icon" href="https://movies.solargentinotv.com.ar/assets/media/images/SolArgentinoTVMOVIES.ico"
+    type="image/x-icon">
+
+  <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.polyfilled.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
 </head>
 
 <body>
+
   <header>
     <div class="wrap">
-      <a href="../">← Volver</a>
-      <strong>Sol Argentino TV MOVIES</strong>
+      <a href="../" class="back">← Volver</a>
+      <div class="logo">Sol Argentino TV Movies</div>
     </div>
   </header>
+
   <main>
-    <div class="hero">
-      <div class="poster">
-        <img src="https://movies.solargentinotv.com.ar/assets/media/images/Logo%20Reite666%202.png">
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div class="media">
+        <video id="player" playsinline controls
+          poster="https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/Reite666_thumb_e01.jpg">
+        </video>
       </div>
-      <section class="card">
-        <h1>REITE666</h1>
-        <pre style="white-space:pre-wrap;color:var(--muted)">REITE666
-Tipo: Serie
-Año: 2018
-Duración: 2 temporadas
-Descripción: Un juego macabro obliga a un joven a regresar a Argentina.
-Elenco: Franco Crivera, Julián Iurchuk, Facundo Duré
-Géneros: De España, Youtubers, Thriller psicológico
-Clasificación por edad: 16+ (lenguaje inapropiado)
-Creador: Franco Crivera
-Guion: Franco Crivera, Andrés Ilopo Bollero
-Géneros completos: De España, Thriller psicológico, Youtubers, Aventura, Paranormal, Suspenso, Misterio, Terror urbano
-Este título es: Misterioso, Perturbador, Inquietante
-Clasificación por edad completa: Apta para mayores de 16 años</pre>
-      </section>
-    </div>
+
+      <!-- INFO PANEL -->
+      <article class="card">
+
+        <h1>Reite666</h1>
+
+        <div class="kv">
+          <span class="badge">Serie</span>
+          <span class="badge">2018</span>
+          <span class="badge">20 episodios</span>
+          <span class="badge age">16+</span>
+        </div>
+
+        <p>
+          Cilio, en España, recibe un mensaje que lo obliga a volver a Argentina
+          para un juego macabro. Un error inesperado desata sucesos perturbadores
+          que lo regresan de forma inexplicable.
+        </p>
+
+        <div class="meta">
+
+          <p><strong>Elenco:</strong>
+            <span>
+              Franco Crivera, Julián Iurchuk, Facundo Duré, Roger Cascón Segura,
+              Andrés Ilopo Bollero, Laura Guerra, Marta Guerra
+            </span>
+          </p>
+
+          <p><strong>Creado por:</strong> <span>Franco Crivera</span></p>
+
+          <p><strong>Guión:</strong>
+            <span>Franco Crivera, Andrés Ilopo Bollero</span>
+          </p>
+
+          <p><strong>Géneros:</strong>
+            <span>
+              De España, Thriller psicológico, Youtubers Aventura, Paranormal,
+              Suspenso, Misterio, Terror urbano
+            </span>
+          </p>
+
+          <p><strong>Este título es:</strong>
+            <span>Misterioso, Perturbador, Inquietante</span>
+          </p>
+
+          <p><strong>Clasificación por edad:</strong>
+            <span><span class="age">16+</span> lenguaje inapropiado · Apta +16</span>
+          </p>
+
+          <p class="curiosity">
+            <strong>Es oficial:</strong> Se estrenará otra temporada
+          </p>
+
+        </div>
+
+      </article>
+
+    </section>
+
+    <!-- EPISODIOS -->
+    <section class="episodes">
+      <h2 class="no-season">Episodios</h2>
+
+      <div class="episodes-list">
+        <div class="episodes season" data-season="1">
+
+          <!-- EPISODIO 1 -->
+          <article class="episode"
+            data-src="https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t1/E1/REITE666%20T1%20E1.m3u8">
+            <div class="ep-thumb">
+              <img src="https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/Reite666_thumb_e01.jpg"
+                alt="Episodio 1">
+            </div>
+            <div class="ep-info">
+              <h3>Episodio 1 · Cilio Debe Regresar</h3>
+              <p>Luego de recibir un misterioso mensaje, Cilio debe volver a Argentina y descubrir quién lo envió.</p>
+              <span>12 min</span>
+            </div>
+          </article>
+
+          <!-- EPISODIO 2 -->
+          <article class="episode"
+            data-src="https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t1/E2/REITE666%20T1%20E2.m3u8">
+            <div class="ep-thumb">
+              <img src="https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/Reite666_thumb_e02.jpg"
+                alt="Episodio 2">
+            </div>
+            <div class="ep-info">
+              <h3>Episodio 2 · Bienvenido A Casa</h3>
+              <p>Luego del viaje, Cilio llega a su casa solo para encontrarse con más enigmas.</p>
+              <span>11 min</span>
+            </div>
+          </article>
+
+          <!-- EPISODIO 3 -->
+          <article class="episode"
+            data-src="https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t1/E3/REITE666%20T1%20E3.m3u8">
+            <div class="ep-thumb">
+              <img src="https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/Reite666_thumb_e03.jpg"
+                alt="Episodio 3">
+            </div>
+            <div class="ep-info">
+              <h3>Episodio 3 · El Reencuentro</h3>
+              <p>Cilio es citado en un parque cercano y se reencuentra con viejos amigos.</p>
+              <span>14 min</span>
+            </div>
+          </article>
+
+          <!-- REPETÍ del 4 al 20 exactamente igual que ya tenés -->
+
+        </div>
+      </div>
+    </section>
+
   </main>
-  <script src="../assets/js/app.js"></script>
+
+  <!-- PLAYER -->
+  <script>
+    const video = document.getElementById('player');
+    const player = new Plyr(video, { ratio: '16:9' });
+    let hls = null;
+
+    const episodes = Array.from(document.querySelectorAll('.episode'));
+    let currentIndex = -1;
+
+    function loadEpisode(index, autoplay = true) {
+      const ep = episodes[index];
+      if (!ep) return;
+
+      const src = ep.dataset.src;
+      if (!src) return;
+
+      currentIndex = index;
+
+      episodes.forEach(e => e.classList.remove('active'));
+      ep.classList.add('active');
+
+      player.pause();
+
+      if (hls) {
+        hls.destroy();
+        hls = null;
+      }
+
+      if (Hls.isSupported()) {
+        hls = new Hls();
+        hls.loadSource(src);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          if (autoplay) player.play().catch(() => { });
+        });
+      } else {
+        video.src = src;
+        video.addEventListener('loadedmetadata', () => {
+          if (autoplay) player.play().catch(() => { });
+        }, { once: true });
+      }
+
+      video.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    episodes.forEach((ep, index) => {
+      ep.addEventListener('click', () => loadEpisode(index, true));
+    });
+
+    video.addEventListener('ended', () => {
+      const next = currentIndex + 1;
+      if (next < episodes.length) {
+        loadEpisode(next, true);
+      }
+    });
+
+    loadEpisode(0, false);
+  </script>
+
 </body>
 
 </html>

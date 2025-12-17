@@ -10,6 +10,7 @@ const videoUrls = {
     mpa2: "https://dynavod.solargentinotv.com.ar/Mi_Pobre_Angelito_2_trailer.mp4",
     app: "https://dynavod.solargentinotv.com.ar/Asesinato_para_principiantes__Tr%C3%A1iler_oficial__Netflix.mp4",
     nivelx: "https://dynavod.solargentinotv.com.ar/trailer_persons_T1E1-26_order.mp4",
+    reite: "https://dynavod.solargentinotv.com.ar/trailer.mp4",
     f2fnh: "https://dynavod.solargentinotv.com.ar/F2FNHTrailer.mp4"
 };
 
