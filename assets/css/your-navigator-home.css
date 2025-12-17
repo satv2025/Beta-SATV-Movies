@@ -373,17 +373,22 @@ button.btn.secondary {
   /* Suaviza la transición entre imagen y video */
 }
 
-/* Ocultar imagen cuando el video es visible */
+/* Evitar que el hover sobre el video o sobre la tarjeta afecte al icono de mute */
+.card:hover .media video {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 2;
+}
+
+.card .media img {
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
 .card:hover .media img {
   opacity: 0;
   /* La imagen se oculta al hacer hover */
-}
-
-.card:hover .media video {
-  opacity: 1;
-  /* El video se vuelve visible */
-  pointer-events: all;
-  /* Permite la interacción con el video (si es necesario) */
 }
 
 /* Ocultar el video cuando no hay hover */
@@ -543,28 +548,32 @@ span.film-type {
   transition: background-color 0.3s !important;
 }
 
+/* Hover en el botón de mute para cambiar la opacidad */
 .bmt-mute-btn:hover {
   opacity: 1 !important;
 }
 
+/* El botón de mute se hace visible cuando la clase .mute-visible está presente */
 .bmt-mute-btn.mute-visible {
   display: block !important;
-  /* Mostrar cuando video esté en hover */
+  /* Mostrar cuando el video esté en hover */
 }
 
+/* Icono de mute */
 #bmtMuteIcon {
   filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(269deg) brightness(105%) contrast(102%) !important;
-  width: 1.8em;
-  height: 1.8em;
-  margin-left: -0.04em;
+  width: 1.5em;
+  height: 1.5em;
+  margin-left: -0.111em;
   margin-top: -0.12em;
   display: none !important;
-  /* Ocultar la imagen por defecto */
+  /* Se oculta por defecto */
   position: relative;
-  z-index: 4;
+  z-index: 100000 !important;
+  /* Asegura que esté por encima del video */
 }
 
-/* Mostrar la imagen cuando el botón .bmt-mute-btn esté visible (hover sobre el video) */
+/* Mostrar la imagen cuando el botón .bmt-mute-btn esté visible */
 .bmt-mute-btn.mute-visible #bmtMuteIcon {
   display: block !important;
 }
