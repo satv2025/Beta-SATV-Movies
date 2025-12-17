@@ -352,6 +352,7 @@ button.btn.secondary {
   z-index: 10;
 }
 
+/* Contenedor de medios (imágenes y videos) */
 .media {
   position: relative;
   aspect-ratio: 16/9;
@@ -368,7 +369,31 @@ button.btn.secondary {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: opacity 0.3s ease-in-out;
+  /* Suaviza la transición entre imagen y video */
 }
+
+/* Ocultar imagen cuando el video es visible */
+.card:hover .media img {
+  opacity: 0;
+  /* La imagen se oculta al hacer hover */
+}
+
+.card:hover .media video {
+  opacity: 1;
+  /* El video se vuelve visible */
+  pointer-events: all;
+  /* Permite la interacción con el video (si es necesario) */
+}
+
+/* Ocultar el video cuando no hay hover */
+.media video {
+  opacity: 0;
+  pointer-events: none;
+  /* Desactiva la interacción con el video cuando está oculto */
+  transition: opacity 0.3s ease-in-out;
+}
+
 
 .sound-btn img {
   width: 27px;
@@ -469,4 +494,77 @@ span.film-type {
     /* que ocupen todo el ancho si quieres */
     box-sizing: border-box !important;
   }
+}
+
+.bmt-mute-btn {
+  position: absolute;
+  bottom: 0.84em;
+  right: 0.9em;
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  padding: 8px !important;
+  z-index: 50000 !important;
+  cursor: pointer !important;
+  transition: opacity 0.2s !important;
+  background-color: rgb(42, 42, 42, 0.6) !important;
+  border: 2px solid hsl(0deg 0% 100%) !important;
+  opacity: 0.4 !important;
+  width: 40px;
+  height: 40px;
+  display: none !important;
+  /* Se oculta por defecto */
+}
+
+.bmt-mute-btn:before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  z-index: -1 !important;
+  transition: background-color 0.3s !important;
+}
+
+.bmt-mute-btn:after {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  background-color: #1b1b1b0d !important;
+  border-radius: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 1 !important;
+  transition: background-color 0.3s !important;
+}
+
+.bmt-mute-btn:hover {
+  opacity: 1 !important;
+}
+
+.bmt-mute-btn.mute-visible {
+  display: block !important;
+  /* Mostrar cuando video esté en hover */
+}
+
+#bmtMuteIcon {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(269deg) brightness(105%) contrast(102%) !important;
+  width: 1.8em;
+  height: 1.8em;
+  margin-left: -0.04em;
+  margin-top: -0.12em;
+  display: none !important;
+  /* Ocultar la imagen por defecto */
+  position: relative;
+  z-index: 4;
+}
+
+/* Mostrar la imagen cuando el botón .bmt-mute-btn esté visible (hover sobre el video) */
+.bmt-mute-btn.mute-visible #bmtMuteIcon {
+  display: block !important;
 }

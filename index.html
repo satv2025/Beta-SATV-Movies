@@ -22,10 +22,9 @@
       </nav>
       <div class="search">
         <input id="searchInput" placeholder="Buscar…">
-        <!-- SVG de la lupa con color blanco -->
-        <button class="searchTab" tabindex="0" aria-label="Buscar" data-uia="search-box-launcher">
-          <svg viewBox="0 0 24 24" width="24" height="24" data-icon="MagnifyingGlassMedium" data-icon-id=":r33:"
-            aria-hidden="true" class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" role="img">
+        <button class="searchTab" tabindex="0" aria-label="Buscar">
+          <svg viewBox="0 0 24 24" width="24" height="24" class="search-icon" xmlns="http://www.w3.org/2000/svg"
+            fill="none" role="img">
             <path fill="currentColor" fill-rule="evenodd"
               d="M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0m-1.38 7.03a9 9 0 1 1 1.41-1.41l5.68 5.67-1.42 1.42z"
               clip-rule="evenodd"></path>
@@ -57,100 +56,103 @@
     <div class="grid">
 
       <!-- 1 -->
-      <div class="card" data-type="Película" onclick="go('matiponcepeli')">
+      <div class="card" id="mpp" data-type="Película" onclick="go('matiponcepeli')">
         <div class="media">
-          <img src="https://movies.solargentinotv.com.ar/assets/media/images/mpthumb.jpg">
-          <video muted loop playsinline preload="none"
-            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/MATIAS_PONCE_-_LA_PEL%C3%8DCULA__TR%C3%81ILER_OFICIAL_2022.webm"></video>
+          <img src="https://movies.solargentinotv.com.ar/assets/media/images/mpthumb.jpg" alt="Matias Ponce">
+          <button class="bmt-mute-btn" id="bmtMuteBtn">
+          </button>
         </div>
         <div class="meta">
           <h3>Matias Ponce – La Película</h3>
           <span class="film-type">Película · 2022 · 1 h</span>
           <p class="synopsis">
-            Matías Ponce, creador de contenido en redes, se enfrenta a alienígenas y hackers
-            tras la misteriosa suspensión de su canal de YouTube, o como él lo llama “Yutun”,
-            desatando una hilarante y absurda aventura.
+            Matías Ponce, creador de contenido en redes, se enfrenta a alienígenas y hackers tras la misteriosa
+            suspensión de su canal de YouTube, o como él lo llama “Yutun”, desatando una hilarante y absurda aventura.
           </p>
         </div>
       </div>
 
       <!-- 2 -->
-      <div class="card" data-type="Película" onclick="go('100lucha')">
+      <div class="card" id="cp1" data-type="Película" onclick="go('100lucha')">
         <div class="media">
-          <img src="https://movies.solargentinotv.com.ar/assets/media/images/100luchathumb.jpg">
-          <video muted loop playsinline preload="none"
-            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/100_LUCHA_LA_PEL%C3%8DCULA__Tr%C3%A1iler__HD_.mp4"></video>
+          <img src="https://movies.solargentinotv.com.ar/assets/media/images/100luchathumb.jpg" alt="100 Lucha">
+          <button class="bmt-mute-btn" id="bmtMuteBtn">
+          </button>
         </div>
         <div class="meta">
           <h3>100% Lucha – La Película</h3>
           <span class="film-type">Película · 2008 · 1 h 20 min</span>
           <p class="synopsis">
-            Koshe Plostenko, un mafioso implacable, secuestra a los luchadores de 100% Lucha
-            para obligarlos a pelear en su club clandestino, desatando caos y rivalidades inesperadas.
+            Koshe Plostenko, un mafioso implacable, secuestra a los luchadores de 100% Lucha para obligarlos a pelear en
+            su club clandestino.
           </p>
         </div>
       </div>
 
       <!-- 3 -->
-      <div class="card" data-type="Película" onclick="go('100luchaeadc')">
+      <div class="card" id="cpeadc" data-type="Película" onclick="go('100luchaeadc')">
         <div class="media">
           <img
-            src="https://media.minutouno.com/p/8f27c301f5e629ec8dab0477e7a75ae0/adjuntos/150/imagenes/026/947/0026947782/1200x675/smart/lucha.png">
-          <video muted loop playsinline preload="none"
-            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/100_LUCHA_EL_AMO_DE_LOS_CLONES__Tr%C3%A1iler__HD_.mp4"></video>
+            src="https://media.minutouno.com/p/8f27c301f5e629ec8dab0477e7a75ae0/adjuntos/150/imagenes/026/947/0026947782/1200x675/smart/lucha.png"
+            alt="100 Lucha El Amo De Los Clones">
+          <button class="bmt-mute-btn" id="bmtMuteBtn">
+          </button>
         </div>
         <div class="meta">
           <h3>100% Lucha – El Amo De Los Clones</h3>
           <span class="film-type">Película · 2009 · 1 h 20 min</span>
           <p class="synopsis">
-            Damián Castillo, un doctor obsesionado, crea clones de los luchadores de 100% Lucha
-            para arruinar a su ídolo, desatando caos y rivalidades inesperadas.
+            Damián Castillo, un doctor obsesionado, crea clones de los luchadores de 100% Lucha para arruinar a su
+            ídolo.
           </p>
         </div>
       </div>
 
       <!-- 4 -->
-      <div class="card" data-type="Película" onclick="go('homealone')">
+      <div class="card" id="mpa" data-type="Película" onclick="go('homealone')">
         <div class="media">
           <img
-            src="https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/a3242080-601c-488b-afd2-1f9bed5f5d99/compose">
-          <video muted loop playsinline preload="none"
-            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/Mi_Pobre_Angelito_1_trailer.mp4"></video>
+            src="https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/a3242080-601c-488b-afd2-1f9bed5f5d99/compose"
+            alt="Mi Pobre Angelito">
+          <button class="bmt-mute-btn" id="bmtMuteBtn">
+          </button>
         </div>
         <div class="meta">
           <h3>Mi Pobre Angelito</h3>
           <span class="film-type">Película · 1990 · 1 h 45 min</span>
           <p class="synopsis">
-            En este clásico, Macaulay Culkin es Kevin McCallister, un niño olvidado en casa
-            en Navidad que debe enfrentarse a dos torpes y despiadados ladrones.
+            Macaulay Culkin es Kevin McCallister, un niño olvidado en casa en Navidad que debe enfrentarse a dos torpes
+            y despiadados ladrones.
           </p>
         </div>
       </div>
 
       <!-- 5 -->
-      <div class="card" data-type="Película" onclick="go('homealone2')">
+      <div class="card" id="mpa2" data-type="Película" onclick="go('homealone2')">
         <div class="media">
           <img
-            src="https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/5046911a-aaf2-4d52-8127-438643a35b24/compose">
-          <video muted loop playsinline preload="none"
-            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/Mi_Pobre_Angelito_2_trailer.mp4"></video>
+            src="https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/5046911a-aaf2-4d52-8127-438643a35b24/compose"
+            alt="Mi Pobre Angelito 2">
+          <button class="bmt-mute-btn" id="bmtMuteBtn">
+          </button>
         </div>
         <div class="meta">
           <h3>Mi Pobre Angelito 2</h3>
           <span class="film-type">Película · 1992 · 2 h</span>
           <p class="synopsis">
-            En este clásico secuela, Kevin McCallister toma un avión incorrecto y termina
-            varado en Nueva York, donde debe nuevamente sortear a los torpes ladrones.
+            En esta secuela, Kevin McCallister toma un avión incorrecto y termina varado en Nueva York, donde debe
+            nuevamente sortear a los torpes ladrones.
           </p>
         </div>
       </div>
 
       <!-- 6 -->
-      <div class="card" data-type="Serie" onclick="go('asesinatoparaprincipiantes')">
+      <div class="card" id="app" data-type="Serie" onclick="go('asesinatoparaprincipiantes')">
         <div class="media">
-          <img src="https://movies.solargentinotv.com.ar/assets/media/images/appthumb.webp">
-          <video muted loop playsinline preload="none"
-            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/Asesinato_para_principiantes__Tr%C3%A1iler_oficial__Netflix.mp4"></video>
+          <img src="https://movies.solargentinotv.com.ar/assets/media/images/appthumb.webp"
+            alt="Asesinato Para Principiantes">
+          <button class="bmt-mute-btn" id="bmtMuteBtn">
+          </button>
         </div>
         <div class="meta">
           <h3>Asesinato Para Principiantes</h3>
@@ -163,28 +165,30 @@
       </div>
 
       <!-- 7 -->
-      <div class="card" data-type="Serie" onclick="go('nivelx-maritokids')">
+      <div class="card" id="nivelx" data-type="Serie" onclick="go('nivelx-maritokids')">
         <div class="media">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1zZywXvdxB1f0L7CVvNzN4Z3Yfiy4IZU6TQ">
-          <video muted loop playsinline preload="none"
-            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/trailer_persons_T1E1-26_order.mp4"></video>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1zZywXvdxB1f0L7CVvNzN4Z3Yfiy4IZU6TQ"
+            alt="Nivel X">
+          <button class="bmt-mute-btn" id="bmtMuteBtn">
+          </button>
         </div>
         <div class="meta">
           <h3>Nivel X</h3>
           <span class="film-type">Serie · 2009 · 2 temporadas</span>
           <p class="synopsis">
-            Lionel Campoy y Natalia Dim enfrentan situaciones absurdas en Nivel X,
-            una parodia caótica e imposible de ignorar.
+            Lionel Campoy y Natalia Dim enfrentan situaciones absurdas en Nivel X, una parodia caótica e imposible de
+            ignorar.
           </p>
         </div>
       </div>
 
       <!-- 8 -->
-      <div class="card" data-type="Película" onclick="go('f2fnh')">
+      <div class="card" id="f2fnh" data-type="Película" onclick="go('f2fnh')">
         <div class="media">
-          <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1763050/capsule_616x353.jpg">
-          <video muted loop playsinline preload="none"
-            data-src="https://gitlab.com/solargentinotv/satvmoviesvideos/-/raw/main/F2FNHTrailer.mp4"></video>
+          <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1763050/capsule_616x353.jpg"
+            alt="Fears to Fathom: Norwood Hitchhike">
+          <button class="bmt-mute-btn" id="bmtMuteBtn">
+          </button>
         </div>
         <div class="meta">
           <h3>Fears to Fathom: Norwood Hitchhike</h3>
@@ -195,10 +199,13 @@
           </p>
         </div>
       </div>
+
     </div>
   </main>
 
-  <script src="assets/js/app.js"></script>
+  <script src="assets/js/filters.js"></script>
+  <script src="assets/js/card.js"></script>
+
 </body>
 
 </html>
