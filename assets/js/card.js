@@ -99,8 +99,6 @@ cards.forEach(card => {
         }
     };
 
-    // Agregar listeners para detectar la primera interacción del usuario
-    document.addEventListener("mousemove", interactHandler); // Detecta movimiento del ratón
     document.addEventListener("click", interactHandler);     // Detecta cualquier clic
 
     // Hover para reproducir el video y ocultar la imagen
