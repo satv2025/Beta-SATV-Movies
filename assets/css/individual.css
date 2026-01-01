@@ -254,7 +254,7 @@ strong {
 }
 
 h2.no-season {
-    margin-top: 4.4em;
+  margin-top: 4.4em;
 }
 
 /* ======================
@@ -387,8 +387,9 @@ h2.no-season {
 .ep-info p {
   font-size: 0.85rem;
   line-height: 1.4;
-  color: #bdbdbd;
+  color: #fff;
   margin-bottom: 0.5rem;
+  font-weight: 300;
 }
 
 .ep-info span {
@@ -562,10 +563,10 @@ h2.no-season {
     font-size: 1.4rem;
   }
 
-h2.no-season {
+  h2.no-season {
     margin-bottom: 3.2em;
     margin-top: 3.1em;
-}
+  }
 }
 
 /* MQ For Dropdown Styles*/
