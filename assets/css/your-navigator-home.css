@@ -211,7 +211,7 @@ main {
 /* Hero */
 .hero {
   height: 420px;
-  background: linear-gradient(to top, #181818, rgb(22 22 22 / 2%)), url(https://movies.solargentinotv.com.ar/assets/media/images/mpthumb.jpg);
+  background: linear-gradient(to top, #181818, rgb(22 22 22 / 2%)), url(https://old.movies.solargentinotv.com.ar/assets/media/images/mpthumb.jpg);
   background-size: cover;
   border-radius: var(--radius);
   padding: 32px;
