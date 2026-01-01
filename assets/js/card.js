@@ -14,6 +14,15 @@ const videoUrls = {
     f2fnh: "https://dynavod.solargentinotv.com.ar/F2FNHTrailer.mp4"
 };
 
+// Variable global de interacción
+let userInteracted = false;
+let activeVideo = null;
+
+// Detectar la primera interacción real del usuario
+document.addEventListener("click", () => {
+    userInteracted = true;
+}, { once: true });
+
 // Recorre cada card para agregarle el video y funcionalidad de hover
 cards.forEach(card => {
     const media = card.querySelector(".media");
