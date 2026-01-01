@@ -14,15 +14,6 @@ const videoUrls = {
     f2fnh: "https://dynavod.solargentinotv.com.ar/F2FNHTrailer.mp4"
 };
 
-// Variable global de interacción
-let userInteracted = false;
-let activeVideo = null;
-
-// Detectar la primera interacción real del usuario
-document.addEventListener("click", () => {
-    userInteracted = true;
-}, { once: true });
-
 // Recorre cada card para agregarle el video y funcionalidad de hover
 cards.forEach(card => {
     const media = card.querySelector(".media");
@@ -91,32 +82,9 @@ cards.forEach(card => {
         }
     });
 
-    // Variable para verificar la primera interacción
-    let hasInteracted = false;
-
-    // Detectar la primera interacción con la página (mouse o tocando cualquier cosa)
-    const interactHandler = () => {
-        if (!hasInteracted) {
-            hasInteracted = true;
-
-            // Reproducir el video en mute cuando haya interacción
-            video.play().catch(e => console.error("No se pudo reproducir el video:", e));
-
-            // Remover el listener después de la primera interacción
-            document.removeEventListener("mousemove", interactHandler);
-            document.removeEventListener("click", interactHandler);
-        }
-    };
-
-    // Agregar listeners para detectar la primera interacción del usuario
-    document.addEventListener("mousemove", interactHandler); // Detecta movimiento del ratón
-    document.addEventListener("click", interactHandler);     // Detecta cualquier clic
-
     // Hover para reproducir el video y ocultar la imagen
     card.addEventListener("mouseenter", () => {
-        if (hasInteracted) {
-            video.play().catch(e => console.error("No se pudo reproducir el video:", e));
-        }
+        video.play().catch(e => console.error("No se pudo reproducir el video:", e));
 
         // Ocultar la imagen (solo la imagen, no afecta al resto de la tarjeta)
         const img = card.querySelector('.card-img'); // Asegúrate de que la imagen tenga la clase 'card-img'
