@@ -583,5 +583,5 @@ h2.no-season {
 ::after,
 ::before {
   position: relative;
-  left: 0.5em !important;
+  left: 1.3em !important;
 }
