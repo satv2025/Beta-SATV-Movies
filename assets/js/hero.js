@@ -19,6 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     heroBg.setAttribute('src', imageUrl); // Cambia la imagen del fondo
     heroTitle.textContent = title; // Cambia el título
-    heroYear.textContent = `Película · ${year} · 1 h`; // Cambia el año (puedes ajustar el formato)
+    heroYear.textContent = randomCard.querySelector('.film-type').textContent.trim(); // Cambia el año, ahora correcto
     heroSynopsis.textContent = synopsis; // Cambia la sinopsis
 });
