@@ -579,3 +579,9 @@ h2.no-season {
     margin-left: 6.876em;
   }
 }
+
+::after,
+::before {
+  position: relative;
+  left: 0.5em !important;
+}
