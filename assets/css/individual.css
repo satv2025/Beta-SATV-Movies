@@ -18,7 +18,7 @@
 ========================= */
 * {
   box-sizing: border-box;
-  font-family: 'Netflix Sans' !important;
+  font-family: 'Netflix Sans', 'Seoge UI';
 
   font-feature-settings: "ss01" 1;
   font-variant-alternates: stylistic(ss01);
