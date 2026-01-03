@@ -149,34 +149,6 @@ span.nav-link {
   cursor: pointer;
 }
 
-.vivo-btn {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  padding-top: 0.14em;
-  padding-bottom: 0.19em;
-  height: 1.67em;
-  border-radius: var(--radius);
-
-    {}
-
-  ;
-  border: 2px solid #f00;
-  color: #f00;
-  font-weight: 600;
-}
-
-span.vivo-btn.nav-link:hover {
-  background: #f00;
-}
-
-.vivo-btn:hover {
-  color: #fff;
-}
-
-.vivo-btn:hover .dot {
-  background: #fff;
-}
-
 .nav span:hover {
   color: var(--text);
 }
@@ -626,8 +598,6 @@ span.film-type {
   border-top-right-radius: var(--radius);
 }
 
-img.hero-bg {}
-
 img {
   height: 1em;
   object-fit: cover !important;
@@ -711,6 +681,16 @@ img {
 .vivo-btn {
   display: inline-flex;
   align-items: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1em;
+  padding-bottom: 1.065em;
+  max-height: 1.67em;
+  border-radius: var(--radius);
+  border: 2px solid #f00;
+  color: #f00;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .dot {
@@ -736,4 +716,28 @@ img {
   100% {
     opacity: 1;
   }
+}
+
+.vivo-btn:hover {
+  color: #f00;
+  border-color: 2px solid #f00;
+  /* Cambia también el borde */
+}
+
+.vivo-btn:hover .dot {
+  background: #fff;
+  /* Cambia el color del punto */
+}
+
+.vivo-btn:hover {
+  background: #f00;
+  color: #fff
+    /* Fondo rojo cuando hover */
+}
+
+.vivo-btn:hover {
+  padding-top: 1em;
+  /* Evita que el padding cambie */
+  padding-bottom: 1.065em;
+  /* Evita que el padding cambie */
 }

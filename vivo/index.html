@@ -5,11 +5,342 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sol Argentino TV | Transmisión en Vivo</title>
+    <style>
+        * {
+            font-family: 'Gilroy' !important;
+            box-sizing: border-box;
+        }
+
+        .vp-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            background: #000;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        .vp-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .vp-overlay {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            color: white;
+        }
+
+        /* --- Barra de progreso --- */
+        .vp-progress-bar {
+            position: relative;
+            height: 6px;
+            background: transparent;
+            cursor: pointer;
+            flex: 1;
+            margin: 0 20px;
+        }
+
+        .vp-progress-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .vp-progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: #0078d4;
+            transition: width 0.1s linear;
+        }
+
+        .vp-progress-handle {
+            position: absolute;
+            top: -5px;
+            width: 14px;
+            height: 14px;
+            background: #0078d4;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            transition: left 0.1s linear;
+        }
+
+        /* --- Controles --- */
+        .vp-controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 10px;
+            gap: 8px;
+        }
+
+        .vp-left,
+        .vp-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .vp-icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .vp-icon-btn img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) saturate(100%) invert(28%) sepia(91%) saturate(1313%) hue-rotate(184deg) brightness(103%) contrast(103%);
+        }
+
+        /* --- Volume Wrapper --- */
+        .vp-volume-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vp-volume-btn {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- Barra interna vertical del volumen --- */
+        .vp-volume-container {
+            user-select: none;
+            color: white;
+            font-family: 'Gilroy' !important;
+            box-sizing: border-box;
+            position: absolute;
+            bottom: 6.1em;
+            left: 1em;
+            width: 165px;
+            height: 32px;
+            transform: translateX(-50%) rotate(-90deg);
+            background: #003964;
+            border-radius: 6px;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8em 1.2em;
+            z-index: 1;
+            transition: opacity .25s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .vp-volume-container.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .vp-volume-container.closed {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .vp-volume-container .vp-volume-bar {
+            position: relative;
+            width: 125px;
+            height: 9px;
+            margin-top: -0.1em;
+        }
+
+        /* Partes internas del slider */
+        .vp-volume-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0.57em;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .vp-volume-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0.57em;
+            background: #0078d4;
+            transition: width 0.1s linear;
+        }
+
+        /* 1) Aseguramos que el handle reciba eventos */
+        .vp-volume-handle {
+            position: absolute;
+            top: 50%;
+            width: 18px;
+            height: 18px;
+            background: #0078d4;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition:
+                left 0.1s linear,
+                width 0.1s ease,
+                height 0.1s ease;
+            pointer-events: auto;
+        }
+
+        /* 2) El hover se detecta en TODA la barra, no solo en la “zona rara” */
+        .vp-volume-bar:hover .vp-volume-handle {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* --- Tiempo --- */
+        .vp-time {
+            font-size: 16px;
+            color: #0078d4;
+            white-space: nowrap;
+        }
+
+        /* Botones */
+        .vp-fs-btn,
+        .vp-play-btn,
+        .vp-settings-btn {
+            margin-top: 0.23em;
+        }
+
+        /* --- Animaciones de slide --- */
+        @keyframes slideUpFade {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* --- Settings Menu --- */
+        .vp-settings-menu,
+        .vp-submenu {
+            position: absolute;
+            bottom: 4.5em;
+            right: 1.5em;
+            background: #0078d465;
+            border-radius: 6px;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            min-width: 140px;
+            z-index: 100;
+            animation: slideUpFade 0.25s ease-out;
+        }
+
+        .vp-settings-item {
+            background: transparent;
+            border: none;
+            color: #fff;
+            padding: 6px 10px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .vp-settings-item:hover,
+        .vp-settings-item.active {
+            background: rgba(0, 120, 212, 0.7);
+            border-radius: 4px;
+        }
+
+        /* Submenú */
+        .vp-submenu {
+            z-index: 200;
+            animation: slideUpFade 0.25s ease-out;
+        }
+
+        .vp-submenu-back {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            color: #fff;
+            background: transparent;
+            border: none;
+        }
+
+        .vp-submenu-back:hover {
+            background: rgba(0, 120, 212, 0.7);
+            border-radius: 4px;
+        }
+
+        /* --- Media queries --- */
+        @media (max-width: 768px) {
+            .vp-progress-bar {
+                margin: 0 5px;
+            }
+
+            .vp-controls {
+                padding: 8px;
+                gap: 6px;
+            }
+
+            .vp-icon-btn img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .vp-time {
+                font-size: 10px;
+            }
+
+            .vp-settings-menu,
+            .vp-submenu {
+                min-width: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .vp-progress-bar {
+                height: 4px;
+            }
+
+            .vp-progress-handle {
+                width: 10px;
+                height: 10px;
+                top: -3px;
+            }
+        }
+
+        /* --- Controles visibles/ocultos --- */
+        .vp-controls.hidden,
+        .vp-overlay.hidden {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transition: opacity .3s ease;
+        }
+
+        .vp-controls.visible,
+        .vp-overlay.visible {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            transition: opacity .3s ease;
+        }
+    </style>
 
     <!-- Base individual -->
     <link rel="stylesheet" href="../assets/css/individual.css">
     <link rel="stylesheet" href="../assets/css/satvplayer.css">
-
     <link rel="icon" href="https://old.movies.solargentinotv.com.ar/assets/media/images/SolArgentinoTVMOVIES.ico"
         type="image/x-icon">
 </head>
