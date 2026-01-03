@@ -1,6 +1,15 @@
 // Filtrado de las tarjetas según el botón que se haga clic
 document.querySelectorAll(".filters button, .nav-link").forEach(b => {
-    b.onclick = () => applyFilter(b.dataset.filter, b);
+    b.onclick = (event) => {
+        // Si el enlace es "VIVO", redirigir sin aplicar el filtro
+        if (b.classList.contains('vivo-btn')) {
+            window.location.href = "/vivo"; // Redirigir a /vivo
+            event.preventDefault(); // Prevenir la acción de filtrado
+            return;
+        }
+
+        applyFilter(b.dataset.filter, b); // Aplicar filtro
+    };
 });
 
 // Función que aplica el filtro a las tarjetas
