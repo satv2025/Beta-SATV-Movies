@@ -149,6 +149,18 @@ span.nav-link {
   cursor: pointer;
 }
 
+.vivo-btn {
+  background: #f00;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top: 0.14em;
+  padding-bottom: 0.19em;
+  height: 1.67em;
+  border-radius: var(--radius);
+
+    {}
+}
+
 .nav span:hover {
   color: var(--text);
 }
@@ -212,7 +224,7 @@ main {
 .hero {
   height: 420px;
   background-size: cover;
-  border-radius: var(--radius);
+  border-radius: inherit;
   display: flex;
   align-items: flex-end;
   margin-bottom: 32px;
@@ -598,6 +610,8 @@ span.film-type {
   border-top-right-radius: var(--radius);
 }
 
+img.hero-bg {}
+
 img {
   height: 1em;
   object-fit: cover !important;
@@ -622,6 +636,7 @@ img {
   height: 33em;
   background: linear-gradient(to top, #181818 0%, transparent 50%);
   pointer-events: none;
+  border-radius: 0 !important;
 }
 
 /* TÍTULO */

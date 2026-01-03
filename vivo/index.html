@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sol Argentino TV | Transmisión en Vivo</title>
+
+    <!-- Base individual -->
+    <link rel="stylesheet" href="../assets/css/individual.css">
+    <link rel="stylesheet" href="../assets/css/satvplayer.css">
+
+    <link rel="icon" href="https://old.movies.solargentinotv.com.ar/assets/media/images/SolArgentinoTVMOVIES.ico"
+        type="image/x-icon">
+</head>
+
+<body>
+
+    <header>
+        <div class="wrap">
+            <a href="../" class="back">← Volver</a>
+            <div class="logo">Sol Argentino TV</div>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+
+            <!-- PLAYER EN VIVO (cdn2.solargentinotv.com.ar) -->
+            <div class="media">
+                <div id="player"></div>
+            </div>
+
+            <!-- INFO -->
+            <article class="card">
+
+                <h1>Sol Argentino TV – En Vivo</h1>
+
+                <div class="kv">
+                    <span class="badge">LIVE</span>
+                    <span class="badge">24 hs</span>
+                    <span class="badge age">ATP</span>
+                </div>
+
+                <p>
+                    Disfrutá la transmisión en vivo de Sol Argentino TV.
+                    Noticias, entretenimiento y programación continua, estés donde estés.
+                </p>
+
+                <div class="meta">
+                    <p>
+                        <strong>Señal:</strong>
+                        <span>Sol Argentino TV</span>
+                    </p>
+
+                    <p>
+                        <strong>Formato:</strong>
+                        <span>Streaming en vivo</span>
+                    </p>
+
+                    <p>
+                        <strong>Calidad:</strong>
+                        <span>1080p - 60 FPS | Próximamente: 4K</span>
+                    </p>
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- React (REQUERIDO por el reproductor) -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Bundle del reproductor SATV (cdn2) -->
+    <script src="https://cdn2.solargentinotv.com.ar/dist/bundle.js"></script>
+
+    <!-- INIT PLAYER -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            window.mountVideoPlayer('player', {
+                src: 'https://rtmp.solargentinotv.com.ar/live/canal1.m3u8',  <!-- Asegúrate de que esta URL esté activa -->
+                poster: 'https://i.ytimg.com/vi/7Y7fi2FA1wA/hqdefault.jpg'
+            });
+        });
+    </script>
+
+</body>
+
+</html>

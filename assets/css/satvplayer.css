@@ -1,0 +1,44 @@
+/* === COLOR PRINCIPAL: #ff0000 === */
+
+/* Barra de progreso */
+.vp-progress-fill {
+    background: #ff0000;
+}
+
+.vp-progress-handle {
+    background: #ff0000;
+}
+
+/* Iconos */
+.vp-icon-btn img {
+    filter: brightness(0) saturate(100%) invert(14%) sepia(91%) saturate(7431%) hue-rotate(0deg) brightness(101%) contrast(105%);
+}
+
+/* Volumen */
+.vp-volume-fill {
+    background: #ff0000;
+}
+
+.vp-volume-handle {
+    background: #ff0000;
+}
+
+/* Tiempo */
+.vp-time {
+    color: #ff0000;
+}
+
+/* Settings */
+.vp-settings-menu,
+.vp-submenu {
+    background: rgba(255, 0, 0, 0.4);
+}
+
+.vp-settings-item:hover,
+.vp-settings-item.active {
+    background: rgba(255, 0, 0, 0.7);
+}
+
+.vp-submenu-back:hover {
+    background: rgba(255, 0, 0, 0.7);
+}
