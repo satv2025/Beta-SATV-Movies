@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matías Ponce – La Película | Sol Argentino TV Movies</title>
+    <title>Sol Argentino TV | Transmisión en Vivo</title>
 
     <!-- Base individual -->
     <link rel="stylesheet" href="../assets/css/individual.css">
@@ -13,12 +13,38 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css" />
     <link rel="stylesheet" href="https://old.movies.solargentinotv.com.ar/assets/css/plyr/satvplyr.css" />
 
-    <!-- Plyr JS -->
-    <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.polyfilled.min.js"></script>
+    <!-- Estilos personalizados para la barra de progreso -->
+    <style>
+        /* Fondo del buffer de la barra de progreso a rojo */
+        .plyr--video .plyr__progress__buffer {
+            background-color: #f00 !important;
+            color: var(--plyr-video-progress-buffered-background, #f00) !important;
+        }
+
+        /* Estilo para "EN VIVO" */
+        .plyr__time.live {
+            color: #f00;
+            font-weight: bold;
+        }
+
+        /* Ocultar la bola (thumb) del input range */
+        input[type="range"]::-webkit-slider-thumb {
+            display: none !important;
+        }
+
+        /* Para Firefox */
+        input[type="range"]::-moz-range-thumb {
+            display: none !important;
+        }
+
+        /* Para Edge */
+        input[type="range"]::-ms-thumb {
+            display: none !important;
+        }
+    </style>
+
     <link rel="icon" href="https://old.movies.solargentinotv.com.ar/assets/media/images/SolArgentinoTVMOVIES.ico"
         type="image/x-icon">
-    <!-- HLS.js -->
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
 </head>
 
 <body>
@@ -26,7 +52,7 @@
     <header>
         <div class="wrap">
             <a href="../" class="back">← Volver</a>
-            <div class="logo">Sol Argentino TV Movies</div>
+            <div class="logo">Sol Argentino TV</div>
         </div>
     </header>
 
@@ -79,25 +105,37 @@
 
     </main>
 
-    <!-- PLAYER INIT -->
+    <!-- Plyr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.polyfilled.min.js"></script>
+
+    <!-- HLS.js -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+
+    <!-- INIT PLAYER -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function () {
             const video = document.getElementById('player');
-            const source =
-                'https://rtmp.solargentinotv.com.ar/live/canal1.m3u8';
+            const source = 'https://rtmp.solargentinotv.com.ar/live/canal1.m3u8'; // Verifica que esta URL esté activa
 
             if (Hls.isSupported()) {
                 const hls = new Hls({
                     enableWorker: true,
                     lowLatencyMode: true,
                 });
+
                 hls.loadSource(source);
                 hls.attachMedia(video);
+
+                hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                    video.play().catch(() => { });
+                });
+
             } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
                 video.src = source;
+                video.play().catch(() => { });
             }
 
-            new Plyr(video, {
+            const player = new Plyr(video, {
                 controls: [
                     'play-large',
                     'play',
@@ -111,11 +149,28 @@
                 settings: ['speed'],
                 speed: {
                     selected: 1,
-                    options: [0.5, 0.75, 1, 1.25, 1.5, 2]
+                    options: [0.75, 1, 1.25, 1.5]
                 },
                 ratio: '16:9'
             });
+
+            // Cambiar el texto a "EN VIVO" en vez de mostrar el tiempo
+            const timeElement = document.querySelector('.plyr__time');
+            if (timeElement) {
+                timeElement.classList.add('live');
+                timeElement.textContent = 'EN VIVO';
+            }
         });
+    </script>
+
+    <script>
+        // Obtén el elemento input con el atributo data-plyr="seek"
+        var seekInput = document.querySelector('[data-plyr="seek"]');
+
+        // Establece el nuevo valor de seek-value
+        if (seekInput) {
+            seekInput.setAttribute('seek-value', '94.3114543114543');
+        }
     </script>
 
 </body>
