@@ -150,7 +150,6 @@ span.nav-link {
 }
 
 .vivo-btn {
-  background: #f00;
   padding-left: 0.5em;
   padding-right: 0.5em;
   padding-top: 0.14em;
@@ -159,6 +158,23 @@ span.nav-link {
   border-radius: var(--radius);
 
     {}
+
+  ;
+  border: 2px solid #f00;
+  color: #f00;
+  font-weight: 600;
+}
+
+span.vivo-btn.nav-link:hover {
+  background: #f00;
+}
+
+.vivo-btn:hover {
+  color: #fff;
+}
+
+.vivo-btn:hover .dot {
+  background: #fff;
 }
 
 .nav span:hover {
@@ -689,5 +705,35 @@ img {
 
   .hero-actions .btn {
     width: 100%;
+  }
+}
+
+.vivo-btn {
+  display: inline-flex;
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+  margin-right: 8px;
+  /* Espacio entre el punto y el texto */
+  animation: blink 1s infinite;
+  /* Hace que el punto titile */
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
