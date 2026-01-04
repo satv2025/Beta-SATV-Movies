@@ -25,76 +25,116 @@ document.addEventListener("DOMContentLoaded", () => {
     const videoSrc = videoUrls[cardId];
 
     const hero = document.querySelector(".hero");
-    const oldBg = hero.querySelector(".hero-bg");
+    const heroMedia = hero.querySelector(".hero-media");
+    if (!hero || !heroMedia) return;
 
     document.querySelector(".hero-title").textContent = title;
     document.querySelector(".hero-film-type").textContent = filmType;
     document.querySelector(".hero-synopsis").textContent = synopsis;
 
-    if (oldBg) {
-        oldBg.src = imageUrl;
-        oldBg.alt = title;
-    }
+    /* =========================
+       IMAGEN INICIAL
+    ========================= */
 
-    // 🔑 ESPERAR CONSENTIMIENTO (gesture real)
+    let heroBg = document.createElement("img");
+    heroBg.className = "hero-bg";
+    heroBg.src = imageUrl;
+    heroBg.alt = title;
+    heroMedia.prepend(heroBg);
+
+    /* =========================
+       CONSENTIMIENTO
+    ========================= */
+
     const acceptBtn = document.getElementById("btnAccept");
     if (!acceptBtn || !videoSrc) return;
 
-    acceptBtn.addEventListener("click", () => startHeroVideo(), { once: true });
+    let userAccepted = false;
+
+    acceptBtn.addEventListener("click", () => {
+        userAccepted = true;
+        startHeroVideo();
+    }, { once: true });
+
+    /* =========================
+       VIDEO HERO
+    ========================= */
 
     function startHeroVideo() {
 
-        if (oldBg) oldBg.remove();
+        resetHero();
 
         const video = document.createElement("video");
         video.className = "hero-bg";
         video.src = videoSrc;
-        video.muted = true;              // 🔇 igual que cards
+        video.muted = true;
         video.playsInline = true;
         video.setAttribute("webkit-playsinline", "");
+        video.autoplay = false;
 
-        hero.prepend(video);
-
-        // ▶️ play DESPUÉS del click (como hover en cards)
+        heroMedia.prepend(video);
         video.play().catch(() => { });
 
         const muteButton = document.createElement("button");
         muteButton.className = "bmt-mute-btn mute-visible";
+        muteButton.setAttribute("aria-label", "Mute / Unmute");
 
-        const muteIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        muteIcon.setAttribute("id", "bmtMuteIcon");
-        muteIcon.setAttribute("viewBox", "0 0 24 24");
-        muteIcon.setAttribute("width", "24");
-        muteIcon.setAttribute("height", "24");
-        muteIcon.setAttribute("fill", "none");
+        muteButton.innerHTML = `
+      <svg id="bmtMuteIcon" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd"
+          d="M11 4a1 1 0 0 0-1.7-.7L4.58 8H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3.59l4.7 4.7A1 1 0 0 0 11 20z
+             M5.7 9.7 9 6.42V17.6l-3.3-3.3H2v-4h3.7z
+             m9.6 0 2.29 2.3-2.3 2.3 1.42 1.4L19 13.42l2.3 2.3
+             1.4-1.42-2.28-2.3 2.3-2.3-1.42-1.4-2.3 2.28-2.3-2.3z"
+          clip-rule="evenodd"></path>
+      </svg>
+    `;
 
-        // ICONO INICIAL → MUTE
-        muteIcon.innerHTML = `<path fill="currentColor" fill-rule="evenodd" d="M11 4a1 1 0 0 0-1.7-.7L4.58 8H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3.59l4.7 4.7A1 1 0 0 0 11 20zM5.7 9.7 9 6.42V17.6l-3.3-3.3-.29-.29H2v-4h3.41zm9.6 0 2.29 2.3-2.3 2.3 1.42 1.4L19 13.42l2.3 2.3 1.4-1.42-2.28-2.3 2.3-2.3-1.42-1.4-2.3 2.28-2.3-2.3z" clip-rule="evenodd"></path>`;
-
-        muteButton.appendChild(muteIcon);
-        hero.appendChild(muteButton);
+        heroMedia.appendChild(muteButton);
 
         muteButton.addEventListener("click", (e) => {
             e.stopPropagation();
-
-            if (video.muted) {
-                video.muted = false;
-                muteIcon.innerHTML = `<path fill="currentColor" fill-rule="evenodd" d="M24 12a14 14 0 0 0-4.1-9.9l-1.41 1.41a12 12 0 0 1 0 16.98l1.41 1.41A14 14 0 0 0 24 12M11 4a1 1 0 0 0-1.7-.7L4.58 8H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3.59l4.7 4.7A1 1 0 0 0 11 20zM5.7 9.7 9 6.42V17.6l-3.3-3.3-.29-.29H2v-4h3.41zM16 12a6 6 0 0 0-1.76-4.24l-1.41 1.41a4 4 0 0 1 0 5.66l1.41 1.41A6 6 0 0 0 16 12m1.07-7.07a10 10 0 0 1 0 14.14l-1.41-1.41a8 8 0 0 0 0-11.32z" clip-rule="evenodd"></path>`;
-            } else {
-                video.muted = true;
-                muteIcon.innerHTML = `<path fill="currentColor" fill-rule="evenodd" d="M11 4a1 1 0 0 0-1.7-.7L4.58 8H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3.59l4.7 4.7A1 1 0 0 0 11 20zM5.7 9.7 9 6.42V17.6l-3.3-3.3-.29-.29H2v-4h3.41zm9.6 0 2.29 2.3-2.3 2.3 1.42 1.4L19 13.42l2.3 2.3 1.4-1.42-2.28-2.3 2.3-2.3-1.42-1.4-2.3 2.28-2.3-2.3z" clip-rule="evenodd"></path>`;
-            }
+            video.muted = !video.muted;
         });
 
-        video.addEventListener("ended", () => {
-            video.remove();
-            muteButton.remove();
-
-            const img = document.createElement("img");
-            img.className = "hero-bg";
-            img.src = imageUrl;
-            img.alt = title;
-            hero.prepend(img);
-        });
+        video.addEventListener("ended", resetHero);
     }
+
+    /* =========================
+       RESET HERO
+    ========================= */
+
+    function resetHero() {
+        heroMedia.querySelector("video.hero-bg")?.remove();
+        heroMedia.querySelector(".bmt-mute-btn")?.remove();
+
+        if (!heroMedia.querySelector("img.hero-bg")) {
+            heroBg = document.createElement("img");
+            heroBg.className = "hero-bg";
+            heroBg.src = imageUrl;
+            heroBg.alt = title;
+            heroMedia.prepend(heroBg);
+        }
+    }
+
+    /* =========================
+       INTERSECTION OBSERVER
+    ========================= */
+
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            if (!userAccepted) return;
+
+            if (entry.isIntersecting) {
+                if (!heroMedia.querySelector("video.hero-bg")) {
+                    startHeroVideo();
+                }
+            } else {
+                resetHero();
+            }
+        },
+        { threshold: 0.3 }
+    );
+
+    observer.observe(hero);
 });
