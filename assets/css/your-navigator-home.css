@@ -558,6 +558,10 @@ span.film-type {
     padding: 18px;
   }
 
+  .bmt-mute-btn.mute-visible {
+    margin-bottom: 18.7em;
+  }
+
   .hero-actions {
     flex-direction: column;
     width: 100%;
