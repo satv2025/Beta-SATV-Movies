@@ -5,16 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sol Argentino TV | Transmisión en Vivo</title>
-
-    <!-- Base individual -->
     <link rel="stylesheet" href="../assets/css/individual.css">
-
-    <!-- Plyr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css" />
     <link rel="stylesheet" href="https://old.movies.solargentinotv.com.ar/assets/css/plyr/satvplyr.css" />
-
     <link rel="icon" href="https://old.movies.solargentinotv.com.ar/assets/media/images/SolArgentinoTVMOVIES.ico"
         type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.polyfilled.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
 </head>
 
 <body>
@@ -28,15 +25,15 @@
 
     <main>
 
+        <!-- HERO -->
         <section class="hero">
 
-            <!-- PLAYER EN VIVO -->
             <div class="media">
                 <video id="player" playsinline controls poster="https://i.ytimg.com/vi/7Y7fi2FA1wA/hqdefault.jpg">
                 </video>
             </div>
 
-            <!-- INFO -->
+            <!-- INFO PANEL -->
             <article class="card">
 
                 <h1>Sol Argentino TV – En Vivo</h1>
@@ -53,20 +50,9 @@
                 </p>
 
                 <div class="meta">
-                    <p>
-                        <strong>Señal:</strong>
-                        <span>Sol Argentino TV</span>
-                    </p>
-
-                    <p>
-                        <strong>Formato:</strong>
-                        <span>Streaming en vivo (HLS)</span>
-                    </p>
-
-                    <p>
-                        <strong>Calidad:</strong>
-                        <span>1080p - 60 FPS | Próximamente: 4K</span>
-                    </p>
+                    <p><strong>Señal:</strong> <span>Sol Argentino TV</span></p>
+                    <p><strong>Formato:</strong> <span>Streaming en vivo (HLS)</span></p>
+                    <p><strong>Calidad:</strong> <span>1080p - 60 FPS | Próximamente: 4K</span></p>
                 </div>
 
             </article>
@@ -123,13 +109,6 @@
                 },
                 ratio: '16:9'
             });
-
-            // Cambiar el texto a "EN VIVO" en vez de mostrar el tiempo
-            const timeElement = document.querySelector('.plyr__time');
-            if (timeElement) {
-                timeElement.classList.add('live');
-                timeElement.textContent = 'EN VIVO';
-            }
         });
     </script>
 
