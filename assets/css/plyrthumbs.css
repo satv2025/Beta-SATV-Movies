@@ -61,7 +61,7 @@
     left: 0;
     position: absolute;
     top: 0;
-    width: 100%
+    width: 100%;
 }
 
 .plyr__preview-thumb__image-container:after {
@@ -73,7 +73,8 @@
 
 .plyr__preview-thumb__image-container img {
     max-height: none;
-    max-width: none
+    max-width: none;
+    object-fit: cover !important;
 }
 
 .plyr__preview-thumb__time-container {
