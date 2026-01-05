@@ -1,0 +1,102 @@
+.plyr__preview-thumb {
+    background-color: #f00 !important;
+    background-color: var(--plyr-tooltip-background, #f00) !important;
+    border-radius: 0.3em !important;
+    border-radius: var(--plyr-menu-radius, 0.3em);
+    bottom: 100%;
+    box-shadow: 0 1px 2px #00000026;
+    box-shadow: var(--plyr-tooltip-shadow, 0 1px 2px #00000000);
+    margin-bottom: 10px;
+    margin-bottom: calc(var(--plyr-control-spacing, 10px)/2*2);
+    opacity: 0;
+    padding: 3px;
+    pointer-events: none;
+    position: absolute;
+    transform: translateY(10px) scale(.8);
+    transform-origin: 50% 100%;
+    transition: transform .2s ease .1s, opacity .2s ease .1s;
+    z-index: 2;
+}
+
+.plyr__preview-thumb--is-shown {
+    opacity: 1;
+    transform: translate(0) scale(1)
+}
+
+.plyr__preview-thumb:before {
+    border-left: 2px solid #0000;
+    border-left: var(--plyr-tooltip-arrow-size, 4px) solid #0000;
+    border-right: 2px solid #0000;
+    border-right: var(--plyr-tooltip-arrow-size, 4px) solid #0000;
+    border-top: 2px solid #f00 !important;
+    border-top: var(--plyr-tooltip-arrow-size, 4px) solid var(--plyr-tooltip-background, #f00) !important;
+    bottom: -4px;
+    bottom: calc(var(--plyr-tooltip-arrow-size, 4px)*-1);
+    content: "";
+    height: 0;
+    left: calc(50% + var(--preview-arrow-offset));
+    position: absolute;
+    transform: translateX(-50%);
+    width: 0;
+    z-index: 2;
+    border-radius: 0.3em !important;
+}
+
+.plyr__preview-thumb__image-container {
+    background: #c1c8d1;
+    border-radius: 7px;
+    border-radius: calc(var(--plyr-menu-radius, 8px) - 1px);
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    width: 160px !important;
+    height: 90px !important;
+}
+
+.plyr__preview-thumb__image-container img,
+.plyr__preview-thumb__image-container:after {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%
+}
+
+.plyr__preview-thumb__image-container:after {
+    border-radius: 0.3em !important;
+    box-shadow: inset 0 0 0 0px #00000000 !important;
+    content: "";
+    pointer-events: none
+}
+
+.plyr__preview-thumb__image-container img {
+    max-height: none;
+    max-width: none
+}
+
+.plyr__preview-thumb__time-container {
+    background: linear-gradient(#0000, #00000000) !important;
+    background: var(--plyr-video-controls-background, linear-gradient(#0000, #00000000)) !important;
+    border-bottom-left-radius: 7px;
+    border-bottom-left-radius: calc(var(--plyr-menu-radius, 8px) - 1px);
+    border-bottom-right-radius: 7px;
+    border-bottom-right-radius: calc(var(--plyr-menu-radius, 8px) - 1px);
+    bottom: 0;
+    left: 0;
+    line-height: 1.1;
+    padding: 20px 6px 6px;
+    position: absolute;
+    right: 0;
+    z-index: 3
+}
+
+.plyr__preview-thumb__time-container span {
+    color: #f00 !important;
+    background: #ffffff00 !important;
+    font-size: 14px;
+    font-size: var(--plyr-font-size-time, var(--plyr-font-size-small, 13px))
+}
+
+img::before {
+    all: unset !important;
+}
