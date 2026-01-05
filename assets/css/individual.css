@@ -474,8 +474,8 @@ h2.no-season {
   border: 0.04em solid rgb(77, 77, 77);
   padding-top: 1em;
   padding-bottom: 1em;
-  margin-left: 54.8em;
-  width: 15em;
+  margin-left: 53.8em;
+  width: 16em;
 }
 
 .dropdown-menu button {
@@ -497,7 +497,7 @@ h2.no-season {
 
 .dropdown-menu button span {
   opacity: 1;
-  font-size: 13px;
+  font-size: 14px;
   position: relative;
   top: -0.2em;
   font-weight: 300;

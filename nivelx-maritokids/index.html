@@ -741,6 +741,15 @@
     if (episodes.length) loadEpisode(0, false);
   </script>
 
+  <script>
+    // Esto debe estar después de que hayas cargado todas las temporadas (idealmente después de cargar las temporadas y los episodios)
+    document.addEventListener('DOMContentLoaded', () => {
+      if (seasons.length > 0) {
+        toggle.textContent = 'Temporada 1'; // Establece "Temporada 1" por defecto
+      }
+    });
+  </script>
+
 </body>
 
 </html>
