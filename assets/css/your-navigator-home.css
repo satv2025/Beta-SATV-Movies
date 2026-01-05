@@ -436,7 +436,7 @@ span.film-type {
   border: 2px solid #fff !important;
   border-radius: 50% !important;
   padding: 8px !important;
-  z-index: 50000 !important;
+  z-index: 3;
   cursor: pointer !important;
   transition: opacity .2s !important;
   opacity: .4 !important;
@@ -575,6 +575,10 @@ span.film-type {
     border-bottom-right-radius: 0;
   }
 
+  .bmt-mute-btn {
+    z-index: 5 !important;
+  }
+
   .hero::before {
     content: "";
     position: absolute;
@@ -589,10 +593,10 @@ span.film-type {
     content: "";
     position: absolute;
     inset: auto 0 0 0;
-    height: 60%;
+    height: 66.63%;
     background: linear-gradient(to top, #181818 0%, rgba(24, 24, 24, .70) 30%, rgba(24, 24, 24, 0) 80%);
     pointer-events: none;
-    top: 5.97em;
+    top: 4.97em;
   }
 
   .hero-actions {
