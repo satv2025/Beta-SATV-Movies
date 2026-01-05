@@ -6,14 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>100% Lucha – La Película | Sol Argentino TV Movies</title>
 
-  <!-- Base individual -->
+  <!-- CSS base -->
   <link rel="stylesheet" href="../assets/css/individual.css">
+  <link rel="stylesheet" href="../assets/css/plyrthumbs.css">
 
   <!-- Plyr CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css" />
-  <link rel="stylesheet" href="https://old.movies.solargentinotv.com.ar/assets/css/plyr/satvplyr.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css">
+  <link rel="stylesheet" href="https://old.movies.solargentinotv.com.ar/assets/css/plyr/satvplyr.css">
+
   <link rel="icon" href="https://old.movies.solargentinotv.com.ar/assets/media/images/SolArgentinoTVMOVIES.ico"
     type="image/x-icon">
+
   <!-- Plyr JS -->
   <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.polyfilled.min.js"></script>
 
@@ -31,12 +34,11 @@
   </header>
 
   <main>
-
     <section class="hero">
 
       <!-- PLAYER -->
       <div class="media">
-        <video id="player" playsinline controls
+        <video id="player" playsinline controls crossorigin="anonymous"
           poster="https://old.movies.solargentinotv.com.ar/assets/media/images/100luchathumb.jpg">
         </video>
       </div>
@@ -55,60 +57,12 @@
 
         <p>
           Koshe Plostenko, un mafioso implacable, secuestra a los luchadores de 100%
-          Lucha para obligarlos a pelear en su club clandestino, desatando caos y
-          rivalidades inesperadas.
+          Lucha para obligarlos a pelear en su club clandestino.
         </p>
-
-        <!-- METADATA -->
-        <div class="meta">
-
-          <p>
-            <strong>Elenco:</strong>
-            <span>
-              María Fernanda Neil, Carlos Kaspar, Norberto Adrián Fernandez, Marcelo
-              Benítez, Miguel Ángel Wellington, Rubén Piuselli, Daniel Garcilazo,
-              Paulo Giardina, Gabriel Emanuelli, Leonardo Montero, Eduardo Husni,
-              Osvaldo Principi, Julio Mario Sibara “Turco Naím”, Gonzalo Nenna,
-              Axel Kuschevatzky, Alejandro “Marley” Wiebe, Mario Pergolini
-            </span>
-          </p>
-
-          <p>
-            <strong>Guión:</strong>
-            <span>
-              <a href="https://cine.ar/" target="_blank">CineAR</a>,
-              <a href="https://www.incaa.gob.ar/" target="_blank">INCAA</a>
-            </span>
-          </p>
-
-          <p>
-            <strong>Géneros:</strong>
-            <span>
-              Humor, Lucha Libre, Acción, Rivalidades, Secuestros, Competencias
-            </span>
-          </p>
-
-          <p>
-            <strong>Este título es:</strong>
-            <span>
-              Intenso, Delirante, Divertido, Emocionante, Exagerado
-            </span>
-          </p>
-
-          <p>
-            <strong>Clasificación por edad:</strong>
-            <span>
-              <span class="age">12+</span> lenguaje inapropiado, violencia, humor
-              absurdo · Apta para mayores de 16 años
-            </span>
-          </p>
-
-        </div>
 
       </article>
 
     </section>
-
   </main>
 
   <!-- PLAYER INIT -->
@@ -118,6 +72,7 @@
       const source =
         'https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/cpcl/koshep/100-Lucha-La-Pel%C3%ADcula.m3u8';
 
+      // Verificamos si HLS es compatible con el navegador
       if (Hls.isSupported()) {
         const hls = new Hls({
           enableWorker: true,
@@ -129,6 +84,7 @@
         video.src = source;
       }
 
+      // Iniciamos Plyr con las miniaturas y otras configuraciones
       new Plyr(video, {
         controls: [
           'play-large',
@@ -145,7 +101,14 @@
           selected: 1,
           options: [0.5, 0.75, 1, 1.25, 1.5, 2]
         },
-        ratio: '16:9'
+        ratio: '16:9',
+        invertTime: false,
+
+        // Configuración de miniaturas de avance
+        previewThumbnails: {
+          enabled: true,
+          src: 'https://movies.solargentinotv.com.ar/assets/media/cpl-thumbnails/thumbs.vtt' // Asegúrate de que la URL del archivo VTT sea correcta
+        }
       });
     });
   </script>

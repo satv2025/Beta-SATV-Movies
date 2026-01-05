@@ -24,6 +24,10 @@
   font-variant-alternates: stylistic(ss01);
 }
 
+span {
+  font-weight: 300;
+}
+
 span.separator {
   margin: 1rem 0.8em;
   border: 1px solid rgb(77, 77, 77);
