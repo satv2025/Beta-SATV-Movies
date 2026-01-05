@@ -575,6 +575,26 @@ span.film-type {
     border-bottom-right-radius: 0;
   }
 
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 60%;
+    background: linear-gradient(to top, #ff0000 0%, rgba(24, 24, 24, .70) 30%, rgba(24, 24, 24, 0) 80%);
+    pointer-events: none;
+    top: 37em;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 60%;
+    background: linear-gradient(to top, #181818 0%, rgba(24, 24, 24, .70) 30%, rgba(24, 24, 24, 0) 80%);
+    pointer-events: none;
+    top: 5.97em;
+  }
+
   .hero-actions {
     flex-direction: column;
     width: 100%;
