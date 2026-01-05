@@ -610,7 +610,7 @@
       invertTime: false,
       previewThumbnails: {
         enabled: true,
-        // Iniciar con VTT válido
+        // Verifica que este archivo .vtt sea accesible
         src: 'https://movies.solargentinotv.com.ar/assets/media/nivelxmarito-episode-thumbnails/t1/e1/thumbs.vtt'
       }
     });
@@ -619,28 +619,30 @@
     let episodes = [];
     let currentIndex = -1;
 
-    // Obtener todos los episodios visibles (solo uno en este caso)
     function getVisibleEpisodes() {
       return Array.from(
-        document.querySelectorAll('.season .episode')
+        document.querySelectorAll('.season:not([style*="display: none"]) .episode')
       );
     }
 
-    // Obtener la temporada y episodio desde la fuente (src) del video
     function getSeasonAndEpFromSrc(src) {
       const m = src.match(/\/t(\d+)\/E(\d+)\//i);
       return m ? { season: m[1], ep: m[2] } : null;
     }
 
-    // Actualizar las miniaturas previas con la URL correspondiente
+    function vttUrlFor(season, ep) {
+      return `https://movies.solargentinotv.com.ar/assets/media/nivelxmarito-episode-thumbnails/t${season}/e${ep}/thumbs.vtt`;
+    }
+
     function updateThumbnails(season, ep) {
-      const url = `https://movies.solargentinotv.com.ar/assets/media/nivelxmarito-episode-thumbnails/t${season}/e${ep}/thumbs.vtt`;
+      const url = vttUrlFor(season, ep);
+
+      // Asegurarse de que el archivo .vtt esté disponible y se cargue correctamente
       player.setPreviewThumbnails({
         src: url
       });
     }
 
-    // Función para cargar el episodio
     async function loadEpisode(index, autoplay = true) {
       episodes = getVisibleEpisodes();
       const epCard = episodes[index];
@@ -648,7 +650,6 @@
 
       currentIndex = index;
 
-      // Eliminar la clase 'active' del episodio actual y agregarla al seleccionado
       document.querySelectorAll('.episode.active').forEach(e => e.classList.remove('active'));
       epCard.classList.add('active');
 
@@ -682,7 +683,6 @@
       video.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    // Al hacer clic en un episodio, cargarlo
     document.addEventListener('click', e => {
       const card = e.target.closest('.episode');
       if (!card) return;
@@ -692,7 +692,6 @@
       if (idx !== -1) loadEpisode(idx, true);
     });
 
-    // Cuando el video termine, cargar el siguiente episodio si hay más
     video.addEventListener('ended', () => {
       episodes = getVisibleEpisodes();
       if (currentIndex + 1 < episodes.length) {
@@ -700,9 +699,46 @@
       }
     });
 
-    // Cargar el episodio 1 por defecto (sin necesidad de dropdown de temporadas)
+    const dropdown = document.querySelector('.season-dropdown');
+    const toggle = document.querySelector('.dropdown-toggle');
+    const menu = document.querySelector('.dropdown-menu');
+    const seasonButtons = document.querySelectorAll('.dropdown-menu button');
+    const seasons = document.querySelectorAll('.season');
+
+    toggle.addEventListener('click', () => {
+      const open = menu.style.display === 'block';
+      menu.style.display = open ? 'none' : 'block';
+      dropdown.classList.toggle('open', !open);
+    });
+
+    seasonButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const season = btn.dataset.season;
+
+        if (season === 'all-episodes') {
+          seasons.forEach(s => s.style.display = 'grid');
+          toggle.textContent = 'Ver todos los episodios';
+          episodes = getVisibleEpisodes();
+          dropdown.classList.remove('open');
+          menu.style.display = 'none';
+          return;
+        }
+
+        seasons.forEach(s => {
+          s.style.display = s.dataset.season === season ? 'grid' : 'none';
+        });
+        toggle.textContent = `Temporada ${season}`;
+
+        episodes = getVisibleEpisodes();
+        if (episodes.length) loadEpisode(0, false);
+
+        dropdown.classList.remove('open');
+        menu.style.display = 'none';
+      });
+    });
+
     episodes = getVisibleEpisodes();
-    if (episodes.length) loadEpisode(0, false); // Cargar el primer episodio por defecto
+    if (episodes.length) loadEpisode(0, false);
   </script>
 
 </body>
