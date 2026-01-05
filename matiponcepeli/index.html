@@ -8,6 +8,7 @@
 
   <!-- Base individual -->
   <link rel="stylesheet" href="../assets/css/individual.css">
+  <link rel="stylesheet" href="../assets/css/plyrthumbs.css">
 
   <!-- Plyr CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css" />
@@ -142,7 +143,13 @@
           selected: 1,
           options: [0.5, 0.75, 1, 1.25, 1.5, 2]
         },
-        ratio: '16:9'
+        ratio: '16:9',
+        invertTime: false,
+
+        previewThumbnails: {
+          enabled: true,
+          src: 'https://movies.solargentinotv.com.ar/assets/media/mpp-thumbnails/thumbs.vtt'
+        }
       });
     });
   </script>
