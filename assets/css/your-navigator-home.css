@@ -264,6 +264,10 @@ p {
   white-space: nowrap;
 }
 
+.btn.secondary {
+  pointer-events: none !important;
+}
+
 .btn.primary {
   background: #fff;
   color: #000;
@@ -561,6 +565,16 @@ span.film-type {
     padding: 18px;
   }
 
+  img,
+  video {
+    border-radius: 0 !important;
+  }
+
+  .hero-media {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
   .hero-actions {
     flex-direction: column;
     width: 100%;
@@ -605,4 +619,12 @@ span.film-type {
   .hero-synopsis {
     max-width: 100%;
   }
+}
+
+.bmt-mute-btn {
+  /* estilos + ::before / ::after */
+}
+
+.bmt-mute-btn.mute-visible {
+  opacity: 1;
 }

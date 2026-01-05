@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    /* =========================
+       HERO + CARDS
+    ========================= */
+
     const cards = document.querySelectorAll(".card");
     if (!cards.length) return;
 
@@ -15,6 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
         f2fnh: "https://dynavod.solargentinotv.com.ar/F2FNHTrailer.mp4"
     };
 
+    /* =========================
+       CARD RANDOM → HERO
+    ========================= */
+
     const randomCard = cards[Math.floor(Math.random() * cards.length)];
 
     const title = randomCard.querySelector("h3")?.textContent || "";
@@ -24,77 +32,85 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardId = randomCard.id;
     const videoSrc = videoUrls[cardId];
 
+    /* =========================
+       HERO ELEMENTS
+    ========================= */
+
     const hero = document.querySelector(".hero");
-    const heroMedia = hero.querySelector(".hero-media");
-    if (!hero || !heroMedia) return;
+    const heroMedia = hero?.querySelector(".hero-media");
+    if (!hero || !heroMedia || !videoSrc) return;
 
     document.querySelector(".hero-title").textContent = title;
     document.querySelector(".hero-film-type").textContent = filmType;
     document.querySelector(".hero-synopsis").textContent = synopsis;
 
-    /* =========================
-       IMAGEN INICIAL
-    ========================= */
-
-    let heroBg = document.createElement("img");
+    const heroBg = document.createElement("img");
     heroBg.className = "hero-bg";
     heroBg.src = imageUrl;
     heroBg.alt = title;
     heroMedia.prepend(heroBg);
 
     /* =========================
-       CONSENTIMIENTO
+       COPYRIGHT CONSENT
     ========================= */
 
     const acceptBtn = document.getElementById("btnAccept");
-    if (!acceptBtn || !videoSrc) return;
-
     let userAccepted = false;
 
-    acceptBtn.addEventListener("click", () => {
+    acceptBtn?.addEventListener("click", () => {
         userAccepted = true;
         startHeroVideo();
     }, { once: true });
 
     /* =========================
-       VIDEO HERO
+       HERO VIDEO
     ========================= */
 
     function startHeroVideo() {
+        if (!userAccepted) return;
 
         resetHero();
 
         const video = document.createElement("video");
         video.className = "hero-bg";
         video.src = videoSrc;
-        video.muted = true;
+        video.muted = false; // 🔊 empieza con volumen
         video.playsInline = true;
-        video.setAttribute("webkit-playsinline", "");
-        video.autoplay = false;
 
         heroMedia.prepend(video);
         video.play().catch(() => { });
 
+        /* ===== BOTÓN MUTE (CREADO OCULTO) ===== */
+
         const muteButton = document.createElement("button");
-        muteButton.className = "bmt-mute-btn mute-visible";
+        muteButton.className = "bmt-mute-btn"; // ⛔ SIN mute-visible
         muteButton.setAttribute("aria-label", "Mute / Unmute");
 
-        muteButton.innerHTML = `
-      <svg id="bmtMuteIcon" viewBox="0 0 24 24">
-        <path fill="currentColor" fill-rule="evenodd"
-          d="M11 4a1 1 0 0 0-1.7-.7L4.58 8H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3.59l4.7 4.7A1 1 0 0 0 11 20z
-             M5.7 9.7 9 6.42V17.6l-3.3-3.3H2v-4h3.7z
-             m9.6 0 2.29 2.3-2.3 2.3 1.42 1.4L19 13.42l2.3 2.3
-             1.4-1.42-2.28-2.3 2.3-2.3-1.42-1.4-2.3 2.28-2.3-2.3z"
-          clip-rule="evenodd"></path>
-      </svg>
-    `;
+        const muteIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        muteIcon.setAttribute("viewBox", "0 0 24 24");
+        muteIcon.setAttribute("id", "bmtMuteIcon");
 
+        muteButton.appendChild(muteIcon);
         heroMedia.appendChild(muteButton);
+
+        /* ICONO INICIAL → VOLUMEN (TU PATH) */
+        muteIcon.innerHTML = `<path fill="currentColor" fill-rule="evenodd" d="M24 12a14 14 0 0 0-4.1-9.9l-1.41 1.41a12 12 0 0 1 0 16.98l1.41 1.41A14 14 0 0 0 24 12M11 4a1 1 0 0 0-1.7-.7L4.58 8H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3.59l4.7 4.7A1 1 0 0 0 11 20zM5.7 9.7 9 6.42V17.6l-3.3-3.3-.29-.29H2v-4h3.41zM16 12a6 6 0 0 0-1.76-4.24l-1.41 1.41a4 4 0 0 1 0 5.66l1.41 1.41A6 6 0 0 0 16 12m1.07-7.07a10 10 0 0 1 0 14.14l-1.41-1.41a8 8 0 0 0 0-11.32z" clip-rule="evenodd"></path>`;
+
+        /* Mostrar botón SOLO DESPUÉS DE CREARSE */
+        requestAnimationFrame(() => {
+            muteButton.classList.add("mute-visible");
+        });
 
         muteButton.addEventListener("click", (e) => {
             e.stopPropagation();
-            video.muted = !video.muted;
+
+            if (video.muted) {
+                video.muted = false;
+                muteIcon.innerHTML = `<path fill="currentColor" fill-rule="evenodd" d="M24 12a14 14 0 0 0-4.1-9.9l-1.41 1.41a12 12 0 0 1 0 16.98l1.41 1.41A14 14 0 0 0 24 12M11 4a1 1 0 0 0-1.7-.7L4.58 8H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3.59l4.7 4.7A1 1 0 0 0 11 20zM5.7 9.7 9 6.42V17.6l-3.3-3.3-.29-.29H2v-4h3.41zM16 12a6 6 0 0 0-1.76-4.24l-1.41 1.41a4 4 0 0 1 0 5.66l1.41 1.41A6 6 0 0 0 16 12m1.07-7.07a10 10 0 0 1 0 14.14l-1.41-1.41a8 8 0 0 0 0-11.32z" clip-rule="evenodd"></path>`;
+            } else {
+                video.muted = true;
+                muteIcon.innerHTML = `<path fill="currentColor" fill-rule="evenodd" d="M11 4a1 1 0 0 0-1.7-.7L4.58 8H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3.59l4.7 4.7A1 1 0 0 0 11 20zM5.7 9.7 9 6.42V17.6l-3.3-3.3-.29-.29H2v-4h3.41zm9.6 0 2.29 2.3-2.3 2.3 1.42 1.4L19 13.42l2.3 2.3 1.4-1.42-2.28-2.3 2.3-2.3-1.42-1.4-2.3 2.28-2.3-2.3z" clip-rule="evenodd"></path>`;
+            }
         });
 
         video.addEventListener("ended", resetHero);
@@ -109,10 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
         heroMedia.querySelector(".bmt-mute-btn")?.remove();
 
         if (!heroMedia.querySelector("img.hero-bg")) {
-            heroBg = document.createElement("img");
-            heroBg.className = "hero-bg";
-            heroBg.src = imageUrl;
-            heroBg.alt = title;
             heroMedia.prepend(heroBg);
         }
     }
@@ -124,14 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const observer = new IntersectionObserver(
         ([entry]) => {
             if (!userAccepted) return;
-
-            if (entry.isIntersecting) {
-                if (!heroMedia.querySelector("video.hero-bg")) {
-                    startHeroVideo();
-                }
-            } else {
-                resetHero();
-            }
+            entry.isIntersecting ? startHeroVideo() : resetHero();
         },
         { threshold: 0.3 }
     );
