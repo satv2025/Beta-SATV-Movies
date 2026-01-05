@@ -28,8 +28,8 @@
     border-left: var(--plyr-tooltip-arrow-size, 4px) solid #0000;
     border-right: 2px solid #0000;
     border-right: var(--plyr-tooltip-arrow-size, 4px) solid #0000;
-    border-top: 2px solid #f00 !important;
-    border-top: var(--plyr-tooltip-arrow-size, 4px) solid var(--plyr-tooltip-background, #f00) !important;
+    border-top: 2px solid #ff000000 !important;
+    border-top: var(--plyr-tooltip-arrow-size, 4px) solid var(--plyr-tooltip-background, #ff000000) !important;
     bottom: -4px;
     bottom: calc(var(--plyr-tooltip-arrow-size, 4px)*-1);
     content: "";
@@ -51,6 +51,8 @@
     z-index: 0;
     width: 160px !important;
     height: 90px !important;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.736);
+    /* Sombra más fuerte */
 }
 
 .plyr__preview-thumb__image-container img,
@@ -92,10 +94,12 @@
 
 .plyr__preview-thumb__time-container span {
     color: #f00 !important;
-    background: #ffffff00 !important;
+    background: none !important;
     font-size: 14px;
     font-size: var(--plyr-font-size-time, var(--plyr-font-size-small, 13px));
     font-weight: 700 !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.736);
+    /* Sombra de texto */
 }
 
 img::before {
