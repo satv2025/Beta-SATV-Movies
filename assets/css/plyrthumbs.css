@@ -94,7 +94,8 @@
     color: #f00 !important;
     background: #ffffff00 !important;
     font-size: 14px;
-    font-size: var(--plyr-font-size-time, var(--plyr-font-size-small, 13px))
+    font-size: var(--plyr-font-size-time, var(--plyr-font-size-small, 13px));
+    font-weight: 700 !important;
 }
 
 img::before {
