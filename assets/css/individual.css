@@ -32,7 +32,7 @@ span.separator {
 
 body {
   margin: 0;
-  background: linear-gradient(#141414);
+  background: #181818;
   color: var(--text);
 }
 
