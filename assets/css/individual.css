@@ -583,3 +583,8 @@ h2.no-season {
     margin-left: 6.876em;
   }
 }
+
+.s1[style*="display: grid"]+.s2 {
+  position: relative;
+  margin-top: -2.4em;
+}

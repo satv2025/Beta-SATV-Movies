@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reite666 | Sol Argentino TV Movies</title>
 
-  <link rel="stylesheet" href="../assets/css/plyrthumbs.css">
   <link rel="stylesheet" href="../assets/css/individual.css">
+  <link rel="stylesheet" href="../assets/css/plyrthumbs.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css" />
   <link rel="stylesheet" href="https://old.movies.solargentinotv.com.ar/assets/css/plyr/satvplyr.css" />
 
@@ -46,7 +46,7 @@
         <div class="kv">
           <span class="badge">Serie</span>
           <span class="badge">2018</span>
-          <span class="badge">20 episodios</span>
+          <span class="badge">2 temporadas</span>
           <span class="badge age">16+</span>
         </div>
 
@@ -101,7 +101,7 @@
       <button class="dropdown-toggle">Temporadas</button>
       <div class="dropdown-menu">
         <button data-season="1">Temporada 1 <span>(20 episodios)</span></button>
-        <button data-season="2">Temporada 2 <span>(1 episodio)</span></button>
+        <button data-season="2">Temporada 2 <span>(25 episodios)</span></button>
         <span class="separator"></span>
         <button data-season="all-episodes">Ver todos los episodios</button>
       </div>
@@ -116,7 +116,7 @@
         <!-- ================= -->
         <!-- TEMPORADA 1 -->
         <!-- ================= -->
-        <div class="episodes season" data-season="1">
+        <div class="episodes season s1" data-season="1">
 
           <!-- EP 1 -->
           <article class="episode"
@@ -369,7 +369,7 @@
         <!-- ================= -->
         <!-- TEMPORADA 2 -->
         <!-- ================= -->
-        <div class="episodes season" data-season="2" style="display:none;">
+        <div class="episodes season s2" data-season="2" style="display:none;">
           <article class="episode">
             <div class="ep-thumb">
               <img
@@ -391,16 +391,14 @@
 
   <!-- RENDER + PLAYER -->
   <script>
-    // ==========================
-    // PLAYER
-    // ==========================
-
     const video = document.getElementById('player');
 
     const player = new Plyr(video, {
       ratio: '16:9',
+      invertTime: false,
       previewThumbnails: {
         enabled: true,
+        // Iniciar con VTT válido
         src: 'https://movies.solargentinotv.com.ar/assets/media/reite666-episode-plyr-thumbnails/t1/e1/thumbs.vtt'
       }
     });
@@ -409,52 +407,48 @@
     let episodes = [];
     let currentIndex = -1;
 
-    const activeBySeason = {};
-
     function getVisibleEpisodes() {
       return Array.from(
         document.querySelectorAll('.season:not([style*="display: none"]) .episode')
       );
     }
 
-    function getVttFromSrc(src) {
-      // ejemplo src:
-      // https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t1/E12/REITE666%20T1%20E12.m3u8
-      const match = src.match(/\/t1\/E(\d+)\//i);
-      if (!match) return null;
-
-      const ep = match[1];
-
-      return `https://movies.solargentinotv.com.ar/assets/media/reite666-episode-plyr-thumbnails/t1/e${ep}/thumbs.vtt`;
+    function getSeasonAndEpFromSrc(src) {
+      const m = src.match(/\/t(\d+)\/E(\d+)\//i);
+      return m ? { season: m[1], ep: m[2] } : null;
     }
 
-    function loadEpisode(index, autoplay = true) {
-      episodes = getVisibleEpisodes();
-      const ep = episodes[index];
-      if (!ep) return;
+    function vttUrlFor(season, ep) {
+      return `https://movies.solargentinotv.com.ar/assets/media/reite666-episode-plyr-thumbnails/t${season}/e${ep}/thumbs.vtt`;
+    }
 
-      const src = ep.dataset.src;
-      if (!src) return;
+    function updateThumbnails(season, ep) {
+      const url = vttUrlFor(season, ep);
+
+      // ✔️ MÉTODO OFICIAL QUE FUNCIONA
+      player.setPreviewThumbnails({
+        src: url
+      });
+    }
+
+    async function loadEpisode(index, autoplay = true) {
+      episodes = getVisibleEpisodes();
+      const epCard = episodes[index];
+      if (!epCard || !epCard.dataset.src) return;
 
       currentIndex = index;
 
-      document.querySelectorAll('.episode.active')
-        .forEach(e => e.classList.remove('active'));
-      ep.classList.add('active');
+      document.querySelectorAll('.episode.active').forEach(e => e.classList.remove('active'));
+      epCard.classList.add('active');
 
-      const currentSeason = ep.closest('.season');
-      if (currentSeason) {
-        activeBySeason[currentSeason.dataset.season] = src;
-      }
+      const src = epCard.dataset.src;
+      const info = getSeasonAndEpFromSrc(src);
 
-      const vtt = getVttFromSrc(src);
-      if (vtt) {
-        player.config.previewThumbnails.src = vtt;
-        player.previewThumbnails.load(); // 🔥 FORZAR RECARGA
+      if (info) {
+        updateThumbnails(info.season, info.ep);
       }
 
       player.pause();
-
       if (hls) {
         hls.destroy();
         hls = null;
@@ -464,59 +458,36 @@
         hls = new Hls();
         hls.loadSource(src);
         hls.attachMedia(video);
-
         hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          if (autoplay) {
-            player.play().catch(() => { });
-          }
+          if (autoplay) player.play().catch(() => { });
         });
       } else {
         video.src = src;
-        video.addEventListener(
-          'loadedmetadata',
-          () => {
-            if (autoplay) {
-              player.play().catch(() => { });
-            }
-          },
-          { once: true }
-        );
+        video.addEventListener('loadedmetadata', () => {
+          if (autoplay) player.play().catch(() => { });
+        }, { once: true });
       }
 
       video.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    // ==========================
-    // CLICK EN EPISODIOS
-    // ==========================
-
     document.addEventListener('click', e => {
-      const ep = e.target.closest('.episode');
-      if (!ep) return;
+      const card = e.target.closest('.episode');
+      if (!card) return;
 
       episodes = getVisibleEpisodes();
-      const index = episodes.indexOf(ep);
-      if (index !== -1) {
-        loadEpisode(index, true);
-      }
+      const idx = episodes.indexOf(card);
+      if (idx !== -1) loadEpisode(idx, true);
     });
-
-    // ==========================
-    // AUTOPLAY SIGUIENTE
-    // ==========================
 
     video.addEventListener('ended', () => {
       episodes = getVisibleEpisodes();
-      const next = currentIndex + 1;
-      if (next < episodes.length) {
-        loadEpisode(next, true);
+      if (currentIndex + 1 < episodes.length) {
+        loadEpisode(currentIndex + 1, true);
       }
     });
 
-    // ==========================
-    // DROPDOWN TEMPORADAS
-    // ==========================
-
+    // Dropdown de temporadas (igual que antes)
     const dropdown = document.querySelector('.season-dropdown');
     const toggle = document.querySelector('.dropdown-toggle');
     const menu = document.querySelector('.dropdown-menu');
@@ -524,9 +495,9 @@
     const seasons = document.querySelectorAll('.season');
 
     toggle.addEventListener('click', () => {
-      const isOpen = menu.style.display === 'block';
-      menu.style.display = isOpen ? 'none' : 'block';
-      dropdown.classList.toggle('open', !isOpen);
+      const open = menu.style.display === 'block';
+      menu.style.display = open ? 'none' : 'block';
+      dropdown.classList.toggle('open', !open);
     });
 
     seasonButtons.forEach(btn => {
@@ -534,71 +505,39 @@
         const season = btn.dataset.season;
 
         if (season === 'all-episodes') {
-          seasons.forEach(s => {
-            s.style.display = 'grid';
-          });
-
+          seasons.forEach(s => s.style.display = 'grid');
           toggle.textContent = 'Ver todos los episodios';
           episodes = getVisibleEpisodes();
-          menu.style.display = 'none';
           dropdown.classList.remove('open');
+          menu.style.display = 'none';
           return;
-        }
-
-        toggle.textContent = `Temporada ${season}`;
-
-        const visibleSeason = document.querySelector(
-          '.season:not([style*="display: none"])'
-        );
-
-        if (visibleSeason) {
-          const activeEp = visibleSeason.querySelector('.episode.active');
-          if (activeEp) {
-            activeBySeason[visibleSeason.dataset.season] = activeEp.dataset.src;
-          }
         }
 
         seasons.forEach(s => {
           s.style.display = s.dataset.season === season ? 'grid' : 'none';
         });
+        toggle.textContent = `Temporada ${season}`;
 
         episodes = getVisibleEpisodes();
+        if (episodes.length) loadEpisode(0, false);
 
-        let restored = false;
-
-        if (activeBySeason[season]) {
-          const ep = episodes.find(e => e.dataset.src === activeBySeason[season]);
-          if (ep) {
-            loadEpisode(episodes.indexOf(ep), false);
-            restored = true;
-          }
-        }
-
-        if (!restored && episodes.length) {
-          loadEpisode(0, false);
-        }
-
-        menu.style.display = 'none';
         dropdown.classList.remove('open');
+        menu.style.display = 'none';
       });
     });
 
-    // ==========================
-    // INICIAL
-    // ==========================
-
     episodes = getVisibleEpisodes();
-    if (episodes.length) {
-      loadEpisode(0, false);
-
-      const firstSeason =
-        document.querySelector('.season:not([style*="display: none"])');
-      if (firstSeason) {
-        toggle.textContent = `Temporada ${firstSeason.dataset.season}`;
-      }
-    }
+    if (episodes.length) loadEpisode(0, false);
   </script>
 
+  <script>
+    // Esto debe estar después de que hayas cargado todas las temporadas (idealmente después de cargar las temporadas y los episodios)
+    document.addEventListener('DOMContentLoaded', () => {
+      if (seasons.length > 0) {
+        toggle.textContent = 'Temporada 1'; // Establece "Temporada 1" por defecto
+      }
+    });
+  </script>
 </body>
 
 </html>
