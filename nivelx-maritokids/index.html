@@ -656,11 +656,23 @@
       return `https://movies.solargentinotv.com.ar/assets/media/nivelxmarito-episode-thumbnails/t${season}/e${ep}/thumbs.vtt`;
     }
 
+    // 🔑 CLAVE ABSOLUTA: cache buster SIEMPRE
+    function refreshThumbnails(vtt) {
+      if (!layout || !vtt) return;
+
+      const busted = `${vtt}?v=${Date.now()}`;
+
+      layout.removeAttribute('thumbnails');
+      requestAnimationFrame(() => {
+        layout.setAttribute('thumbnails', busted);
+      });
+    }
+
     async function safePlay() {
       try {
         await player.play();
       } catch {
-        player.muted = true;
+        player.muted = false;
         await player.play();
       }
     }
@@ -687,9 +699,8 @@
       player.src = src;
       player.title = episodeTitleFromCard(epCard);
 
-      // ✅ ÚNICA LÍNEA NECESARIA PARA THUMBNAILS
       if (info) {
-        layout.setAttribute('thumbnails', vttUrlFor(info.season, info.ep));
+        refreshThumbnails(vttUrlFor(info.season, info.ep));
       }
 
       if (autoplay) {
@@ -698,6 +709,16 @@
 
       player.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
+
+    // 🔥 TAMBIÉN refresca en cargas internas de Vidstack (EP1 incluido)
+    player.addEventListener('load-start', () => {
+      if (!player.src) return;
+
+      const info = getSeasonAndEpFromSrc(player.src);
+      if (!info) return;
+
+      refreshThumbnails(vttUrlFor(info.season, info.ep));
+    });
 
     // Click episodio
     document.addEventListener('click', e => {
@@ -749,7 +770,10 @@
 
         toggle.textContent = `Temporada ${season}`;
         episodes = getVisibleEpisodes();
-        if (episodes.length) loadEpisode(0, false);
+
+        if (episodes.length) {
+          loadEpisode(0, false); // EP1 → thumbnails SIEMPRE refrescan
+        }
 
         menu.style.display = 'none';
         dropdown.classList.remove('open');
@@ -758,7 +782,9 @@
 
     // Init
     episodes = getVisibleEpisodes();
-    if (episodes.length) loadEpisode(0, false);
+    if (episodes.length) {
+      loadEpisode(0, false); // EP1 refrescado desde el arranque
+    }
   </script>
 
   <script>

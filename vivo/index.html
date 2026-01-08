@@ -5,13 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sol Argentino TV | Transmisión en Vivo</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/individual.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css" />
-    <link rel="stylesheet" href="https://old.movies.solargentinotv.com.ar/assets/css/plyr/satvplyr.css" />
+    <link rel="stylesheet" href="../assets/css/vidstack/1.css">
+    <link rel="stylesheet" href="../assets/css/vidstack/2.css">
+
+    <!-- Vidstack -->
+    <script src="https://cdn.vidstack.io/player" type="module"></script>
+
     <link rel="icon" href="https://old.movies.solargentinotv.com.ar/assets/media/images/SolArgentinoTVMOVIES.ico"
         type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.polyfilled.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+
+    <style>
+        media-player {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        media-control-bar {
+            background: linear-gradient(to top, rgba(0, 0, 0, .85), transparent);
+        }
+
+        media-time-range {
+            --media-range-track-height: 5px;
+            --media-range-thumb-height: 12px;
+            --media-range-thumb-width: 12px;
+            --media-range-track-color: rgba(255, 255, 255, .2);
+            --media-range-track-filled-color: #e50914;
+        }
+    </style>
 </head>
 
 <body>
@@ -25,21 +51,29 @@
 
     <main>
 
-        <!-- HERO -->
         <section class="hero">
 
+            <!-- PLAYER -->
             <div class="media">
-                <video id="player" playsinline controls poster="https://i.ytimg.com/vi/7Y7fi2FA1wA/hqdefault.jpg">
-                </video>
+                <media-player title="Sol Argentino TV – En Vivo"
+                    src="https://rtmp.solargentinotv.com.ar/live/canal1.m3u8" stream-type="live" autoplay muted
+                    playsinline>
+
+                    <media-provider></media-provider>
+
+                    <!-- Layout especial para LIVE -->
+                    <media-video-layout live></media-video-layout>
+
+                </media-player>
             </div>
 
-            <!-- INFO PANEL -->
+            <!-- INFO -->
             <article class="card">
 
                 <h1>Sol Argentino TV – En Vivo</h1>
 
                 <div class="kv">
-                    <span class="badge">LIVE</span>
+                    <span class="badge live">LIVE</span>
                     <span class="badge">24 hs</span>
                     <span class="badge age">ATP</span>
                 </div>
@@ -52,7 +86,7 @@
                 <div class="meta">
                     <p><strong>Señal:</strong> <span>Sol Argentino TV</span></p>
                     <p><strong>Formato:</strong> <span>Streaming en vivo (HLS)</span></p>
-                    <p><strong>Calidad:</strong> <span>1080p - 60 FPS | Próximamente: 4K</span></p>
+                    <p><strong>Calidad:</strong> <span>1080p - 60 FPS</span></p>
                 </div>
 
             </article>
@@ -60,57 +94,6 @@
         </section>
 
     </main>
-
-    <!-- Plyr JS -->
-    <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.polyfilled.min.js"></script>
-
-    <!-- HLS.js -->
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
-
-    <!-- INIT PLAYER -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const video = document.getElementById('player');
-            const source = 'https://rtmp.solargentinotv.com.ar/live/canal1.m3u8'; // Verifica que esta URL esté activa
-
-            if (Hls.isSupported()) {
-                const hls = new Hls({
-                    enableWorker: true,
-                    lowLatencyMode: true,
-                });
-
-                hls.loadSource(source);
-                hls.attachMedia(video);
-
-                hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                    video.play().catch(() => { });
-                });
-
-            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = source;
-                video.play().catch(() => { });
-            }
-
-            const player = new Plyr(video, {
-                controls: [
-                    'play-large',
-                    'play',
-                    'progress',
-                    'current-time',
-                    'mute',
-                    'volume',
-                    'settings',
-                    'fullscreen'
-                ],
-                settings: ['speed'],
-                speed: {
-                    selected: 1,
-                    options: [0.5, 0.75, 1, 1.25, 1.5, 2]
-                },
-                ratio: '16:9'
-            });
-        });
-    </script>
 
 </body>
 
