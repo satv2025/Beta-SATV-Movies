@@ -835,6 +835,11 @@
       return h3 ? h3.textContent.trim() : 'Programa';
     }
 
+    // Nueva función para actualizar el título
+    function updatePlayerTitle(season, ep, episodeName) {
+      player.title = `T${season} ${episodeName || 'Episode ' + ep}`;
+    }
+
     function loadEpisode(index, autoplay = true) {
       episodes = getVisibleEpisodes();
       const epCard = episodes[index];
@@ -850,9 +855,10 @@
       const info = getSeasonAndEpFromSrc(src);
 
       player.src = src;
-      player.title = episodeTitleFromCard(epCard);
 
       if (info) {
+        // Llamar a la nueva función para actualizar el título
+        updatePlayerTitle(info.season, info.ep, episodeTitleFromCard(epCard));
         refreshThumbnails(vttUrlFor(info.season, info.ep));
       }
 

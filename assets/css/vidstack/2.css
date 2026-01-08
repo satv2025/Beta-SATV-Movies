@@ -78,6 +78,18 @@
     font-weight: 700;
 }
 
+:where([data-fullscreen] .vds-video-layout .vds-chapter-title)::before {
+    display: none;
+}
+
+:where([data-fullscreen] .vds-video-layout .vds-chapter-title) {
+    margin-left: 38em !important;
+}
+
+:where([data-fullscreen] .vds-video-layout .vds-chapter-title):fullscreen {
+    position: relative !important;
+}
+
 :where(.vds-video-layout:not([data-sm]) .vds-mute-button) {
     margin-left: -2.5px;
     margin-right: -5px

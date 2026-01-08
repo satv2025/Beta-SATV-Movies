@@ -679,7 +679,11 @@
 
     function episodeTitleFromCard(card) {
       const h3 = card.querySelector('.ep-info h3');
-      return h3 ? h3.textContent.trim() : 'Programa';
+      const seasonMatch = card.dataset.src.match(/\/t(\d+)\/E(\d+)\//i);
+      const season = seasonMatch ? seasonMatch[1] : '';
+      const epName = h3 ? h3.textContent.trim() : 'Programa';
+
+      return `T${season} ${epName}`;
     }
 
     function loadEpisode(index, autoplay = true) {
@@ -697,7 +701,7 @@
       const info = getSeasonAndEpFromSrc(src);
 
       player.src = src;
-      player.title = episodeTitleFromCard(epCard);
+      player.title = episodeTitleFromCard(epCard);  // Título actualizado
 
       if (info) {
         refreshThumbnails(vttUrlFor(info.season, info.ep));
