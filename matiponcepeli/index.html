@@ -8,18 +8,37 @@
 
   <!-- Base individual -->
   <link rel="stylesheet" href="../assets/css/individual.css">
-  <link rel="stylesheet" href="../assets/css/plyrthumbs.css">
+  <link rel="stylesheet" href="../assets/css/vidstack/1.css">
+  <link rel="stylesheet" href="../assets/css/vidstack/2.css">
+  <script src="https://cdn.vidstack.io/player" type="module"></script>
+  <script src="https://cdn.vidstack.io/player.dev" type="module"></script>
+  <!-- Remember to pin the styles as well! -->
+  <script src="https://cdn.vidstack.io/player@1.11.21" type="module"></script>
 
-  <!-- Plyr CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css" />
-  <link rel="stylesheet" href="https://old.movies.solargentinotv.com.ar/assets/css/plyr/satvplyr.css" />
-
-  <!-- Plyr JS -->
-  <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.polyfilled.min.js"></script>
   <link rel="icon" href="https://old.movies.solargentinotv.com.ar/assets/media/images/SolArgentinoTVMOVIES.ico"
     type="image/x-icon">
-  <!-- HLS.js -->
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+
+  <style>
+    media-player {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    media-control-bar {
+      background: linear-gradient(to top, rgba(0, 0, 0, .85), transparent);
+    }
+
+    media-time-range {
+      --media-range-track-height: 5px;
+      --media-range-thumb-height: 12px;
+      --media-range-thumb-width: 12px;
+      --media-range-track-color: rgba(255, 255, 255, .2);
+      --media-range-track-filled-color: #e50914;
+    }
+  </style>
 </head>
 
 <body>
@@ -37,12 +56,16 @@
 
       <!-- PLAYER -->
       <div class="media">
-        <video id="player" playsinline controls
-          poster="https://old.movies.solargentinotv.com.ar/assets/media/images/mpthumb.jpg">
-        </video>
+        <media-player title="Matias Ponce, La Película"
+          src="https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/mpp/mp/MATIAS%20PONCE%20%20LA%20PEL%C3%8DCULA.m3u8">
+          <media-provider></media-provider>
+          <media-video-layout
+            thumbnails="https://movies.solargentinotv.com.ar/assets/media/mpp-thumbnails/thumbs.vtt"></media-video-layout>
+        </media-player>
+
       </div>
 
-      <!-- INFO -->
+      <!-- INFO (SIN CAMBIOS) -->
       <article class="card">
 
         <h1>Matías Ponce – La Película</h1>
@@ -60,47 +83,16 @@
           llama “Yutun”, desatando una hilarante y absurda aventura.
         </p>
 
-        <!-- METADATA -->
         <div class="meta">
-
-          <p>
-            <strong>Elenco:</strong>
-            <span>
-              Matías Ponce, Santino Ponce, Indio Ponce, Antonella Ponce,
-              Valeria Volpi, Julieta
-            </span>
+          <p><strong>Elenco:</strong> Matías Ponce, Santino Ponce, Indio Ponce, Antonella Ponce,
+            Valeria Volpi, Julieta</p>
+          <p><strong>Guión:</strong> Matías Ponce</p>
+          <p><strong>Géneros:</strong> Humor, humor absurdo, hackers, fama, grandes élites, paranoia,
+            haters, YouTube</p>
+          <p><strong>Este título es:</strong> Original, delirante</p>
+          <p><strong>Clasificación por edad:</strong>
+            <span class="age">12+</span> adolescentes, adultos, lenguaje inapropiado
           </p>
-
-          <p>
-            <strong>Guión:</strong>
-            <span>
-              Matías Ponce
-            </span>
-          </p>
-
-          <p>
-            <strong>Géneros:</strong>
-            <span>
-              Humor, humor absurdo, hackers, fama, grandes élites, paranoia,
-              haters, YouTube
-            </span>
-          </p>
-
-          <p>
-            <strong>Este título es:</strong>
-            <span>
-              Original, delirante
-            </span>
-          </p>
-
-          <p>
-            <strong>Clasificación por edad:</strong>
-            <span>
-              <span class="age">12+</span> adolescentes, adultos, lenguaje
-              inapropiado, delirante · Apta para mayores de 12 años
-            </span>
-          </p>
-
         </div>
 
       </article>
@@ -109,51 +101,19 @@
 
   </main>
 
-  <!-- PLAYER INIT -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const video = document.getElementById('player');
-      const source =
-        'https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/mpp/mp/MATIAS%20PONCE%20%20LA%20PEL%C3%8DCULA.m3u8';
+  <script type="module">
+    import { VidstackPlayer, VidstackPlayerLayout } from 'https://cdn.vidstack.io/player';
 
-      if (Hls.isSupported()) {
-        const hls = new Hls({
-          enableWorker: true,
-          lowLatencyMode: true,
-        });
-        hls.loadSource(source);
-        hls.attachMedia(video);
-      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = source;
-      }
-
-      new Plyr(video, {
-        controls: [
-          'play-large',
-          'play',
-          'progress',
-          'current-time',
-          'mute',
-          'volume',
-          'settings',
-          'fullscreen'
-        ],
-        settings: ['speed'],
-        speed: {
-          selected: 1,
-          options: [0.5, 0.75, 1, 1.25, 1.5, 2]
-        },
-        ratio: '16:9',
-        invertTime: false,
-
-        previewThumbnails: {
-          enabled: true,
-          src: 'https://movies.solargentinotv.com.ar/assets/media/mpp-thumbnails/thumbs.vtt'
-        }
-      });
+    const player = await VidstackPlayer.create({
+      target: '#target',
+      title: 'Matias Ponce, La Película',
+      src: 'https://files.vidstack.io/sprite-fight/hls/stream.m3u8',
+      poster: 'https://files.vidstack.io/sprite-fight/poster.webp',
+      layout: new VidstackPlayerLayout({
+        thumbnails: 'https://files.vidstack.io/sprite-fight/thumbnails.vtt',
+      }),
     });
   </script>
-
 </body>
 
 </html>

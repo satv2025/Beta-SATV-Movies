@@ -5,16 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nivel X - Marito Kids | Sol Argentino TV Movies</title>
+
   <link rel="stylesheet" href="../assets/css/individual.css">
-  <link rel="stylesheet" href="../assets/css/plyrthumbs.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css" />
-  <link rel="stylesheet" href="https://old.movies.solargentinotv.com.ar/assets/css/plyr/satvplyr.css" />
+
+  <!-- Vidstack -->
+  <link rel="stylesheet" href="../assets/css/vidstack/1.css">
+  <link rel="stylesheet" href="../assets/css/vidstack/2.css">
+  <script src="https://cdn.vidstack.io/player@1.11.21" type="module"></script>
+
   <link rel="icon" href="https://old.movies.solargentinotv.com.ar/assets/media/images/SolArgentinoTVMOVIES.ico"
     type="image/x-icon">
-  <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.polyfilled.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
 
   <style>
+    /* Solo media-player (como pediste) */
+    media-player {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    /* Lo tuyo (lo dejo tal cual) */
     .ep-info p {
       display: none;
     }
@@ -36,9 +48,17 @@
     <section class="hero">
 
       <div class="media">
-        <video id="player" playsinline controls
-          poster="https://movies.solargentinotv.com.ar/assets/media/images/nivelxthumbcard.jpg">
-        </video>
+        <media-player id="player" title="Programa 1"
+          src="https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E1/playlist.m3u8">
+
+          <media-provider></media-provider>
+
+          <!-- ESTE NO SE TOCA -->
+          <media-video-layout id="layout"
+            thumbnails="https://movies.solargentinotv.com.ar/assets/media/nivelxmarito-episode-thumbnails/t1/e1/thumbs.vtt">
+          </media-video-layout>
+
+        </media-player>
       </div>
 
       <!-- INFO PANEL -->
@@ -102,13 +122,17 @@
         <button data-season="all-episodes">Ver todos los episodios</button>
       </div>
     </div>
-    <!-- PROGRAMAS (T1 E1-E15) -->
+
+    <!-- EPISODIOS -->
     <section class="episodes">
       <h2>Episodios</h2>
       <div class="episodes-list">
+
+        <!-- TEMPORADA 1 -->
         <div class="episodes season" data-season="1">
+
           <!-- Programa 1 -->
-          <article class="episode"
+          <article class="episode active"
             data-src="https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E1/playlist.m3u8">
             <div class="ep-thumb">
               <img
@@ -550,8 +574,12 @@
               <span>11 min</span>
             </div>
           </article>
+
         </div>
+
+        <!-- TEMPORADA 2 -->
         <div class="episodes season" data-season="2" style="display:none;">
+
           <!-- Programa 1 -->
           <article class="episode"
             data-src="https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t2/E1/playlist.m3u8">
@@ -596,26 +624,19 @@
               <span>11 min</span>
             </div>
           </article>
+
         </div>
+
       </div>
     </section>
+
   </main>
 
-  <!-- RENDER + PLAYER -->
+  <!-- PLAYER + EPISODIOS (VIDSTACK) -->
   <script>
-    const video = document.getElementById('player');
+    const player = document.getElementById('player');
+    const layout = document.getElementById('layout');
 
-    const player = new Plyr(video, {
-      ratio: '16:9',
-      invertTime: false,
-      previewThumbnails: {
-        enabled: true,
-        // Verifica que este archivo .vtt sea accesible
-        src: 'https://movies.solargentinotv.com.ar/assets/media/nivelxmarito-episode-thumbnails/t1/e1/thumbs.vtt'
-      }
-    });
-
-    let hls = null;
     let episodes = [];
     let currentIndex = -1;
 
@@ -627,62 +648,58 @@
 
     function getSeasonAndEpFromSrc(src) {
       const m = src.match(/\/t(\d+)\/E(\d+)\//i);
-      return m ? { season: m[1], ep: m[2] } : null;
+      if (!m) return null;
+      return { season: m[1], ep: m[2] };
     }
 
     function vttUrlFor(season, ep) {
       return `https://movies.solargentinotv.com.ar/assets/media/nivelxmarito-episode-thumbnails/t${season}/e${ep}/thumbs.vtt`;
     }
 
-    function updateThumbnails(season, ep) {
-      const url = vttUrlFor(season, ep);
-
-      // Asegurarse de que el archivo .vtt esté disponible y se cargue correctamente
-      player.setPreviewThumbnails({
-        src: url
-      });
+    async function safePlay() {
+      try {
+        await player.play();
+      } catch {
+        player.muted = true;
+        await player.play();
+      }
     }
 
-    async function loadEpisode(index, autoplay = true) {
+    function episodeTitleFromCard(card) {
+      const h3 = card.querySelector('.ep-info h3');
+      return h3 ? h3.textContent.trim() : 'Programa';
+    }
+
+    function loadEpisode(index, autoplay = true) {
       episodes = getVisibleEpisodes();
       const epCard = episodes[index];
       if (!epCard || !epCard.dataset.src) return;
 
       currentIndex = index;
 
-      document.querySelectorAll('.episode.active').forEach(e => e.classList.remove('active'));
+      document.querySelectorAll('.episode.active')
+        .forEach(e => e.classList.remove('active'));
       epCard.classList.add('active');
 
       const src = epCard.dataset.src;
       const info = getSeasonAndEpFromSrc(src);
 
+      player.src = src;
+      player.title = episodeTitleFromCard(epCard);
+
+      // ✅ ÚNICA LÍNEA NECESARIA PARA THUMBNAILS
       if (info) {
-        updateThumbnails(info.season, info.ep);
+        layout.setAttribute('thumbnails', vttUrlFor(info.season, info.ep));
       }
 
-      player.pause();
-      if (hls) {
-        hls.destroy();
-        hls = null;
+      if (autoplay) {
+        requestAnimationFrame(() => safePlay());
       }
 
-      if (Hls.isSupported()) {
-        hls = new Hls();
-        hls.loadSource(src);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          if (autoplay) player.play().catch(() => { });
-        });
-      } else {
-        video.src = src;
-        video.addEventListener('loadedmetadata', () => {
-          if (autoplay) player.play().catch(() => { });
-        }, { once: true });
-      }
-
-      video.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      player.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
+    // Click episodio
     document.addEventListener('click', e => {
       const card = e.target.closest('.episode');
       if (!card) return;
@@ -692,17 +709,19 @@
       if (idx !== -1) loadEpisode(idx, true);
     });
 
-    video.addEventListener('ended', () => {
+    // Autoplay siguiente
+    player.addEventListener('ended', () => {
       episodes = getVisibleEpisodes();
       if (currentIndex + 1 < episodes.length) {
         loadEpisode(currentIndex + 1, true);
       }
     });
 
+    // Dropdown temporadas
     const dropdown = document.querySelector('.season-dropdown');
     const toggle = document.querySelector('.dropdown-toggle');
     const menu = document.querySelector('.dropdown-menu');
-    const seasonButtons = document.querySelectorAll('.dropdown-menu button');
+    const seasonButtons = document.querySelectorAll('.dropdown-menu button[data-season]');
     const seasons = document.querySelectorAll('.season');
 
     toggle.addEventListener('click', () => {
@@ -719,37 +738,37 @@
           seasons.forEach(s => s.style.display = 'grid');
           toggle.textContent = 'Ver todos los episodios';
           episodes = getVisibleEpisodes();
-          dropdown.classList.remove('open');
           menu.style.display = 'none';
+          dropdown.classList.remove('open');
           return;
         }
 
         seasons.forEach(s => {
           s.style.display = s.dataset.season === season ? 'grid' : 'none';
         });
-        toggle.textContent = `Temporada ${season}`;
 
+        toggle.textContent = `Temporada ${season}`;
         episodes = getVisibleEpisodes();
         if (episodes.length) loadEpisode(0, false);
 
-        dropdown.classList.remove('open');
         menu.style.display = 'none';
+        dropdown.classList.remove('open');
       });
     });
 
+    // Init
     episodes = getVisibleEpisodes();
     if (episodes.length) loadEpisode(0, false);
   </script>
 
   <script>
-    // Esto debe estar después de que hayas cargado todas las temporadas (idealmente después de cargar las temporadas y los episodios)
+    // Set default label
     document.addEventListener('DOMContentLoaded', () => {
-      if (seasons.length > 0) {
-        toggle.textContent = 'Temporada 1'; // Establece "Temporada 1" por defecto
-      }
+      const toggle = document.querySelector('.dropdown-toggle');
+      if (toggle) toggle.textContent = 'Temporada 1';
     });
   </script>
-
+  <script src="../assets/js/all-episodes.js"></script>
 </body>
 
 </html>
