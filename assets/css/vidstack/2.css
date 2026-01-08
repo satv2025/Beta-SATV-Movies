@@ -36,7 +36,6 @@
 
 :where(.vds-video-layout .vds-controls[data-visible]) {
     border-radius: var(--video-border-radius, 6px);
-    background-image: linear-gradient(to top, rgb(0 0 0 / .6), 10%, transparent, 95%, rgb(0 0 0 / .3))
 }
 
 .vds-video-layout .vds-controls-group {

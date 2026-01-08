@@ -37,6 +37,10 @@
             --media-range-track-color: rgba(255, 255, 255, .2);
             --media-range-track-filled-color: #e50914;
         }
+
+        .vds-controls-group .vds-slider-thumb {
+            opacity: 0;
+        }
     </style>
 </head>
 
@@ -56,8 +60,7 @@
             <!-- PLAYER -->
             <div class="media">
                 <media-player title="Sol Argentino TV – En Vivo"
-                    src="https://rtmp.solargentinotv.com.ar/live/canal1.m3u8" stream-type="live" autoplay muted
-                    playsinline>
+                    src="https://rtmp.solargentinotv.com.ar/live/canal1.m3u8" stream-type="live" autoplay playsinline>
 
                     <media-provider></media-provider>
 
