@@ -1,3 +1,9 @@
+@import url('https://solargentinotv.com.ar/assets/fonts/NetflixSans/netflixsans.css');
+
+* {
+    font-family: 'Netflix Sans' !important;
+}
+
 /**
  * Minified by jsDelivr using clean-css v5.3.3.
  * Original file: /npm/@vidstack/cdn@1.12.13/styles/player/default/theme.css
