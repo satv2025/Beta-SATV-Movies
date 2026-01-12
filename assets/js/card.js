@@ -30,20 +30,20 @@ cards.forEach(card => {
         return;
     }
 
-    // Se asigna el video de forma dinámica dentro de la card
+    // Se asigna el video de forma dinámica dentro de la media
     const video = document.createElement("video");
     video.setAttribute("muted", "true");  // Iniciar en mute
     video.setAttribute("loop", "true");
     video.setAttribute("playsinline", "true");
     video.setAttribute("preload", "auto");
     video.src = videoSrc;
+    video.classList.add("card-video");
 
-    // Inserta el video dentro del contenedor .media
+    // Inserta el video dentro del contenedor .media (NO lo saques de ahí)
     media.appendChild(video);
 
     // Crear el botón de mute dinámicamente si no existe
     let muteButton = card.querySelector(".bmt-mute-btn");
-
     if (!muteButton) {
         muteButton = document.createElement("button");
         muteButton.classList.add("bmt-mute-btn");
@@ -71,12 +71,10 @@ cards.forEach(card => {
 
         if (video.muted) {
             video.muted = false;
-
             // Cambiar a icono de volumen activado
             muteIcon.innerHTML = `<path fill="currentColor" fill-rule="evenodd" d="M24 12a14 14 0 0 0-4.1-9.9l-1.41 1.41a12 12 0 0 1 0 16.98l1.41 1.41A14 14 0 0 0 24 12M11 4a1 1 0 0 0-1.7-.7L4.58 8H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3.59l4.7 4.7A1 1 0 0 0 11 20zM5.7 9.7 9 6.42V17.6l-3.3-3.3-.29-.29H2v-4h3.41zM16 12a6 6 0 0 0-1.76-4.24l-1.41 1.41a4 4 0 0 1 0 5.66l1.41 1.41A6 6 0 0 0 16 12m1.07-7.07a10 10 0 0 1 0 14.14l-1.41-1.41a8 8 0 0 0 0-11.32z" clip-rule="evenodd"></path>`;
         } else {
             video.muted = true;
-
             // Cambiar a icono de mute
             muteIcon.innerHTML = `<path fill="currentColor" fill-rule="evenodd" d="M11 4a1 1 0 0 0-1.7-.7L4.58 8H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3.59l4.7 4.7A1 1 0 0 0 11 20zM5.7 9.7 9 6.42V17.6l-3.3-3.3-.29-.29H2v-4h3.41zm9.6 0 2.29 2.3-2.3 2.3 1.42 1.4L19 13.42l2.3 2.3 1.4-1.42-2.28-2.3 2.3-2.3-1.42-1.4-2.3 2.28-2.3-2.3z" clip-rule="evenodd"></path>`;
         }
@@ -85,14 +83,10 @@ cards.forEach(card => {
     // Hover para reproducir el video y ocultar la imagen
     card.addEventListener("mouseenter", () => {
         video.play().catch(e => console.error("No se pudo reproducir el video:", e));
-
         // Ocultar la imagen (solo la imagen, no afecta al resto de la tarjeta)
-        const img = card.querySelector('.card-img'); // Asegúrate de que la imagen tenga la clase 'card-img'
-        if (img) {
-            img.style.opacity = '0'; // Ocultar la imagen al hacer hover
-        }
-
-        // Mostrar el botón de mute al pasar el ratón
+        const img = card.querySelector('.card-img');
+        if (img) img.style.opacity = '0';
+        video.classList.add('active');
         muteButton.classList.add('mute-visible');
     });
 
@@ -100,14 +94,10 @@ cards.forEach(card => {
     card.addEventListener("mouseleave", () => {
         video.pause();
         video.currentTime = 0;
-
         // Mostrar la imagen cuando se quita el hover
         const img = card.querySelector('.card-img');
-        if (img) {
-            img.style.opacity = '1'; // Mostrar la imagen nuevamente al quitar el hover
-        }
-
-        // Ocultar el botón de mute cuando el video no está en hover
+        if (img) img.style.opacity = '1';
+        video.classList.remove('active');
         muteButton.classList.remove('mute-visible');
     });
 });
