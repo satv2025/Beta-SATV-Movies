@@ -699,3 +699,76 @@ span.film-type {
 .card-video.active::after {
   opacity: 1;
 }
+
+.proximamente-card {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  background: #f00;
+  padding: 10px 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 5;
+}
+
+/* ===============================
+   PROXIMAMENTE (CARD FOOTER)
+================================ */
+.card {
+  position: relative;
+  overflow: hidden;
+  /* evita que el hover rompa el badge */
+}
+
+/* Contenedor */
+.proximamente-card {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  background: #f00;
+  padding: 10px 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 6;
+}
+
+/* Texto */
+.proximamente-span {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  line-height: 1.2;
+}
+
+/* Sombra suave para leer sobre video/imagen */
+.proximamente-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #181818cc, rgba(0, 0, 0, .15));
+  z-index: -1;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .proximamente-span {
+    font-size: 0.85rem;
+  }
+
+  .proximamente-card {
+    padding: 8px;
+  }
+}
