@@ -11,7 +11,8 @@ const videoUrls = {
     app: "https://dynavod.solargentinotv.com.ar/Asesinato_para_principiantes__Tr%C3%A1iler_oficial__Netflix.mp4",
     nivelx: "https://dynavod.solargentinotv.com.ar/trailer_persons_T1E1-26_order.mp4",
     reite: "https://dynavod.solargentinotv.com.ar/trailer.mp4",
-    f2fnh: "https://dynavod.solargentinotv.com.ar/F2FNHTrailer.mp4"
+    f2fnh: "https://dynavod.solargentinotv.com.ar/F2FNHTrailer.mp4",
+    ciliocajas: "https://dynavod.solargentinotv.com.ar/LCM-Trailer-v1.mp4"
 };
 
 // Recorre cada card para agregarle el video y funcionalidad de hover

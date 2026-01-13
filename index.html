@@ -260,7 +260,7 @@
       </div>
 
       <!-- 10 -->
-      <div class="card" id="ciliocajas" data-type="Película" onclick="location.href='/f2fnh'">
+      <div class="card" id="ciliocajas" data-type="Película" onclick="location.href='/lascajasmisteriosas'">
         <div class="media">
           <img class="card-img"
             src="https://i.ytimg.com/vi/BVRfN2xViYs/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDJg6H_YA4V35Pdl8QVuruhW1PQ4A"
@@ -283,13 +283,24 @@
 
     </div>
   </main>
-
   <script src="assets/js/hero.js"></script>
   <script src="assets/js/card.js"></script>
   <script src="assets/js/filters.js"></script>
   <script src="assets/js/searcher.js"></script>
   <script src="assets/js/copyright.js"></script>
   <script src="assets/js/live-btn-header=238x909234dxs2.js"></script>
+
+  <!-- CILIO SCRIPT -->
+  <script>
+    document.getElementById("ciliocajas").addEventListener(
+      "click",
+      function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      },
+      true // 👈 fase de captura (clave)
+    );
+  </script>
 
 </body>
 
