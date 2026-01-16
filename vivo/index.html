@@ -46,7 +46,15 @@
    SIGNAL DROPDOWN
 ====================== */
 
-        .signal-menu {
+        .signal-menu button span {
+            opacity: 1;
+            font-size: 0.8em;
+            position: relative;
+            top: -0.09em;
+            font-weight: 300;
+        }
+
+        .signal-dropdown {
             position: relative;
             margin-bottom: -13px;
             zoom: 0.9;
@@ -54,7 +62,7 @@
             margin-top: -3.2em;
         }
 
-        .signal-menu-btn {
+        .signal-toggle {
             background: #242424;
             color: #fff;
             padding: 10px 14px;
@@ -70,7 +78,7 @@
         }
 
         /* flecha */
-        .signal-menu-btn::after {
+        .signal-toggle::after {
             content: "\25BC";
             position: absolute;
             right: 14px;
@@ -82,12 +90,12 @@
         }
 
         /* flecha rotada */
-        .signal-menu.open .signal-menu-btn::after {
+        .signal-dropdown.open .signal-toggle::after {
             transform: translateY(-50%) rotate(180deg);
         }
 
         /* menú */
-        .signal-menu-content {
+        .signal-menu {
             display: none;
             position: absolute;
             background: #242424;
@@ -101,7 +109,7 @@
         }
 
         /* visible */
-        .signal-menu.open .signal-menu-content {
+        .signal-dropdown.open .signal-menu {
             display: block;
         }
 
@@ -171,24 +179,24 @@
                     <p class="signal-row">
                         <strong>Señal:</strong>
 
-                    <div class="signal-menu">
-                        <div class="signal-menu-btn" id="signalMenuBtn">
+                    <div class="signal-dropdown">
+                        <button class="signal-toggle" id="signalMenuBtn">
                             Señal 1
-                        </div>
+                        </button>
 
-                        <div class="signal-menu-content">
-                            <div class="signal-menu-option"
+                        <div class="signal-menu">
+                            <button class="signal-menu-option"
                                 data-src="https://rtmp.solargentinotv.com.ar/live/canal1.m3u8">
-                                Señal 1
-                            </div>
+                                Señal 1 <span>(principal)</span>
+                            </button>
 
-                            <div class="signal-menu-option" data-src="http://192.168.1.36/live/canal1.m3u8">
-                                Señal 2
-                            </div>
+                            <button class="signal-menu-option" data-src="http://192.168.1.36/live/canal1.m3u8">
+                                Señal 2 <span>(secundaria)</span>
+                            </button>
 
-                            <div class="signal-menu-option" data-src="http://186.129.99.27/live/canal1.m3u8">
-                                Señal 3
-                            </div>
+                            <button class="signal-menu-option" data-src="http://186.129.99.27/live/canal1.m3u8">
+                                Señal 3 <span>(respaldo)</span>
+                            </button>
                         </div>
                     </div>
                     </p>
@@ -202,30 +210,32 @@
 
     </main>
     <script>
-        const signalMenu = document.querySelector('.signal-menu');
+        const signalDropdown = document.querySelector('.signal-dropdown');
         const signalBtn = document.getElementById('signalMenuBtn');
         const signalOptions = document.querySelectorAll('.signal-menu-option');
         const player = document.querySelector('media-player');
 
         signalBtn.addEventListener('click', () => {
-            signalMenu.classList.toggle('open');
+            signalDropdown.classList.toggle('open');
         });
 
         signalOptions.forEach(option => {
             option.addEventListener('click', () => {
                 const src = option.dataset.src;
-                const label = option.textContent.trim();
+
+                // Solo "Señal X" (sin el span)
+                const label = option.childNodes[0].textContent.trim();
 
                 player.src = src;
                 signalBtn.textContent = label;
 
-                signalMenu.classList.remove('open');
+                signalDropdown.classList.remove('open');
             });
         });
 
         document.addEventListener('click', e => {
-            if (!signalMenu.contains(e.target)) {
-                signalMenu.classList.remove('open');
+            if (!signalDropdown.contains(e.target)) {
+                signalDropdown.classList.remove('open');
             }
         });
     </script>
