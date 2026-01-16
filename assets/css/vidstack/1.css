@@ -540,7 +540,7 @@ iframe.vds-youtube[data-no-controls] {
     content: var(--media-chapter-title-separator, '\2022');
     display: inline-block;
     margin-right: var(--media-chapter-title-separator-gap, 6px);
-    color: $f00;
+    color: #f00;
 }
 
 .vds-chapter-title:empty::before {

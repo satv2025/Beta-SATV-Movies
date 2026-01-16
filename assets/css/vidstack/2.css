@@ -78,11 +78,12 @@
 }
 
 :where([data-fullscreen] .vds-video-layout .vds-chapter-title)::before {
-    display: none;
+    display: none !important;
 }
 
 :where([data-fullscreen] .vds-video-layout .vds-chapter-title) {
     margin-left: 38em !important;
+    margin-top: -0.4em !important;
 }
 
 :where([data-fullscreen] .vds-video-layout .vds-chapter-title):fullscreen {
