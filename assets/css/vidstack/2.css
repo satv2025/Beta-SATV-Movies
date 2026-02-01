@@ -19,7 +19,7 @@
 
 :where(.vds-video-layout) {
     --media-brand: var(--video-brand, #f00) !important;
-    --media-font-family: var(--video-font-family, sans-serif);
+
     --media-controls-color: var(--video-controls-color, #f00) !important;
     --media-tooltip-y-offset: 6px;
     --media-menu-y-offset: 6px;
