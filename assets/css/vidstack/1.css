@@ -1671,7 +1671,7 @@ iframe.vds-youtube[data-no-controls] {
 
 :where(.vds-slider .vds-slider-track-fill) {
     z-index: 2;
-    background-color: var(--media-slider-track-fill-bg, var(--media-brand));
+    background-color: #f00;
     width: var(--slider-fill, 0%);
     will-change: width
 }
