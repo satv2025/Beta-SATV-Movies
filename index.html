@@ -11,7 +11,7 @@
   <link rel="icon" href="https://old.movies.solargentinotv.com.ar/assets/media/images/SolArgentinoTVMOVIES.ico">
 </head>
 
-<body>
+<body class="web-app">
 
   <header>
     <div class="wrap">
@@ -305,14 +305,22 @@
 
   <script>
     const isDesktop = !!(
-      window.process &&
-      window.process.versions &&
-      window.process.versions.electron
+      window.process?.versions?.electron
     );
 
     if (isDesktop) {
-      document.body.classList.add("desktop-app");
-      document.getElementById("webCSS")?.remove();
+
+      const body = document.body;
+
+      /* 1️⃣ borrar cualquier clase previa relacionada */
+      body.classList.remove("web-app", "mobile-app", "desktop-app");
+
+      /* 2️⃣ agregar la nueva */
+      body.classList.add("desktop-app");
+
+      /* 3️⃣ desactivar css web */
+      const webCSS = document.getElementById("webCSS");
+      if (webCSS) webCSS.remove();
     }
   </script>
 

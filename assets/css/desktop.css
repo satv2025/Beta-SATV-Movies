@@ -55,49 +55,37 @@
 /* =========================================================
    1) RESET + BASE
 ========================================================= */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-html {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-    height: 100%;
-}
-
-body {
+body.desktop-app,
+body.desktop-app * {
     margin: 0;
     height: 100%;
     font-family: var(--font);
     background: var(--app-bg);
     color: var(--app-text);
     overflow: hidden;
-    /* app layout maneja scroll en main */
     line-height: 1.35;
 }
 
 /* Media */
-img,
-video,
-svg {
+body.desktop-app img,
+body.desktop-app video,
+body.desktop-app svg {
     display: block;
     max-width: 100%;
     height: auto;
 }
 
-svg {
+body.desktop-app svg {
     width: 1em;
     height: 1em;
 }
 
 /* Text defaults */
-p {
+body.desktop-app p {
     font-weight: 300;
 }
 
-p.synopsis {
+body.desktop-app p.synopsis {
     margin-top: 0;
     font-size: 14px;
     line-height: 1.35;
@@ -105,11 +93,11 @@ p.synopsis {
 }
 
 /* Accessibility basic */
-:focus {
+body.desktop-app :focus {
     outline: none;
 }
 
-:focus-visible {
+body.desktop-app :focus-visible {
     outline: 2px solid rgba(255, 255, 255, .35);
     outline-offset: 2px;
 }
@@ -118,7 +106,7 @@ p.synopsis {
    2) APP LAYOUT (SIDEBAR + CONTENT)
    (Mismo HTML, distinto layout total)
 ========================================================= */
-body {
+body.desktop-app {
     display: grid;
     grid-template-columns: var(--sidebar-w) 1fr;
     grid-template-rows: 100vh;
@@ -127,7 +115,7 @@ body {
 /* =========================================================
    3) HEADER = SIDEBAR (app feel)
 ========================================================= */
-header {
+body.desktop-app header {
     position: relative;
     height: 100vh;
     overflow: hidden;
@@ -136,8 +124,7 @@ header {
     z-index: 50;
 }
 
-/* en desktop, .wrap deja de ser “container” y pasa a columna */
-.wrap {
+body.desktop-app .wrap {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -148,8 +135,7 @@ header {
     gap: var(--gap-4);
 }
 
-/* Logo: más “app” */
-.logo {
+body.desktop-app .logo {
     font-weight: 900;
     font-size: 1.05rem;
     letter-spacing: .9px;
@@ -159,8 +145,7 @@ header {
     line-height: 1.15;
 }
 
-/* NAV vertical */
-.nav {
+body.desktop-app .nav {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -168,7 +153,7 @@ header {
     flex-wrap: nowrap;
 }
 
-.nav span {
+body.desktop-app .nav span {
     color: var(--app-muted);
     font-size: .92rem;
     padding: 10px 12px;
@@ -178,25 +163,24 @@ header {
     transition: background .12s ease, color .12s ease, transform .12s ease;
 }
 
-.nav span:hover {
+body.desktop-app .nav span:hover {
     color: var(--app-text);
     background: rgba(255, 255, 255, .06);
 }
 
-.nav .nav-link.active {
+body.desktop-app .nav .nav-link.active {
     color: var(--accent-text);
     background: var(--accent);
     font-weight: 800;
 }
 
-/* Search: estilo launcher */
-.search {
+body.desktop-app .search {
     flex: 0 0 auto;
     position: relative;
     min-width: 0;
 }
 
-#searchInput {
+body.desktop-app #searchInput {
     width: 100%;
     padding: 12px 12px;
     padding-right: 12px;
@@ -207,24 +191,24 @@ header {
     font-size: .98rem;
 }
 
-#searchInput::placeholder {
+body.desktop-app #searchInput::placeholder {
     color: rgba(242, 242, 242, .55);
     opacity: 1;
 }
 
-#searchInput:focus {
+body.desktop-app #searchInput:focus {
     border-color: rgba(255, 255, 255, .22);
     background: rgba(255, 255, 255, .09);
 }
 
-.searchTab {
+body.desktop-app .searchTab {
     display: none;
 }
 
 /* en desktop-app, input es suficiente */
 
 /* Vivo en sidebar */
-.vivo-btn {
+body.desktop-app .vivo-btn {
     margin-top: auto;
     /* se va al fondo */
     display: none;
@@ -239,7 +223,7 @@ header {
     transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 
-.dot {
+body.desktop-app .dot {
     width: 10px;
     height: 10px;
     border-radius: 999px;
@@ -261,20 +245,16 @@ header {
     }
 }
 
-.vivo-btn:hover {
+body.desktop-app .vivo-btn:hover {
     background: rgba(255, 0, 0, .12);
     border-color: rgba(255, 0, 0, .85);
     color: #fff;
 }
 
-.vivo-btn:hover .dot {
-    background: #fff;
-}
-
 /* =========================================================
    4) MAIN AREA (scroll dentro, layout de app)
 ========================================================= */
-main {
+body.desktop-app main {
     width: 100%;
     margin: 0;
     padding: var(--pad-5);
@@ -287,23 +267,23 @@ main {
 }
 
 /* Scrollbar */
-main::-webkit-scrollbar {
+body.desktop-app main::-webkit-scrollbar {
     width: 10px;
 }
 
-main::-webkit-scrollbar-thumb {
+body.desktop-app main::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, .12);
     border-radius: 999px;
 }
 
-main::-webkit-scrollbar-thumb:hover {
+body.desktop-app main::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, .18);
 }
 
 /* =========================================================
    5) HERO (banner cinemático, sin top mágico)
 ========================================================= */
-.hero {
+body.desktop-app .hero {
     position: relative;
     border-radius: var(--radius-3);
     overflow: hidden;
@@ -312,7 +292,7 @@ main::-webkit-scrollbar-thumb:hover {
 }
 
 /* Media ocupa el hero */
-.hero-media {
+body.desktop-app .hero-media {
     position: relative;
     width: 100%;
     height: clamp(340px, 52vh, 620px);
@@ -320,15 +300,15 @@ main::-webkit-scrollbar-thumb:hover {
     background: #000;
 }
 
-.hero-bg {
+body.desktop-app .hero-bg {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 /* Imagen/video (tu HTML tiene img.hero-bg y video.hero-bg) */
-.hero img.hero-bg,
-.hero video.hero-bg {
+body.desktop-app img.hero-bg,
+body.desktop-app video.hero-bg {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -337,7 +317,7 @@ main::-webkit-scrollbar-thumb:hover {
 }
 
 /* Overlay pro: abajo + lateral */
-.hero::before {
+body.desktop-app .hero::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -356,7 +336,7 @@ main::-webkit-scrollbar-thumb:hover {
 }
 
 /* Info flotante */
-.hero-info {
+.body.desktop-app .hero-info {
     position: absolute;
     left: var(--pad-5);
     right: auto;
@@ -365,21 +345,21 @@ main::-webkit-scrollbar-thumb:hover {
     max-width: 680px;
 }
 
-.hero-title {
+.body.desktop-app .hero-title {
     margin: 0 0 10px;
     font-size: clamp(1.7rem, 2.7vw, 3rem);
     font-weight: 900;
     letter-spacing: .2px;
 }
 
-.hero-film-type {
+.body.desktop-app .hero-film-type {
     font-size: .98rem;
     font-weight: 700;
     color: rgba(255, 255, 255, .85);
     margin: 0 0 10px;
 }
 
-.hero-synopsis {
+.body.desktop-app .hero-synopsis {
     max-width: 40rem;
     font-size: 1.02rem;
     line-height: 1.25;
@@ -388,7 +368,7 @@ main::-webkit-scrollbar-thumb:hover {
 }
 
 /* Acciones */
-.hero-actions {
+.body.desktop-app .hero-actions {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
@@ -397,7 +377,7 @@ main::-webkit-scrollbar-thumb:hover {
 /* =========================================================
    6) BUTTONS (estilo app)
 ========================================================= */
-.btn {
+.body.desktop-app .btn {
     border: none;
     border-radius: var(--radius-2);
     padding: 12px 18px;
@@ -410,24 +390,24 @@ main::-webkit-scrollbar-thumb:hover {
     user-select: none;
 }
 
-.btn.primary {
+.body.desktop-app .btn.primary {
     background: var(--accent);
     color: var(--accent-text);
 }
 
-.btn.primary:hover {
+.body.desktop-app .btn.primary:hover {
     transform: translateY(-1px);
 }
 
-.btn.secondary {
+.body.desktop-app .btn.secondary {
     background: rgba(255, 255, 255, .10);
     color: rgba(255, 255, 255, .90);
     pointer-events: none !important;
     /* como tu original */
 }
 
-.btn.secondary[disabled],
-.btn.secondary:disabled {
+.body.desktop-app .btn.secondary[disabled],
+.body.desktop-app .btn.secondary:disabled {
     opacity: 1;
     user-select: none;
 }
@@ -435,7 +415,7 @@ main::-webkit-scrollbar-thumb:hover {
 /* =========================================================
    7) FILTERS (barra tipo app)
 ========================================================= */
-.filters {
+.body.desktop-app .filters {
     display: flex;
     gap: 10px;
     margin-top: 10px;
@@ -443,7 +423,7 @@ main::-webkit-scrollbar-thumb:hover {
     flex-wrap: wrap;
 }
 
-.filters button {
+.body.desktop-app .filters button {
     border: 1px solid rgba(255, 255, 255, .12);
     background: rgba(255, 255, 255, .06);
     color: rgba(255, 255, 255, .86);
@@ -456,12 +436,12 @@ main::-webkit-scrollbar-thumb:hover {
     transition: background .12s ease, color .12s ease, border-color .12s ease, transform .12s ease;
 }
 
-.filters button:hover {
+.body.desktop-app .filters button:hover {
     border-color: rgba(255, 255, 255, .20);
     background: rgba(255, 255, 255, .09);
 }
 
-.filters .active {
+.body.desktop-app .filters .active {
     background: var(--accent);
     color: var(--accent-text);
     border-color: transparent;
@@ -470,14 +450,14 @@ main::-webkit-scrollbar-thumb:hover {
 /* =========================================================
    8) GRID + CARDS (catalog app)
 ========================================================= */
-.grid {
+.body.desktop-app .grid {
     display: grid;
     gap: 22px;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 /* Card: “tile” app, no caja web */
-.card {
+.body.desktop-app .card {
     background: rgba(255, 255, 255, .03);
     border: 1px solid rgba(255, 255, 255, .06);
     border-radius: var(--radius-3);
@@ -488,7 +468,7 @@ main::-webkit-scrollbar-thumb:hover {
     transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease, background .14s ease;
 }
 
-.card:hover {
+.body.desktop-app .card:hover {
     transform: translateY(-2px) scale(1.02);
     border-color: rgba(255, 255, 255, .12);
     box-shadow: var(--shadow-1);
@@ -496,7 +476,7 @@ main::-webkit-scrollbar-thumb:hover {
 }
 
 /* Media: más “cinema tile” */
-.media {
+.body.desktop-app .media {
     position: relative;
     aspect-ratio: 16/9;
     background: #000;
@@ -504,8 +484,8 @@ main::-webkit-scrollbar-thumb:hover {
 }
 
 /* Imagen / Video dentro */
-.media img,
-.media video {
+.body.desktop-app .media img,
+.body.desktop-app .media video {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -514,31 +494,31 @@ main::-webkit-scrollbar-thumb:hover {
 }
 
 /* hover preview behaviour (igual que tu lógica) */
-.media video {
+.body.desktop-app .media video {
     opacity: 0;
     pointer-events: none;
     z-index: 2;
     transition: opacity .22s ease;
 }
 
-.card .media img {
+.body.desktop-app .card .media img {
     opacity: 1;
     pointer-events: none;
     z-index: 1;
     transition: opacity .22s ease;
 }
 
-.card:hover .media img {
+.body.desktop-app .card:hover .media img {
     opacity: 0;
 }
 
-.card:hover .media video {
+.body.desktop-app .card:hover .media video {
     opacity: 1;
     pointer-events: auto;
 }
 
 /* sombra inferior para leer meta */
-.media::after {
+.body.desktop-app .media::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -549,21 +529,21 @@ main::-webkit-scrollbar-thumb:hover {
 }
 
 /* Meta: más “app details” */
-.meta {
+.body.desktop-app .meta {
     padding: 14px 14px 16px;
     display: grid;
     gap: 8px;
 }
 
-.meta h3 {
+.body.desktop-app .meta h3 {
     font-size: 1.02rem;
     font-weight: 900;
     line-height: 1.15;
     letter-spacing: .1px;
 }
 
-.meta span,
-span.film-type {
+.body.desktop-app .meta span,
+.body.desktop-app span.film-type {
     display: block;
     font-size: .86rem;
     font-weight: 700;
@@ -571,11 +551,11 @@ span.film-type {
     margin: 0;
 }
 
-span.film-type {
+.body.desktop-app span.film-type {
     color: rgba(242, 242, 242, .82);
 }
 
-.synopsis {
+.body.desktop-app .synopsis {
     font-size: .90rem;
     color: rgba(242, 242, 242, .70);
     line-height: 1.35;
@@ -584,7 +564,7 @@ span.film-type {
 /* =========================================================
    9) BMT MUTE BUTTON (igual feature, estética app)
 ========================================================= */
-.bmt-mute-btn {
+.body.desktop-app .bmt-mute-btn {
     position: absolute;
     bottom: 12px;
     right: 12px;
@@ -606,12 +586,12 @@ span.film-type {
     transition: opacity .15s ease, transform .15s ease;
 }
 
-.bmt-mute-btn:hover {
+.body.desktop-app .bmt-mute-btn:hover {
     opacity: 1 !important;
     transform: scale(1.03);
 }
 
-.bmt-mute-btn.mute-visible {
+.body.desktop-app .bmt-mute-btn.mute-visible {
     display: grid !important;
 }
 
@@ -624,7 +604,7 @@ span.film-type {
 /* =========================================================
    10) SOUND BTN (si lo seguís usando)
 ========================================================= */
-.sound-btn {
+.body.desktop-app .sound-btn {
     position: absolute;
     bottom: 12px;
     right: 12px;
@@ -641,15 +621,15 @@ span.film-type {
     place-items: center;
 }
 
-.card:hover .sound-btn {
+.body.desktop-app .card:hover .sound-btn {
     opacity: .6 !important;
 }
 
-.sound-btn:hover {
+.body.desktop-app .sound-btn:hover {
     opacity: 1 !important;
 }
 
-.sound-btn img {
+.body.desktop-app .sound-btn img {
     width: 26px;
     height: 26px;
     filter: brightness(0) saturate(100%) invert(97%) sepia(98%) saturate(40%) hue-rotate(99deg) brightness(108%) contrast(100%);
@@ -658,7 +638,7 @@ span.film-type {
 /* =========================================================
    11) PRÓXIMAMENTE (badge)
 ========================================================= */
-.proximamente-card {
+.body.desktop-app .proximamente-card {
     position: absolute;
     left: 0;
     right: 0;
@@ -673,7 +653,7 @@ span.film-type {
     z-index: 8;
 }
 
-.proximamente-card::before {
+.body.desktop-app .proximamente-card::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -681,7 +661,7 @@ span.film-type {
     z-index: -1;
 }
 
-.proximamente-span {
+.body.desktop-app .proximamente-span {
     color: #fff;
     font-size: .88rem;
     font-weight: 900;
@@ -694,7 +674,7 @@ span.film-type {
 /* =========================================================
    12) MODAL COPYRIGHT (se mantiene, estilo app)
 ========================================================= */
-.modal {
+.body.desktop-app .modal {
     position: fixed;
     inset: 0;
     display: flex;
@@ -704,17 +684,16 @@ span.film-type {
     background: rgba(0, 0, 0, .72);
     z-index: 1000;
     width: 100%;
-
     overflow: auto;
     pointer-events: none;
     /* overlay no intercepta, como tu original */
 }
 
-.hidden {
+.body.desktop-app .hidden {
     display: none;
 }
 
-.modal-content {
+.body.desktop-app .modal-content {
     pointer-events: auto;
     width: min(720px, 92vw);
     background: linear-gradient(180deg, #171a24 0%, #121521 100%);
@@ -725,27 +704,27 @@ span.film-type {
     text-align: justify;
 }
 
-.modal-content h3 {
+.body.desktop-app .modal-content h3 {
     font-size: 1.15rem;
     font-weight: 900;
     letter-spacing: .2px;
     margin-bottom: 10px;
 }
 
-.modal-content p {
+.body.desktop-app .modal-content p {
     font-size: .98rem;
     color: rgba(242, 242, 242, .82);
     line-height: 1.45;
     margin: 10px 0;
 }
 
-.question {
+.body.desktop-app .question {
     font-weight: 900;
     margin-top: 14px;
     color: rgba(255, 255, 255, .92);
 }
 
-.modal-actions {
+.body.desktop-app .modal-actions {
     display: flex;
     justify-content: center;
     gap: 12px;
@@ -753,7 +732,7 @@ span.film-type {
     flex-wrap: wrap;
 }
 
-.copybtn {
+.body.desktop-app .copybtn {
     padding: 10px 16px;
     border: none;
     border-radius: var(--radius-2);
@@ -763,36 +742,36 @@ span.film-type {
     transition: transform .12s ease, filter .12s ease;
 }
 
-.copybtn:active {
+.body.desktop-app .copybtn:active {
     transform: translateY(1px);
 }
 
-.copybtn.primary {
+.body.desktop-app .copybtn.primary {
     background: var(--success);
     color: #fff;
 }
 
-.copybtn.primary:hover {
+.body.desktop-app .copybtn.primary:hover {
     filter: brightness(.92);
 }
 
-.copybtn.secondary {
+.body.desktop-app .copybtn.secondary {
     background: var(--danger);
     color: #fff;
 }
 
-.copybtn.secondary:hover {
+.body.desktop-app .copybtn.secondary:hover {
     filter: brightness(.92);
 }
 
-.copybtn:focus {
+.body.desktop-app .copybtn:focus {
     outline: none;
 }
 
 /* =========================================================
    13) VIDEO HOVER CLASSES (por si usás .card-video)
 ========================================================= */
-.card-video {
+.body.desktop-app .card-video {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -804,12 +783,12 @@ span.film-type {
     transition: opacity .22s ease;
 }
 
-.card-video.active {
+.body.desktop-app .card-video.active {
     opacity: 1;
     pointer-events: auto;
 }
 
-.card-video::after {
+.body.desktop-app .card-video::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -820,7 +799,7 @@ span.film-type {
     pointer-events: none;
 }
 
-.card-video.active::after {
+.body.desktop-app .card-video.active::after {
     opacity: 1;
 }
 
@@ -833,19 +812,19 @@ span.film-type {
         --sidebar-w: 100%;
     }
 
-    body {
+    body.desktop-app {
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
         overflow: hidden;
     }
 
-    header {
+    body.desktop-app header {
         height: auto;
         border-right: none;
         border-bottom: 1px solid var(--app-stroke);
     }
 
-    .wrap {
+    body.desktop-app .wrap {
         height: auto;
         padding: 18px 18px;
         flex-direction: row;
@@ -853,75 +832,75 @@ span.film-type {
         gap: 14px;
     }
 
-    .logo {
+    body.desktop-app .logo {
         font-size: 1rem;
         white-space: nowrap;
     }
 
-    .nav {
+    body.desktop-app .nav {
         flex-direction: row;
         flex-wrap: wrap;
         gap: 6px;
     }
 
-    .nav span {
+    body.desktop-app .nav span {
         padding: 8px 10px;
         border-radius: 999px;
         font-size: .9rem;
     }
 
-    .search {
+    body.desktop-app .search {
         flex: 1;
         min-width: 220px;
     }
 
-    #searchInput {
+    body.desktop-app #searchInput {
         padding: 10px 12px;
     }
 
-    main {
+    body.desktop-app main {
         padding: 18px;
     }
 
-    .grid {
+    body.desktop-app .grid {
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
         gap: 16px;
     }
 
-    .hero-media {
+    body.desktop-app .hero-media {
         height: clamp(320px, 45vh, 520px);
     }
 
-    .hero-info {
+    body.desktop-app .hero-info {
         left: 18px;
         bottom: 18px;
         max-width: 92%;
     }
 
-    .hero-title {
+    body.desktop-app .hero-title {
         font-size: clamp(1.5rem, 3.2vw, 2.2rem);
     }
 }
 
 @media (max-width: 720px) {
-    .wrap {
+    body.desktop-app .wrap {
         flex-direction: column;
         align-items: stretch;
     }
 
-    .nav {
+    body.desktop-app .nav {
         justify-content: center;
     }
 
-    .search {
+    body.desktop-app .search {
         min-width: 0;
     }
 
-    .hero {
+    body.desktop-app .hero {
         border-radius: var(--radius-2);
     }
 
-    .hero-info {
+    body.desktop-app .hero-info {
         position: relative;
         padding: 16px;
         left: 0;
@@ -930,16 +909,16 @@ span.film-type {
         background: linear-gradient(180deg, rgba(11, 12, 15, .70), rgba(11, 12, 15, .96));
     }
 
-    .hero::before {
+    body.desktop-app .hero::before {
         background:
             linear-gradient(to top, rgba(11, 12, 15, .95) 0%, rgba(11, 12, 15, .55) 50%, rgba(11, 12, 15, 0) 100%);
     }
 
-    .hero-actions {
+    body.desktop-app .hero-actions {
         flex-direction: column;
     }
 
-    .btn {
+    body.desktop-app .btn {
         width: 100%;
         justify-content: center;
         text-align: center;
@@ -947,19 +926,19 @@ span.film-type {
 }
 
 @media (max-width: 420px) {
-    main {
+    body.desktop-app main {
         padding: 14px;
     }
 
-    .grid {
+    body.desktop-app .grid {
         grid-template-columns: 1fr;
     }
 
-    .meta h3 {
+    body.desktop-app .meta h3 {
         font-size: 1rem;
     }
 
-    .synopsis {
+    body.desktop-app .synopsis {
         font-size: .88rem;
     }
 }
@@ -978,11 +957,11 @@ span.film-type {
    16) COMPAT (tu CSS viejo tenía cosas duplicadas)
    Aseguramos consistencia sin “look web”
 ========================================================= */
-.btn.secondary {
+body.desktop-app .btn.secondary {
     background: rgba(255, 255, 255, .10) !important;
     color: rgba(255, 255, 255, .90) !important;
 }
 
-.bmt-mute-btn.mute-visible {
+body.desktop-app .bmt-mute-btn.mute-visible {
     opacity: .9 !important;
 }
