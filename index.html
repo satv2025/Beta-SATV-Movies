@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sol Argentino TV Movies</title>
+  <link rel="stylesheet" href="assets/css/desktop.css">
   <link rel="stylesheet" href="assets/css/copyright.css">
   <link rel="stylesheet" href="assets/css/your-navigator-home.css">
   <link rel="icon" href="https://old.movies.solargentinotv.com.ar/assets/media/images/SolArgentinoTVMOVIES.ico">
@@ -300,6 +301,16 @@
       },
       true // 👈 fase de captura (clave)
     );
+  </script>
+
+  <script>
+    if (navigator.userAgent.includes("Nativefier") || navigator.userAgent.includes("Electron")) {
+      document.body.classList.add("desktop-app");
+
+      // desactivar css web
+      const webCSS = document.getElementById("webCSS");
+      if (webCSS) webCSS.remove();
+    }
   </script>
 
 </body>
