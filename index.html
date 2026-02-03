@@ -304,12 +304,15 @@
   </script>
 
   <script>
-    if (navigator.userAgent.includes("Nativefier") || navigator.userAgent.includes("Electron")) {
-      document.body.classList.add("desktop-app");
+    const isDesktop = !!(
+      window.process &&
+      window.process.versions &&
+      window.process.versions.electron
+    );
 
-      // desactivar css web
-      const webCSS = document.getElementById("webCSS");
-      if (webCSS) webCSS.remove();
+    if (isDesktop) {
+      document.body.classList.add("desktop-app");
+      document.getElementById("webCSS")?.remove();
     }
   </script>
 
