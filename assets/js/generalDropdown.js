@@ -25,6 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
         .addEventListener('click', () => {
             toggleButton.classList.add('all-episodes-style');
             toggleButton.textContent = 'Ver todos los episodios';  // Cambiar el texto del botón
+            // Mostrar todos los episodios
+            seasons.forEach(season => {
+                season.style.display = 'block';
+            });
             // Cerrar el menú
             menu.style.display = 'none';
             toggleButton.classList.remove('open');
