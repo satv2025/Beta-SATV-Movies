@@ -25,7 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Cambiar el texto del botón para reflejar la temporada seleccionada
-            toggle.textContent = `Temporada ${seasonToShow}`;
+            if (seasonToShow === 'all-episodes') {
+                toggle.textContent = 'Ver todos los episodios';  // Texto para "all episodes"
+            } else {
+                toggle.textContent = `Temporada ${seasonToShow}`;  // Texto para las temporadas normales
+            }
 
             // Cerrar el menú
             menu.style.display = 'none';
