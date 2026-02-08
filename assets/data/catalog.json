@@ -1,0 +1,28 @@
+[
+    {
+        "type": "movie",
+        "title": "Matías Ponce – La Película",
+        "description": "Comedia absurda...",
+        "url": "https://cdn.jsdelivr.net/.../mpp.m3u8"
+    },
+    {
+        "type": "series",
+        "title": "Reite666",
+        "description": "Thriller psicológico",
+        "seasons": [
+            {
+                "number": 1,
+                "episodes": [
+                    {
+                        "title": "E1",
+                        "url": "https://cdn.../e1.m3u8"
+                    },
+                    {
+                        "title": "E2",
+                        "url": "https://cdn.../e2.m3u8"
+                    }
+                ]
+            }
+        ]
+    }
+]
