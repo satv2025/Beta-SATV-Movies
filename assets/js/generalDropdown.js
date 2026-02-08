@@ -1,15 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.querySelector('.dropdown-toggle');
+    const toggleButton = document.querySelector('.dropdown-toggle');
     const menu = document.querySelector('.dropdown-menu');
     const seasons = document.querySelectorAll('.season');  // Todas las temporadas
 
-    if (!toggle || !menu) return;
+    if (!toggleButton || !menu) return;
 
-    toggle.addEventListener('click', () => {
+    // Abre o cierra el menú y gira la flecha
+    toggleButton.addEventListener('click', () => {
         const isOpen = menu.style.display === 'block';
         menu.style.display = isOpen ? 'none' : 'block';
-        toggle.classList.toggle('open', !isOpen);
+        toggleButton.classList.toggle('open', !isOpen); // Añadir o quitar clase 'open' para el menú
+
+        // Gira la flecha dependiendo de si el menú está abierto
+        if (isOpen) {
+            toggleButton.querySelector('::after').style.transform = 'rotate(0deg)'; // Flecha hacia abajo
+        } else {
+            toggleButton.querySelector('::after').style.transform = 'rotate(180deg)'; // Flecha hacia arriba
+        }
     });
+
+    // Cuando se selecciona "Ver todos los episodios"
+    document
+        .querySelector('[data-season="all-episodes"]')
+        .addEventListener('click', () => {
+            toggleButton.classList.add('all-episodes-style');
+            toggleButton.textContent = 'Ver todos los episodios';  // Cambiar el texto del botón
+            // Cerrar el menú
+            menu.style.display = 'none';
+            toggleButton.classList.remove('open');
+        });
 
     // Cambio de temporada
     menu.addEventListener('click', (e) => {
@@ -20,20 +39,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (season.dataset.season === seasonToShow) {
                     season.style.display = 'block'; // Mostrar la temporada seleccionada
                 } else {
-                    season.style.display = 'none'; // Ocultar las otras
+                    season.style.display = 'none'; // Ocultar otras temporadas
                 }
             });
 
             // Cambiar el texto del botón para reflejar la temporada seleccionada
             if (seasonToShow === 'all-episodes') {
-                toggle.textContent = 'Ver todos los episodios';  // Texto para "all episodes"
+                toggleButton.textContent = 'Ver todos los episodios';  // Texto para "all episodes"
             } else {
-                toggle.textContent = `Temporada ${seasonToShow}`;  // Texto para las temporadas normales
+                toggleButton.textContent = `Temporada ${seasonToShow}`;  // Texto para las temporadas normales
             }
 
-            // Cerrar el menú
+            // Cerrar el menú y restablecer la flecha
             menu.style.display = 'none';
-            toggle.classList.remove('open');
+            toggleButton.classList.remove('open');
+            toggleButton.querySelector('::after').style.transform = 'rotate(0deg)'; // Flecha hacia abajo
         }
     });
+
+    // Cuando se haga clic en cualquier otro botón de temporada, eliminar la clase 'all-episodes-style'
+    document.querySelectorAll('[data-season]')
+        .forEach(item => {
+            item.addEventListener('click', (event) => {
+                if (event.target.getAttribute('data-season') !== 'all-episodes') {
+                    toggleButton.classList.remove('all-episodes-style');
+                    // Cambiar el texto del botón de acuerdo con la temporada seleccionada
+                    toggleButton.textContent = `Temporada ${event.target.getAttribute('data-season')}`;
+                }
+            });
+        });
 });
