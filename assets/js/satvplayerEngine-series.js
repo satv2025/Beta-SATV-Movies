@@ -1,16 +1,43 @@
 /* =========================
    UNIVERSAL PLAYER ENGINE
+   + JSON AUTO GENERATOR
    ========================= */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
 
     const player = document.getElementById('player');
     const layout = document.getElementById('layout');
+    const listContainer = document.querySelector('.episodes-list');
 
-    if (!player) return;
+    if (!player || !listContainer) return;
+
+    /* =================================================
+       1️⃣ GENERAR EPISODIOS DESDE JSON (ANTES DE TODO)
+    ================================================= */
+
+    const seriesId = document.body.dataset.series; // <body data-series="nivelx">
+
+    try {
+        const res = await fetch('../assets/json/series.json');
+        const data = await res.json();
+
+        const series = data[seriesId];
+        if (!series) return;
+
+        buildSeasons(series.seasons, listContainer);
+
+    } catch (err) {
+        console.error('No se pudo cargar series.json', err);
+    }
+
+
+    /* =================================================
+       2️⃣ AHORA SÍ → PLAYER ENGINE NORMAL
+    ================================================= */
 
     let episodes = Array.from(document.querySelectorAll('.episode'));
     let current = 0;
+
 
     /* ========= AUTOPLAY SAFE ========= */
     async function autoPlaySafe() {
@@ -21,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             await player.play();
         }
     }
+
 
     /* ========= HELPERS ========= */
 
@@ -34,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!layout || !vtt) return;
 
         const busted = `${vtt}?v=${Date.now()}`;
-
         layout.removeAttribute('thumbnails');
+
         requestAnimationFrame(() => {
             layout.setAttribute('thumbnails', busted);
         });
@@ -45,7 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
         history.replaceState(null, '', `?titledata=t${season}e${ep}`);
     }
 
+
+    /* ========= LOAD EP ========= */
+
     function loadEpisode(index, autoplay = true) {
+
         const card = episodes[index];
         if (!card) return;
 
@@ -73,9 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (autoplay) requestAnimationFrame(autoPlaySafe);
     }
 
-    /* ========= LOAD FROM URL ========= */
+
+    /* ========= URL LOAD ========= */
 
     function loadFromURL() {
+
         const params = new URLSearchParams(window.location.search);
         const td = params.get('titledata');
         if (!td) return false;
@@ -99,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return false;
     }
 
+
     /* ========= EVENTS ========= */
 
     episodes.forEach((ep, i) => {
@@ -111,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
     /* ========= INIT ========= */
 
     if (!loadFromURL()) {
@@ -118,3 +154,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+
+
+/* =================================================
+   🔥 GENERADOR HTML (DEBAJO DEL ENGINE)
+================================================= */
+
+function buildSeasons(seasons, container) {
+
+    container.innerHTML = '';
+
+    seasons.forEach((season, index) => {
+
+        const seasonDiv = document.createElement('div');
+        seasonDiv.className = 'episodes season';
+        seasonDiv.dataset.season = season.id;
+
+        if (index !== 0) seasonDiv.style.display = 'none';
+
+        season.episodes.forEach(ep => {
+            seasonDiv.appendChild(createEpisode(ep));
+        });
+
+        container.appendChild(seasonDiv);
+    });
+}
+
+
+function createEpisode(ep) {
+
+    const article = document.createElement('article');
+    article.className = 'episode';
+    article.dataset.src = ep.src;
+    article.dataset.title = ep.title;
+    article.dataset.vtt = ep.vtt || '';
+
+    article.innerHTML = `
+        <div class="ep-thumb">
+            <img src="${ep.thumb || ''}" loading="lazy">
+        </div>
+        <div class="ep-info">
+            <h3>${ep.number}. ${ep.title}</h3>
+            <p>${ep.description || ''}</p>
+            <span>${ep.duration || ''}</span>
+        </div>
+    `;
+
+    return article;
+}
