@@ -238,7 +238,7 @@ strong {
 }
 
 /* ==============================
-   EPISODIOS â€“ SERIES
+   EPISODIOS Ã¢â‚¬â€œ SERIES
 ============================== */
 
 .episodes {
@@ -295,7 +295,7 @@ h2.no-season {
   z-index: 9;
 }
 
-/* âŒ desactiva animaciÃ³n hover si estÃ¡ activo */
+/* Ã¢ÂÅ’ desactiva animaciÃƒÂ³n hover si estÃƒÂ¡ activo */
 .episode.active:hover {
   transform: none;
 }
@@ -316,7 +316,7 @@ h2.no-season {
   object-fit: cover;
 }
 
-/* PLAY OVERLAY â€“ cÃ­rculo */
+/* PLAY OVERLAY Ã¢â‚¬â€œ cÃƒÂ­rculo */
 .ep-thumb::after {
   content: "";
   position: absolute;
@@ -335,7 +335,7 @@ h2.no-season {
   z-index: 1;
 }
 
-/* â–¶ PLAY / â¸ PAUSE ICON */
+/* Ã¢â€“Â¶ PLAY / Ã¢ÂÂ¸ PAUSE ICON */
 .ep-thumb::before {
   content: "";
   position: absolute;
@@ -354,7 +354,7 @@ h2.no-season {
   -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 2.7a1 1 0 0 1 1.48-.88l16.93 9.3a1 1 0 0 1 0 1.76l-16.93 9.3A1 1 0 0 1 5 21.31z'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
-/* PAUSE cuando estÃ¡ activo */
+/* PAUSE cuando estÃƒÂ¡ activo */
 .episode.active .ep-thumb::before {
   mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='6' y='4' width='4' height='16'/%3E%3Crect x='14' y='4' width='4' height='16'/%3E%3C/svg%3E") center / contain no-repeat;
   -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='6' y='4' width='4' height='16'/%3E%3Crect x='14' y='4' width='4' height='16'/%3E%3C/svg%3E") center / contain no-repeat;
@@ -450,7 +450,7 @@ h2.no-season {
 
 .dropdown-toggle::after {
   content: "\25BC";
-  /* â–¼ */
+  /* Ã¢â€“Â¼ */
   position: absolute;
   right: 14px;
   top: 50%;
@@ -458,6 +458,13 @@ h2.no-season {
   transition: transform .25s ease;
   font-size: 24px;
   opacity: .8;
+}
+
+.dropdown-toggle.open::after {
+  transform: translateY(-50%) rotate(180deg);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+  /* Suaviza la transición de rotación */
 }
 
 .season-dropdown.open .dropdown-toggle::after {
