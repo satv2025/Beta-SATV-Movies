@@ -1,10 +1,11 @@
 function generateReite(season, total) {
 
     const container = document.getElementById(`reite-t${season}`);
+    if (!container) return;
 
     for (let i = 1; i <= total; i++) {
 
-        const filename = season == 1
+        const filename = season === 1
             ? `REITE666%20T1%20E${i}`
             : `${i}`;
 
