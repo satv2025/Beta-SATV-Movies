@@ -1,6 +1,6 @@
 /* =========================
    UNIVERSAL PLAYER ENGINE
-   + JSON AUTO GENERATOR
+   + JSON AUTO GENERATOR FIXED
    ========================= */
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -9,37 +9,57 @@ document.addEventListener('DOMContentLoaded', async () => {
     const layout = document.getElementById('layout');
     const listContainer = document.querySelector('.episodes-list');
 
-    if (!player || !listContainer) return;
+    if (!player) return;
 
-    /* =================================================
-       1️⃣ GENERAR EPISODIOS DESDE JSON (ANTES DE TODO)
-    ================================================= */
+    /* =========================================
+       1️⃣ GENERAR EPISODIOS DESDE TU JSON REAL
+    ========================================= */
 
-    const seriesId = document.body.dataset.series; // <body data-series="nivelx">
+    const seriesId = document.body.dataset.series;
+
+    let episodes = [];
 
     try {
+
         const res = await fetch('../assets/json/cardsData.json');
         const data = await res.json();
 
-        const series = data[seriesId];
-        if (!series) return;
+        const title = data[seriesId];
 
-        buildSeasons(series.seasons, listContainer);
+        /* ❌ no existe */
+        if (!title) {
+            console.warn('Serie no encontrada:', seriesId);
+            return;
+        }
 
-    } catch (err) {
-        console.error('No se pudo cargar series.json', err);
+        /* 🎬 es película → no generar episodios */
+        if (!title.seasons || !listContainer) {
+            console.log('Película detectada → sin episodios');
+        }
+
+        /* 📺 es serie */
+        if (title.seasons) {
+            buildSeasons(title.seasons, listContainer);
+        }
+
+    } catch (e) {
+        console.error('Error cargando JSON:', e);
+        return;
     }
 
 
-    /* =================================================
-       2️⃣ AHORA SÍ → PLAYER ENGINE NORMAL
-    ================================================= */
+    /* =========================================
+       2️⃣ RELEER EPISODES YA GENERADOS
+    ========================================= */
 
-    let episodes = Array.from(document.querySelectorAll('.episode'));
+    episodes = Array.from(document.querySelectorAll('.episode'));
+    if (!episodes.length) return;
+
     let current = 0;
 
 
     /* ========= AUTOPLAY SAFE ========= */
+
     async function autoPlaySafe() {
         try {
             await player.play();
@@ -74,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
 
-    /* ========= LOAD EP ========= */
+    /* ========= LOAD ========= */
 
     function loadEpisode(index, autoplay = true) {
 
@@ -86,80 +106,47 @@ document.addEventListener('DOMContentLoaded', async () => {
         episodes.forEach(e => e.classList.remove('active'));
         card.classList.add('active');
 
-        const src = card.dataset.src;
-        const title = card.dataset.title || card.querySelector('h3')?.textContent;
+        player.src = card.dataset.src;
 
-        player.src = src;
-        if (title) player.title = title;
+        if (card.dataset.title) player.title = card.dataset.title;
 
-        const info = getSeasonEp(src);
+        const info = getSeasonEp(card.dataset.src);
 
         if (info) {
             setURL(info.season, info.ep);
 
-            if (card.dataset.vtt) {
-                refreshThumbs(card.dataset.vtt);
-            }
+            if (card.dataset.vtt) refreshThumbs(card.dataset.vtt);
         }
 
         if (autoplay) requestAnimationFrame(autoPlaySafe);
     }
 
 
-    /* ========= URL LOAD ========= */
-
-    function loadFromURL() {
-
-        const params = new URLSearchParams(window.location.search);
-        const td = params.get('titledata');
-        if (!td) return false;
-
-        const m = td.match(/t(\d+)e(\d+)/i);
-        if (!m) return false;
-
-        const season = m[1];
-        const ep = m[2];
-
-        const index = episodes.findIndex(card => {
-            const info = getSeasonEp(card.dataset.src);
-            return info && info.season === season && info.ep === ep;
-        });
-
-        if (index !== -1) {
-            loadEpisode(index, true);
-            return true;
-        }
-
-        return false;
-    }
-
-
     /* ========= EVENTS ========= */
 
     episodes.forEach((ep, i) => {
-        ep.addEventListener('click', () => loadEpisode(i, true));
+        ep.addEventListener('click', () => loadEpisode(i));
     });
 
     player.addEventListener('ended', () => {
         if (current + 1 < episodes.length) {
-            loadEpisode(current + 1, true);
+            loadEpisode(current + 1);
         }
     });
 
 
     /* ========= INIT ========= */
 
-    if (!loadFromURL()) {
-        loadEpisode(0, true);
-    }
+    loadEpisode(0);
+
 
 });
 
 
 
-/* =================================================
-   🔥 GENERADOR HTML (DEBAJO DEL ENGINE)
-================================================= */
+/* =========================================
+   🔥 GENERADORES
+========================================= */
 
 function buildSeasons(seasons, container) {
 
@@ -168,6 +155,7 @@ function buildSeasons(seasons, container) {
     seasons.forEach((season, index) => {
 
         const seasonDiv = document.createElement('div');
+
         seasonDiv.className = 'episodes season';
         seasonDiv.dataset.season = season.id;
 
@@ -178,28 +166,30 @@ function buildSeasons(seasons, container) {
         });
 
         container.appendChild(seasonDiv);
+
     });
+
 }
 
 
 function createEpisode(ep) {
 
     const article = document.createElement('article');
+
     article.className = 'episode';
     article.dataset.src = ep.src;
     article.dataset.title = ep.title;
-    article.dataset.vtt = ep.vtt || '';
 
     article.innerHTML = `
-        <div class="ep-thumb">
-            <img src="${ep.thumb || ''}" loading="lazy">
-        </div>
-        <div class="ep-info">
-            <h3>${ep.number}. ${ep.title}</h3>
-            <p>${ep.description || ''}</p>
-            <span>${ep.duration || ''}</span>
-        </div>
-    `;
+    <div class="ep-thumb">
+      <img src="${ep.thumb || ''}" loading="lazy">
+    </div>
+    <div class="ep-info">
+      <h3>${ep.number}. ${ep.title}</h3>
+      <p>${ep.description || ''}</p>
+      <span>${ep.duration || ''}</span>
+    </div>
+  `;
 
     return article;
 }
