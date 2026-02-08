@@ -3,7 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const menu = document.querySelector('.dropdown-menu');
     const seasons = document.querySelectorAll('.season');  // Todas las temporadas
 
-    if (!toggleButton || !menu) return;
+    if (!toggleButton || !menu || !seasons.length) {
+        console.error('No se encontraron los elementos necesarios en el DOM');
+        return;
+    }
 
     // Abre o cierra el menú y gira la flecha
     toggleButton.addEventListener('click', () => {
@@ -27,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleButton.textContent = 'Ver todos los episodios';  // Cambiar el texto del botón
             // Mostrar todos los episodios
             seasons.forEach(season => {
-                season.style.display = 'block';
+                season.style.display = 'block';  // Mostrar todas las temporadas
             });
             // Cerrar el menú
             menu.style.display = 'none';
@@ -40,10 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const seasonToShow = e.target.dataset.season; // Temporada seleccionada
             // Mostrar u ocultar temporadas según la elección
             seasons.forEach(season => {
+                // Si es la temporada seleccionada, mostrarla; de lo contrario, ocultarla
                 if (season.dataset.season === seasonToShow) {
-                    season.style.display = 'block'; // Mostrar la temporada seleccionada
+                    season.style.display = 'grid';  // Mostrar la temporada seleccionada en formato de grid
                 } else {
-                    season.style.display = 'none'; // Ocultar otras temporadas
+                    season.style.display = 'none';  // Ocultar la temporada no seleccionada
                 }
             });
 
