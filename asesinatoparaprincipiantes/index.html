@@ -208,6 +208,15 @@
 
   <script>
     const player = document.getElementById('player');
+    async function autoPlaySafe() {
+      try {
+        await player.play();
+      } catch {
+        player.muted = true;
+        await player.play();
+      }
+    }
+
     const layout = document.getElementById('layout');
     const episodes = Array.from(document.querySelectorAll('.episode'));
     /* ===== LOAD EPISODE FROM URL (?titledata=t1e6) ===== */
@@ -284,9 +293,7 @@
 
       // Esperar un tick para que el player aplique src antes de play
       if (autoplay) {
-        requestAnimationFrame(() => {
-          tryPlay();
-        });
+        requestAnimationFrame(autoPlaySafe);
       }
     }
 
@@ -304,7 +311,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       if (!loadFromURL()) {
-        loadEpisode(0, false);
+        loadEpisode(0, true);
       }
     });
   </script>

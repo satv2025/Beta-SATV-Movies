@@ -785,6 +785,15 @@
 
   <script>
     const player = document.getElementById('player');
+    async function autoPlaySafe() {
+      try {
+        await player.play();
+      } catch {
+        player.muted = true;
+        await player.play();
+      }
+    }
+
     const layout = document.getElementById('layout');
 
     let episodes = [];
@@ -863,9 +872,7 @@
         refreshThumbnails(vttUrlFor(info.season, info.ep));
       }
 
-      if (autoplay) {
-        requestAnimationFrame(() => safePlay());
-      }
+      requestAnimationFrame(autoPlaySafe);
 
       player.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
@@ -940,12 +947,39 @@
       });
     });
 
+    function loadFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const td = params.get('titledata');
+      if (!td) return false;
+
+      const match = td.match(/t(\d+)e(\d+)/i);
+      if (!match) return false;
+
+      const seasonNum = match[1];
+      const epNum = match[2];
+
+      episodes = getVisibleEpisodes();
+
+      const index = episodes.findIndex(card => {
+        const m = card.dataset.src.match(/\/t(\d+)\/E(\d+)\//i);
+        return m && m[1] === seasonNum && m[2] === epNum;
+      });
+
+      if (index !== -1) {
+        loadEpisode(index, true);
+        return true;
+      }
+
+      return false;
+    }
+
+
     // Init
     document.addEventListener('DOMContentLoaded', () => {
       episodes = getVisibleEpisodes();
 
       if (!loadFromURL()) {
-        loadEpisode(0, false);
+        loadEpisode(0, true);
       }
     });
 

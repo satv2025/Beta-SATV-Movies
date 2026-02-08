@@ -634,6 +634,15 @@
     const player = document.getElementById('player');
     const layout = document.getElementById('layout');
 
+    async function autoPlaySafe() {
+      try {
+        await player.play();
+      } catch {
+        player.muted = true;
+        await player.play();
+      }
+    }
+
     let episodes = [];
     let currentIndex = -1;
 
@@ -743,7 +752,7 @@
       }
 
       if (autoplay) {
-        requestAnimationFrame(() => safePlay());
+        requestAnimationFrame(autoPlaySafe);
       }
 
       player.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -824,7 +833,7 @@
       episodes = getVisibleEpisodes();
 
       if (!loadFromURL()) {
-        loadEpisode(0, false);
+        loadEpisode(0, true);
       }
     });
   </script>
