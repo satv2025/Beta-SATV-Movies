@@ -640,6 +640,40 @@
     let episodes = [];
     let currentIndex = -1;
 
+    /* ===== LOAD EPISODE FROM URL (?titledata=t1e6) ===== */
+    function loadFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const td = params.get('titledata');
+      if (!td) return false;
+
+      const match = td.match(/t(\d+)e(\d+)/i);
+      if (!match) return false;
+
+      const seasonNum = match[1];
+      const epNum = match[2];
+
+      // mostrar temporada correcta
+      seasons.forEach(s => {
+        s.style.display = s.dataset.season === seasonNum ? 'grid' : 'none';
+      });
+
+      toggle.textContent = `Temporada ${seasonNum}`;
+
+      episodes = getVisibleEpisodes();
+
+      const index = episodes.findIndex(card => {
+        const m = card.dataset.src.match(/\/t(\d+)\/E(\d+)\//i);
+        return m && m[1] === seasonNum && m[2] === epNum;
+      });
+
+      if (index !== -1) {
+        loadEpisode(index, false);
+        return true;
+      }
+
+      return false;
+    }
+
     function getVisibleEpisodes() {
       return Array.from(
         document.querySelectorAll('.season:not([style*="display: none"]) .episode')
@@ -699,6 +733,10 @@
 
       const src = epCard.dataset.src;
       const info = getSeasonAndEpFromSrc(src);
+
+      if (info) {
+        history.replaceState(null, '', `?titledata=t${info.season}e${info.ep}`);
+      }
 
       player.src = src;
       player.title = episodeTitleFromCard(epCard);  // Título actualizado
@@ -786,8 +824,8 @@
 
     // Init
     episodes = getVisibleEpisodes();
-    if (episodes.length) {
-      loadEpisode(0, false); // EP1 refrescado desde el arranque
+    if (!loadFromURL()) {
+      loadEpisode(0, false);
     }
   </script>
 

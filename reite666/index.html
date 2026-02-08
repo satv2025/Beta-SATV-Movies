@@ -854,6 +854,10 @@
       const src = epCard.dataset.src;
       const info = getSeasonAndEpFromSrc(src);
 
+      if (info) {
+        history.replaceState(null, '', `?titledata=t${info.season}e${info.ep}`);
+      }
+
       player.src = src;
 
       if (info) {
@@ -941,8 +945,8 @@
 
     // Init
     episodes = getVisibleEpisodes();
-    if (episodes.length) {
-      loadEpisode(0, false); // EP1 refrescado desde el arranque
+    if (!loadFromURL()) {
+      loadEpisode(0, false);
     }
   </script>
 

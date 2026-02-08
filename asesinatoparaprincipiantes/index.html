@@ -217,6 +217,35 @@
     const player = document.getElementById('player');
     const layout = document.getElementById('layout');
     const episodes = Array.from(document.querySelectorAll('.episode'));
+    /* ===== LOAD EPISODE FROM URL (?titledata=t1e6) ===== */
+    function loadFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const td = params.get('titledata');
+      if (!td) return false;
+
+      const match = td.match(/t(\d+)e(\d+)/i);
+      if (!match) return false;
+
+      const seasonNum = match[1];
+      const epNum = match[2];
+
+      const index = episodes.findIndex(ep => {
+        const m = ep.dataset.src.match(/\/t(\d+)\/e(\d+)|\/t(\d+)\/E(\d+)/i);
+        if (!m) return false;
+
+        const s = m[1] || m[3];
+        const e = m[2] || m[4];
+
+        return s === seasonNum && e === epNum;
+      });
+
+      if (index !== -1) {
+        loadEpisode(index, false);
+        return true;
+      }
+
+      return false;
+    }
     let current = 0;
 
     async function tryPlay() {
@@ -252,6 +281,14 @@
 
       current = index;
 
+      // actualizar URL
+      const m = ep.dataset.src.match(/\/t(\d+)\/e(\d+)|\/t(\d+)\/E(\d+)/i);
+      if (m) {
+        const season = m[1] || m[3];
+        const episode = m[2] || m[4];
+        history.replaceState(null, '', `?titledata=t${season}e${episode}`);
+      }
+
       // Esperar un tick para que el player aplique src antes de play
       if (autoplay) {
         requestAnimationFrame(() => {
@@ -273,7 +310,9 @@
     });
 
     // Cargar ep 1 por defecto (sin autoplay)
-    loadEpisode(0, false);
+    if (!loadFromURL()) {
+      loadEpisode(0, false);
+    }
   </script>
   <script src="../assets/js/all-episodes.js"></script>
 

@@ -29,6 +29,7 @@
 
     let cardsData = null;
     let fullInfoData = null; // Nuevo
+    let currentFullInfo = null;
 
     /* =========================
        VIDEO
@@ -69,7 +70,19 @@
         </div>
     `;
 
-        row.onclick = () => playVideo(ep.src, ep.poster);
+        row.onclick = () => {
+            if (currentFullInfo?.url) {
+
+                const season = (ep.season ?? 0) + 1;   // fallback seguro
+                const episode = ep.number || i + 1;
+
+                window.location.href =
+                    `${currentFullInfo.url}?titledata=t${season}e${episode}`;
+
+            } else {
+                playVideo(ep.src, ep.poster); // fallback por si es peli
+            }
+        };
 
         // Añadir bordes superior e inferior
         if (i === 0) row.style.borderTop = "1px solid #404040"; // borde superior solo en el primer episodio
@@ -409,6 +422,7 @@
         console.log("Clave para obtener información:", clave);
 
         const fullInfo = fullInfoData?.[clave];
+        currentFullInfo = fullInfo;
         console.log("Datos completos del modal:", fullInfo);
 
         if (!fullInfo) {
