@@ -1,0 +1,857 @@
+.nm-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 0;
+    z-index: 1000;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, .7);
+}
+
+.nm-modal.active {
+    display: flex;
+}
+
+.nm-shell {
+    position: relative;
+    width: 55.2em;
+    max-width: 1100px;
+    background: #181818;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 3px 10px;
+}
+
+.nm-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: #181818;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
+    padding: 6px !important;
+}
+
+.nm-hero {
+    position: relative;
+    background: #000;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.nm-hero video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.nm-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+    background: linear-gradient(0deg, #181818, transparent);
+}
+
+.nm-info {
+    padding: 0 3em 40px 2.9em;
+    color: #fff;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+span#nmSynoCuriosity {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 0.4em;
+    margin-bottom: -0.5em;
+}
+
+#nmEpisodes .grid.nm-grid-clone {
+    margin-top: 2.3em;
+}
+
+b {
+    color: #777;
+    font-weight: 300;
+}
+
+h1#modal-title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: 48px;
+}
+
+strong.titulo {
+    font-weight: 500;
+}
+
+span.about {
+    font-weight: 300;
+}
+
+.nm-grid-fallback .card:hover {
+    transform: unset !important;
+}
+
+.nm-dropdown-separator {
+    margin: 1rem 0.8em;
+    border: 1px solid rgb(77, 77, 77);
+}
+
+#nmYear,
+#nmDuration {
+    color: #bcbcbc;
+}
+
+span#nmYear {
+    width: 3em;
+}
+
+
+.nm-synopsis {
+    line-height: 1.6;
+    font-size: 16px;
+    font-weight: 400 !important;
+    max-height: 15em;
+    overflow-y: auto;
+    width: 30.21em;
+}
+
+@media (max-width: 768px) {
+    .nm-synopsis {
+        padding-right: 0;
+        max-height: 10em;
+
+    }
+}
+
+.nm-rightdata {
+    position: relative;
+    z-index: 10;
+    width: 18em;
+    max-width: 300px;
+    color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    pointer-events: auto;
+    font-size: 14px;
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 20px;
+    margin: -11.56em .5em 2.5em 38.5em;
+    word-break: break-word;
+}
+
+.nm-modal {
+    padding: 20px 0;
+
+}
+
+@media (max-width: 320px) {
+    .nm-modal {
+        padding: 10px 0;
+
+    }
+}
+
+.nm-episode-body {
+    position: relative;
+
+}
+
+.nm-episode-duration {
+    position: relative;
+    z-index: 1;
+
+}
+
+.nm-kv>* {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nm-kv-row {
+    margin-bottom: 0.4em;
+}
+
+a.scrollBtn {
+    cursor: pointer;
+}
+
+a.scrollBtn:hover {
+    text-decoration: underline;
+}
+
+.nm-kv-label {
+    color: #777;
+    margin-right: 6px;
+}
+
+.nm-series-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.nm-series-title {
+    font-weight: 600;
+    font-size: 23px;
+}
+
+.season-dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    background: #242424;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: .10em;
+    border: 0.04em solid rgb(77, 77, 77);
+    font-size: 19px;
+    font-weight: 500;
+    width: 11.56em;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 0.5em;
+}
+
+.dropdown-toggle::after {
+    content: "\25BC";
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: .25s;
+}
+
+.season-dropdown.open .dropdown-toggle::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 89%;
+    width: 15.4em;
+    background: #242424;
+    border: 0.04em solid rgb(77, 77, 77);
+    padding: 1em 0;
+    z-index: 20;
+}
+
+.season-dropdown.open .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu button {
+    width: 100%;
+    padding: 10px 14px;
+    background: none;
+    color: #fff;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+span.episode-count {
+    font-weight: 300;
+    font-size: 14px;
+    position: relative;
+    top: -0.11em;
+}
+
+.dropdown-menu button:hover {
+    background: #424242;
+}
+
+.nm-episodes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nm-episode {
+    display: grid;
+    grid-template-columns: 40px 150px 1fr;
+    align-items: center;
+    gap: 14px;
+    background: transparent;
+    border-bottom: 1px solid #404040;
+    padding: 26px;
+    border-radius: .25em;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    margin-top: -0.9em;
+    padding-top: 2.4em;
+    padding-bottom: 2.4em;
+}
+
+.nm-episode:hover {
+    background: #404040;
+}
+
+.nm-episode-thumb {
+    width: 150px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.nm-episode-body {
+    position: relative;
+    padding-right: 90px;
+}
+
+.nm-episode-duration {
+    font-size: 16px;
+    position: absolute;
+    top: -1px;
+    right: 0;
+    white-space: nowrap;
+    padding-right: 3.4em;
+}
+
+.nm-episode-title {
+    line-height: 1.2;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.nm-episode-desc {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left;
+    color: #d2d2d2;
+    width: 34em;
+}
+
+@media (max-width: 768px) {
+
+    .nm-shell {
+        width: 100vw;
+        border-radius: 0;
+    }
+
+    .nm-info {
+        padding: 20px;
+    }
+
+    .nm-series-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .dropdown-toggle,
+    .dropdown-menu {
+        width: 100%;
+    }
+
+    .nm-episode {
+        grid-template-columns: 1fr;
+    }
+
+    .nm-episode-thumb {
+        width: 100%;
+        height: 160px;
+    }
+
+    .nm-episode-number {
+        display: none;
+    }
+}
+
+.nm-episode-number {
+    font-size: 25px;
+    text-align: right;
+    position: relative;
+    left: -0.23em;
+}
+
+.all-d-toggle {
+    text-align: center;
+    width: 13.56em;
+    padding-right: 3em;
+}
+
+.all-d-toggle #nmSeasonMenu {
+    top: 93%;
+}
+
+@media (max-width: 1200px) {
+    .nm-episode-desc {
+        width: 100%;
+    }
+}
+
+@media (max-width: 882px) {
+    .nm-synopsis {
+        padding-right: 21em;
+        margin-bottom: 18px;
+    }
+
+    .nm-episode {
+        grid-template-columns: 36px 120px 1fr;
+        padding: 18px;
+    }
+
+    .nm-episode-thumb {
+        width: 120px;
+        height: 70px;
+    }
+
+    .nm-episode-desc {
+        width: 100%;
+    }
+}
+
+@media (max-width: 835px) {
+    .nm-synopsis {
+        padding-right: 23em;
+        margin-bottom: 18px;
+        font-size: 15px;
+    }
+
+    .nm-episode {
+        grid-template-columns: 36px 120px 1fr;
+        padding: 18px;
+    }
+
+    .nm-episode-thumb {
+        width: 120px;
+        height: 70px;
+    }
+
+    .nm-episode-desc {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .nm-shell {
+        width: 100vw;
+        border-radius: 0;
+    }
+
+    .nm-info {
+        padding: 18px;
+    }
+
+    .nm-series-head {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .dropdown-toggle,
+    .dropdown-menu {
+        width: 100%;
+    }
+
+
+    .nm-episode {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 16px 0;
+    }
+
+    .nm-episode-number {
+        text-align: left;
+        font-size: 20px;
+        left: 0;
+    }
+
+    .nm-episode-thumb {
+        width: 100%;
+        height: 180px;
+        border-radius: 6px !important;
+    }
+
+    .nm-episode-body {
+        padding-right: 0;
+    }
+
+    .nm-episode-duration {
+        position: static;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .nm-episode-desc {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .nm-close {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+    }
+
+    .nm-episode-thumb {
+        height: 150px;
+    }
+
+    .dropdown-toggle {
+        font-size: 16px;
+    }
+
+    .dropdown-menu button {
+        font-size: 16px;
+    }
+}
+
+.nm-metaLine {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: auto auto;
+    gap: 6px 16px;
+    font-size: 14px;
+    color: #bcbcbc;
+    align-items: center;
+
+}
+
+#nmYear {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#nmDuration {
+    grid-column: 1;
+    grid-row: 1;
+    padding-left: 3em;
+}
+
+#nmRating {
+    grid-column: 1;
+    grid-row: 2;
+    color: #fff !important
+}
+
+#nmRating span {
+    color: #fff !important;
+}
+
+span#nmRating {
+    color: #fff;
+}
+
+.nm-leftdata-ageRating {
+    border: 1px solid hsla(0, 0%, 100%, .4);
+    overflow: hidden;
+    padding: 0 .4em;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    unicode-bidi: normal;
+    white-space: nowrap;
+    margin-right: 0.4em;
+}
+
+.nm-badge {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#nmTagsLine {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+#about div {
+    margin-bottom: 0.3em;
+    color: #fff !important;
+    opacity: 1;
+}
+
+#about {
+    font-size: 14px;
+    line-height: 20px;
+    margin: .5em .5em .5em 0;
+    word-break: break-word;
+}
+
+#nmEpisodes .grid .card:hover {
+    transform: unset !important;
+}
+
+.nm-episode {
+    border-bottom: 1px solid #404040;
+}
+
+.nm-episode:first-child {
+    border-top: 1px solid #404040;
+}
+
+.nm-modal.active .nm-shell {
+    animation: zoomFadeIn 0.5s ease-in-out;
+}
+
+@keyframes zoomFadeIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.nm-mute,
+.nm-play {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.nm-mute {
+    left: 20px;
+
+}
+
+.nm-play {
+    right: 20px;
+
+}
+
+.nm-mute:hover,
+.nm-play:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+:focus {
+    outline: none;
+}
+
+.nm-play-button {
+    align-items: center;
+    background: #fff;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: -2.34em;
+    display: block;
+    position: relative;
+    top: -3.297em;
+    z-index: 3;
+    font-weight: 500;
+    -webkit-box-align: center;
+    align-items: center;
+    appearance: none;
+    border: 0px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    opacity: 1;
+    padding: 0.8rem;
+    position: relative;
+    user-select: none;
+    will-change: background-color, color;
+    word-break: break-word;
+    white-space: nowrap;
+    padding-left: 2rem;
+    padding-right: 2.4rem;
+    width: 10em;
+    margin-left: 1.92em;
+    font-size: 23.04px;
+}
+
+.nm-play-button:hover {
+    background: #E6E6E6;
+}
+
+.default-ltr-iqcdef-cache-kjpk1q.hasIcon {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+}
+
+.default-ltr-iqcdef-cache-kjpk1q.hasLabel {
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+}
+
+.play-icon-container {
+    margin-right: 10px;
+}
+
+.play-icon-container svg {
+    -webkit-font-smoothing: antialiased;
+    text-transform: none;
+    cursor: pointer;
+    user-select: none;
+    word-break: break-word;
+    white-space: nowrap;
+    color: black;
+    line-height: 0;
+    fill: currentColor;
+    box-sizing: inherit;
+    overflow: hidden;
+    height: 1em !important;
+    width: 3em !important;
+    font-size: 32px;
+}
+
+@media (max-width: 320px) {
+    .nm-modal {
+        padding: 20px 0;
+    }
+
+    .nm-shell {
+        width: 100vw;
+        padding: 0 10px;
+    }
+
+    .nm-hero video {
+        width: 100%;
+        height: auto;
+    }
+
+    .nm-info {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .nm-series-title {
+        font-size: 18px;
+    }
+
+    .nm-close {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+    }
+
+    .dropdown-toggle,
+    .dropdown-menu button {
+        font-size: 14px;
+    }
+
+    .nm-episode {
+        grid-template-columns: 1fr;
+        padding: 16px 0;
+    }
+
+    .nm-episode-thumb {
+        width: 100%;
+        height: 150px;
+    }
+
+    .nm-episode-title {
+        font-size: 18px;
+    }
+
+    .nm-episode-desc {
+        font-size: 12px;
+    }
+
+    .nm-play-button {
+        width: 80%;
+        font-size: 18px;
+    }
+
+    .play-icon-container svg {
+        width: 3em;
+        height: 1.5em;
+    }
+
+    #about {
+        font-size: 12px;
+    }
+
+    .nm-metaLine {
+        grid-template-columns: auto 1fr;
+    }
+
+    #nmYear,
+    #nmDuration {
+        grid-column: 1;
+    }
+}
+
+.nm-mute-btn {
+    width: 4em !important;
+    height: 4em !important;
+    font-size: 13px;
+    left: 60.28em;
+    top: 28.44em;
+}
+
+.nm-mute-btn svg {
+    font-size: 17px !important;
+}
+
+div#nmSeriesBlock {
+    margin-top: 1.46em;
+}
+
+@media (max-width: 768px) {
+    .nm-rightdata {
+        margin-left: 0;
+        margin-top: 0;
+        padding: 16px;
+        /* mismo padding si no querÃƒÂ©s achicar */
+    }
+}
+
+/* Se empieza a cortar Ã¢â€ â€™ reducimos el margen */
+@media (max-width: 884px) and (min-width: 740px) {
+    .nm-rightdata {
+        margin-left: 30em;
+    }
+}
+
+@media (max-width: 739px) and (min-width: 700px) {
+    .nm-rightdata {
+        margin-left: 25em;
+    }
+}
+
+.nm-leftdata {
+    display: inline-flex;
+    flex-direction: column;
+    width: auto;
+    max-width: 100%;
+}
+
+.nm-rightdata {
+    width: auto;
+    max-width: 100%;
+}
