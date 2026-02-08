@@ -1,0 +1,758 @@
+{
+  "mpp": {
+    "id": "mpp",
+    "title": "Matias Ponce – La Película",
+    "type": "Película",
+    "year": "2022",
+    "duration": "1 h",
+    "genres": [
+      "Hackers",
+      "fama",
+      "grandes élites"
+    ],
+    "poster": "https://old.movies.solargentinotv.com.ar/assets/media/images/mpthumb.jpg",
+    "video": "https://dynavod.solargentinotv.com.ar/MATIAS_PONCE_-_LA_PEL%C3%8DCULA__TR%C3%81ILER_OFICIAL_2022.webm",
+    "synopsis": "Matías Ponce, creador de contenido en redes, se enfrenta a alienígenas y hackers tras la misteriosa suspensión de su canal de YouTube, o como él lo llama “Yutun”, desatando una hilarante y absurda aventura.",
+    "cast": [
+      "Matías Ponce",
+      "Santino Ponce",
+      "Indio Ponce"
+    ],
+    "thisTitleIs": [
+      "Original",
+      "Delirante",
+      "De YouTube"
+    ],
+    "ageRating": "12+ adolescentes, adultos, lenguaje inapropiado"
+  },
+  "cp1": {
+    "id": "cp1",
+    "title": "100% Lucha – La Película",
+    "type": "Película",
+    "year": "2008",
+    "duration": "1 h 20 min",
+    "genres": [
+      "Acción",
+      "Comedia",
+      "Deporte"
+    ],
+    "poster": "https://old.movies.solargentinotv.com.ar/assets/media/images/100luchathumb.jpg",
+    "video": "https://dynavod.solargentinotv.com.ar/100_LUCHA_LA_PEL%C3%8DCULA__Tr%C3%A1iler__HD_.mp4",
+    "synopsis": "Koshe Plostenko, un mafioso implacable, secuestra a los luchadores de 100% Lucha para obligarlos a pelear en su club clandestino.",
+    "cast": [],
+    "writer": "",
+    "director": "",
+    "thisTitleIs": [],
+    "ageRating": ""
+  },
+  "cpeadc": {
+    "id": "cpeadc",
+    "title": "100% Lucha – El Amo De Los Clones",
+    "type": "Película",
+    "year": "2009",
+    "duration": "1 h 20 min",
+    "genres": [
+      "Lucha Libre",
+      "Sci-Fi",
+      "Clonación"
+    ],
+    "poster": "https://media.minutouno.com/p/8f27c301f5e629ec8dab0477e7a75ae0/adjuntos/150/imagenes/026/947/0026947782/1200x675/smart/lucha.png",
+    "video": "https://dynavod.solargentinotv.com.ar/100_LUCHA_EL_AMO_DE_LOS_CLONES__Tr%C3%A1iler__HD_.mp4",
+    "synopsis": "Damián Castillo, un doctor obsesionado, crea clones de los luchadores de 100% Lucha para arruinar a su ídolo.",
+    "cast": [
+      "Pablo Rago",
+      "Roberto Carnaghi",
+      "Juan Pablo Varsky"
+    ],
+    "thisTitleIs": [
+      "Intenso",
+      "Delirante",
+      "Divertido"
+    ],
+    "ageRating": "12+ lenguaje inapropiado, violencia, humor absurdo"
+  },
+  "mpa": {
+    "id": "mpa",
+    "title": "Mi Pobre Angelito",
+    "type": "Película",
+    "year": "1990",
+    "duration": "1 h 45 min",
+    "genres": [
+      "Infantil",
+      "Comedia",
+      "Fiestas navideñas"
+    ],
+    "poster": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/a3242080-601c-488b-afd2-1f9bed5f5d99/compose",
+    "video": "https://dynavod.solargentinotv.com.ar/Mi_Pobre_Angelito_1_trailer.mp4",
+    "synopsis": "Macaulay Culkin es Kevin McCallister, un niño olvidado en casa en Navidad que debe enfrentarse a dos torpes y despiadados ladrones.",
+    "cast": [
+      "Macaulay Culkin",
+      "Joe Pesci",
+      "Daniel Stern"
+    ],
+    "thisTitleIs": [
+      "Divertido",
+      "Familiar",
+      "Emotivo"
+    ],
+    "ageRating": "7+ humor slapstick, situaciones de riesgo cómicas"
+  },
+  "mpa2": {
+    "id": "mpa2",
+    "title": "Mi Pobre Angelito 2",
+    "type": "Película",
+    "year": "1992",
+    "duration": "2 h",
+    "genres": [
+      "Infantil",
+      "Comedia",
+      "Fiestas navideñas"
+    ],
+    "poster": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/5046911a-aaf2-4d52-8127-438643a35b24/compose",
+    "video": "https://dynavod.solargentinotv.com.ar/Mi_Pobre_Angelito_2_trailer.mp4",
+    "synopsis": "En esta secuela, Kevin McCallister toma un avión incorrecto y termina varado en Nueva York, donde debe nuevamente sortear a los torpes ladrones.",
+    "cast": [
+      "Macaulay Culkin",
+      "Joe Pesci",
+      "John Heard"
+    ],
+    "thisTitleIs": [
+      "Divertido",
+      "Familiar",
+      "Emotivo"
+    ],
+    "ageRating": "7+ humor slapstick, situaciones de riesgo cómicas"
+  },
+  "f2fnh": {
+    "id": "f2fnh",
+    "title": "Fears to Fathom: Norwood Hitchhike",
+    "type": "Película",
+    "year": "2025",
+    "duration": "20 min",
+    "genres": [
+      "Suspenso",
+      "Misterio",
+      "Thriller"
+    ],
+    "poster": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1763050/capsule_616x353.jpg",
+    "video": "https://dynavod.solargentinotv.com.ar/F2FNHTrailer.mp4",
+    "synopsis": "En este cortometraje basado en el videojuego Fears To Fathom, una adolescente es acechada en la noche mientras conduce de regreso a casa tras una convención de juegos.",
+    "cast": [
+      "Aryanna Ontiveros",
+      "Ben Eisenbise",
+      "Augie Fojtik"
+    ],
+    "thisTitleIs": [
+      "Intenso",
+      "Misterioso",
+      "Impactante"
+    ],
+    "ageRating": "17+ violencia moderada, temas inquietantes"
+  },
+  "app": {
+    "id": "app",
+    "title": "Asesinato Para Principiantes",
+    "type": "Serie",
+    "year": "2024",
+    "duration": "6 episodios",
+    "genres": [
+      "Misterio",
+      "Crimen",
+      "Drama"
+    ],
+    "poster": "https://old.movies.solargentinotv.com.ar/assets/media/images/appthumb.webp",
+    "video": "https://dynavod.solargentinotv.com.ar/Asesinato_para_principiantes__Tr%C3%A1iler_oficial__Netflix.mp4",
+    "synopsis": "Una estudiante empieza a investigar un asesinato para su proyecto escolar, pero a alguien no le gusta tanto la idea. Ahora, es ella quien corre peligro...",
+    "cast": [],
+    "writer": "",
+    "director": "",
+    "thisTitleIs": [],
+    "ageRating": "",
+    "seasons": [
+      {
+        "id": "",
+        "name": "Temporada",
+        "episodes": [
+          {
+            "number": 1,
+            "title": "Episodio 1",
+            "description": "Pip elige un caso de homicidio para su proyecto escolar. Pero cuando empieza                 a investigar, descubre que para algunas personas era mejor dejarlo enterrado                 para siempre.",
+            "duration": "43 min",
+            "thumb": "https://occ-0-2443-1380.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABWZF2eoicfQeT6aELH_c7w7SHVinKC_2WTh6Agz6BNawNOpk6f0pT1OyHXofKLF0VbuAwwnhp3SBR4lz5tzw8w1zMZRTQ8HEuisunCMIiPLcat08uXSd9-bZ.jpg?r=3dc",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/app/e1/Asesinato%20Para%20Principiantes%20-%20T1%20E1.m3u8"
+          },
+          {
+            "number": 2,
+            "title": "Episodio 2",
+            "description": "Luego de entrevistar a las mejores amigas de Andie, Pip tiene una idea más                 clara de quién era la víctima, pero tras reorganizar fotos viejas empieza a                 comprender mejor todo.",
+            "duration": "44 min",
+            "thumb": "https://occ-0-2443-1380.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABX-BLc2KS7V_5wC-hC6LlDd_SroTy0Y4wdNFmY29mp9oqa8Nm8r1DtWwrOEIdJvOVJYnc3KcVAzqk7o4GyKA4a8_Y3S1e_668WblEEQguOSqs1DDepdzjGNW.jpg?r=295",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/app/e2/Asesinato-Para-Principiantes-T1-E2.m3u8"
+          },
+          {
+            "number": 3,
+            "title": "Episodio 3",
+            "description": "Pip descubre por primera vez en su vida el lado oscuro cuando va a una fiesta                 clandestina. Y su siguiente pista la lleva a territorio aún más peligroso.",
+            "duration": "43 min",
+            "thumb": "https://occ-0-2443-1380.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABZFZxQ_3H4k_I3zmJMRiOKLNe1_GrqJNkeb8kbxUbo3BW36ENS1dRVFo6k1DGkyEGxmyOk75kJAbfdxnvFEjkD69DVNtdreSwYPOih-8x_ANCdq-iZ4K9tdV.jpg?r=ea1",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/app/e3/Asesinato-Para-Principiantes-T1-E3.m3u8"
+          },
+          {
+            "number": 4,
+            "title": "Episodio 4",
+            "description": "Pip y Ravi siguen una nueva pista que los lleva lejos de Little Kilton.                 Allí, descubren una valiosa prueba... y una desagradable sorpresa.",
+            "duration": "44 min",
+            "thumb": "https://occ-0-2443-1380.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABSo_MatlYO2jWUPL9faIELszBLkrkJmwezF1zJEcKyNK5-UHElCkgu1S9m9-XW67jnLWDiubH7zGbh-BG5wyCsVkBmOPmsflAhcC68PT51y-PDAzilFRNjb0.jpg?r=0ba",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/app/e4/Asesinato-Para-Principiantes-T1-E4.m3u8"
+          },
+          {
+            "number": 5,
+            "title": "Episodio 5",
+            "description": "Una impactante confesión arroja luz en la investigación. Antes de que Pip                 pueda decidir qué hacer, recibe otro mensaje amenazador.",
+            "duration": "50 min",
+            "thumb": "https://occ-0-2443-1380.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABcZRYV3jiK7dX9TXjvo76c_ANM-Uh_pEtZWDYKplNMcZM1nD-BOFVXc0LuP3Q67MSgAIoZY4-EDnTqGkiWbGIpqLeIGjlEf7sCKJgGSKQS-mD72AmMY04c28.jpg?r=3b4",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/app/e5/Asesinato-Para-Principiantes-T1-E5.m3u8"
+          },
+          {
+            "number": 6,
+            "title": "Episodio 6",
+            "description": "La policía hace un arresto, pero Pip no está segura de que el caso esté                 solucionado, así que va a visitar a la única persona que podría tener                 respuestas.",
+            "duration": "51 min",
+            "thumb": "https://occ-0-2443-1380.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABavhODFmul4rcDcnh-tms3ONT0gfagUL2ugsfW534HqW1PO6uH4nTuaKb0aG1zlrA_z8k829WjiiKbs466fqSvhsBXeQbybu8rk8AciDoKL-8zsVMHlZKtyO.jpg?r=4c7",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/app/e6/Asesinato-Para-Principiantes-T1-E6.m3u8"
+          }
+        ]
+      }
+    ]
+  },
+  "nivelx": {
+    "id": "nivelx",
+    "title": "Nivel X",
+    "type": "Serie",
+    "year": "2009",
+    "duration": "2 temporadas",
+    "genres": [
+      "Parodia",
+      "Comedia",
+      "Irreverente"
+    ],
+    "poster": "assets/media/images/nivelxthumbcard.jpg",
+    "video": "https://dynavod.solargentinotv.com.ar/trailer_persons_T1E1-26_order.mp4",
+    "synopsis": "Lionel Campoy y Natalia Dim enfrentan situaciones absurdas en Nivel X, una parodia caótica e imposible de ignorar.",
+    "cast": [
+      "Juan Manuel Paradiso",
+      "Juan Arnone",
+      "Sebastián Paradiso"
+    ],
+    "thisTitleIs": [
+      "Absurdo",
+      "Divertido",
+      "Caótico"
+    ],
+    "ageRating": "16+ humor irreverente, leguaje vulgar, contenido sexual no gráfico",
+    "seasons": [
+      {
+        "id": "1",
+        "name": "Temporada 1",
+        "episodes": [
+          {
+            "number": 1,
+            "title": "Programa 1",
+            "description": "2009 trae Nivel X, la parodia que arrasa en YouTube. Caos en El Planetario, locuras otaku y gamers, y                 nada sale como esperas.",
+            "duration": "10 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e001.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E1/playlist.m3u8"
+          },
+          {
+            "number": 2,
+            "title": "Programa 2",
+            "description": "Un día en el Jardín Japonés se convierte en espectáculo: notas a la gente, humor inesperado y chistes                 que                 solo los internautas entenderían.",
+            "duration": "6 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e002.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E2/playlist.m3u8"
+          },
+          {
+            "number": 3,
+            "title": "Programa 3",
+            "description": "Natalia atropella a Horacio con su Fiat Uno y, de vuelta en casa, Lionel la contacta para que lo acepte                 en Facebook, pero Natalia se encontraba haciendo cosas de mujeres.",
+            "duration": "6 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e003.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E3/playlist.m3u8"
+          },
+          {
+            "number": 4,
+            "title": "Programa 4",
+            "description": "Lionel hace las compras para que Natalia prepare un platillo navideño… que podría no ser del todo                 comestible. Mientras tanto, vuelven las notas en El Planetario, sumando más caos y risas.",
+            "duration": "7 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e004.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E4/playlist.m3u8"
+          },
+          {
+            "number": 5,
+            "title": "Programa 5",
+            "description": "Lionel abre y le pasa a Silvio y su calesita. Lionel muestra cómo descargar desde la estantería oculta;                 Natalia, entre PS2 y Tony Hawk, termina en un papelón con skaters.",
+            "duration": "7 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e005.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E5/playlist.m3u8"
+          },
+          {
+            "number": 6,
+            "title": "Programa 6",
+            "description": "Arranca A Jugar Con Hugo: un participante desaparece y comienza la búsqueda. Vuelven las notas en la                 Jigoku — cosplays, otakus, adrenalina y caos.",
+            "duration": "9 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e006.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E6/playlist.m3u8"
+          },
+          {
+            "number": 7,
+            "title": "Programa 7",
+            "description": "Nivel X amanece con la fatídica noticia de que Taku murió, por eso, Natalia, exparse sus cenizas por el                 alrededor del planetario, además prepara unos pancitos que dentro llevan también unas pocas cenizas de                 Taku.",
+            "duration": "8 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e007.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E7/playlist.m3u8"
+          },
+          {
+            "number": 8,
+            "title": "Programa 8",
+            "description": "",
+            "duration": "8 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e008.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E8/playlist.m3u8"
+          },
+          {
+            "number": 9,
+            "title": "Programa 9",
+            "description": "",
+            "duration": "8 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e009.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E9/playlist.m3u8"
+          },
+          {
+            "number": 10,
+            "title": "Programa 10",
+            "description": "",
+            "duration": "10 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e010.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E10/playlist.m3u8"
+          },
+          {
+            "number": 11,
+            "title": "Programa 11",
+            "description": "",
+            "duration": "12 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e011.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E11/playlist.m3u8"
+          },
+          {
+            "number": 12,
+            "title": "Programa 12",
+            "description": "",
+            "duration": "8 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e012.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E12/playlist.m3u8"
+          },
+          {
+            "number": 13,
+            "title": "Programa 13",
+            "description": "",
+            "duration": "13 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e013.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E13/playlist.m3u8"
+          },
+          {
+            "number": 14,
+            "title": "Programa 14",
+            "description": "",
+            "duration": "16 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e014.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E14/playlist.m3u8"
+          },
+          {
+            "number": 15,
+            "title": "Programa 15",
+            "description": "",
+            "duration": "11 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e015.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E15/playlist.m3u8"
+          },
+          {
+            "number": 16,
+            "title": "Programa 16",
+            "description": "",
+            "duration": "10 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e016.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E16/playlist.m3u8"
+          },
+          {
+            "number": 17,
+            "title": "Programa 17",
+            "description": "",
+            "duration": "10 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e017.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E17/playlist.m3u8"
+          },
+          {
+            "number": 18,
+            "title": "Programa 18",
+            "description": "",
+            "duration": "12 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e018.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E18/playlist.m3u8"
+          },
+          {
+            "number": 19,
+            "title": "Programa 19",
+            "description": "",
+            "duration": "8 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e019.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E19/playlist.m3u8"
+          },
+          {
+            "number": 20,
+            "title": "Programa 20",
+            "description": "",
+            "duration": "9 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e020.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E20/playlist.m3u8"
+          },
+          {
+            "number": 21,
+            "title": "Programa 21",
+            "description": "",
+            "duration": "8 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e021.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E21/playlist.m3u8"
+          },
+          {
+            "number": 22,
+            "title": "Programa 22",
+            "description": "",
+            "duration": "7 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e022.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E22/playlist.m3u8"
+          },
+          {
+            "number": 23,
+            "title": "Programa 23",
+            "description": "",
+            "duration": "9 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e023.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E23/playlist.m3u8"
+          },
+          {
+            "number": 24,
+            "title": "Programa 24",
+            "description": "",
+            "duration": "11 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e024.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E24/playlist.m3u8"
+          },
+          {
+            "number": 25,
+            "title": "Programa 25",
+            "description": "",
+            "duration": "8 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e025.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E25/playlist.m3u8"
+          },
+          {
+            "number": 26,
+            "title": "Programa 26",
+            "description": "",
+            "duration": "7 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e026.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E26/playlist.m3u8"
+          },
+          {
+            "number": 27,
+            "title": "Programa 27",
+            "description": "",
+            "duration": "10 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e027.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E27/playlist.m3u8"
+          },
+          {
+            "number": 28,
+            "title": "Programa 28",
+            "description": "",
+            "duration": "11 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e028.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E28/playlist.m3u8"
+          },
+          {
+            "number": 29,
+            "title": "Programa 29",
+            "description": "",
+            "duration": "11 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t1/Nivel_X_thumb_t1_e029.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E29/playlist.m3u8"
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "name": "Temporada 2",
+        "episodes": [
+          {
+            "number": 1,
+            "title": "Programa 1",
+            "description": "",
+            "duration": "11 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t2/Nivel_X_thumb_t2_e001.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t2/E1/playlist.m3u8"
+          },
+          {
+            "number": 2,
+            "title": "Programa 2",
+            "description": "",
+            "duration": "11 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t2/Nivel_X_thumb_t2_e002.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t2/E2/playlist.m3u8"
+          },
+          {
+            "number": 3,
+            "title": "Programa 3",
+            "description": "",
+            "duration": "11 min",
+            "thumb": "https://old.movies.solargentinotv.com.ar/assets/media/images/nivelx-thumbs/t2/Nivel_X_thumb_t2_e003.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t2/E3/playlist.m3u8"
+          }
+        ]
+      }
+    ]
+  },
+  "reite": {
+    "id": "reite",
+    "title": "Reite666",
+    "type": "Serie",
+    "year": "2018",
+    "duration": "2 temporadas",
+    "genres": [
+      "De España",
+      "Thriller psicológico",
+      "Youtubers Aventura"
+    ],
+    "poster": "https://old.movies.solargentinotv.com.ar/assets/media/images/Logo%20Reite666%202.png",
+    "video": "https://dynavod.solargentinotv.com.ar/trailer.mp4",
+    "synopsis": "Cilio, en España, recibe un mensaje que lo obliga a volver a Argentina para un juego macabro. Un error inesperado desata sucesos perturbadores que lo regresan de forma inexplicable.",
+    "cast": [
+      "Franco Crivera",
+      "Julián Iurchuk",
+      "Facundo Duré"
+    ],
+    "thisTitleIs": [
+      "Misterioso",
+      "Perturbador",
+      "Inquietante"
+    ],
+    "ageRating": "16+ lenguaje inapropiado",
+    "seasons": [
+      {
+        "id": "1",
+        "name": "Temporada 2",
+        "episodes": [
+          {
+            "number": 1,
+            "title": "E1",
+            "description": "Frimemo habló Frimemo rompe el silencio y revela todo lo que ocurrió tras el último video de la temporada 1. Viejas                 heridas se reabren y surgen nuevas incógnitas en el grupo.",
+            "duration": "12 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e01.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E1/1.m3u8"
+          },
+          {
+            "number": 2,
+            "title": "E2",
+            "description": "La llamada de CILIO CILIO, desde un avión rumbo a España, pide ayuda a Andros y Exi para ir a un lugar antes de las 09:30.                 Su pedido desata una nueva búsqueda llena de incertidumbre.",
+            "duration": "11 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e02.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E2/2.m3u8"
+          },
+          {
+            "number": 3,
+            "title": "E3",
+            "description": "La búsqueda de CILIO | Parte 1 La búsqueda inicia sin pistas claras y los lleva a un punto remoto donde encuentran una pistola. El                 hallazgo cambia el rumbo de la investigación y enciende las alarmas.",
+            "duration": "13 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e03.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E3/3.m3u8"
+          },
+          {
+            "number": 4,
+            "title": "E4",
+            "description": "La búsqueda de CILIO | Parte 2 Nuevas señales aparecen y el grupo sospecha que no están solos en el camino. El ambiente se vuelve                 tenso y misterioso mientras avanza la investigación.",
+            "duration": "11 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e04.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E4/4.m3u8"
+          },
+          {
+            "number": 5,
+            "title": "E5",
+            "description": "La búsqueda de CILIO | Parte 3 Un hallazgo inquietante eleva la tensión interna y provoca discusiones en el grupo. La búsqueda sigue,                 y el entorno se                 vuelve cada vez más hostil y peligroso para todos.",
+            "duration": "11 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e05.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E5/5.m3u8"
+          },
+          {
+            "number": 6,
+            "title": "E6",
+            "description": "El rescate de CILIO | Parte 1 Encuentran a CILIO encerrado tras una intensa búsqueda y la tensión crece al máximo. Andros y Exi idean                 un plan para distraer al psicópata y rescatarlo.",
+            "duration": "11 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e06.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E6/6.m3u8"
+          },
+          {
+            "number": 7,
+            "title": "E7",
+            "description": "El rescate de CILIO | Parte 2 Consiguen sacar a CILIO, que aparece inconsciente tras el encierro y el peligro. Lo llevan a la casa en                 España para que se recupere y vuelva en sí.",
+            "duration": "11 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e07.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E7/7.m3u8"
+          },
+          {
+            "number": 8,
+            "title": "E8",
+            "description": "Las cabañas del secuestrador La investigación los lleva a unas cabañas aisladas, donde hallan rastros inquietantes. Allí encuentran                 a una chica desorientada que parecía colocada, que no recuerda nada.",
+            "duration": "11 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e08.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E8/8.m3u8"
+          },
+          {
+            "number": 9,
+            "title": "E9",
+            "description": "La chica de la cabaña Llevan a la chica a un lugar seguro y ella relata lo que recuerda de la fiesta. Menciona a un                 “colombiano” que Andros y Exi creen que era CILIO.",
+            "duration": "12 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e09.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E9/9.m3u8"
+          },
+          {
+            "number": 10,
+            "title": "E10",
+            "description": "CILIO revela la amenaza Ya recuperado, CILIO explica lo poco que puede: alguien lo amenazó con hacerle daño a sus seres                 queridos si contaba la verdad. El grupo comprende que el peligro sigue muy cerca.",
+            "duration": "10 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e10.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E10/10.m3u8"
+          },
+          {
+            "number": 11,
+            "title": "E11",
+            "description": "El regreso de Frimemo Frimemo reaparece y cuenta que viajó a España para ver a una chica, pero descubre que fue otra trampa.                 Dos viejos personajes, Laura y Marta, entran en escena con un oscuro secreto.",
+            "duration": "14 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e11.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E11/11.m3u8"
+          },
+          {
+            "number": 12,
+            "title": "E12",
+            "description": "La conspiración de Laura y Marta Laura y Marta fueron forzadas a reunir a Frimemo y CILIO en España. Nadie vio al misterioso que regaló                 a CILIO un iPhone 8 cerrado con Geocaching instalada.",
+            "duration": "15 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e12.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E12/12.m3u8"
+          },
+          {
+            "number": 13,
+            "title": "E13",
+            "description": "La búsqueda comienza El psicópata escondió objetos usando Geocaching, la app que CILIO conoce bien.                 El grupo empieza a buscar cada pista siguiendo las coordenadas ocultas del juego.",
+            "duration": "13 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e13.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E13/13.m3u8"
+          },
+          {
+            "number": 14,
+            "title": "E14",
+            "description": "La llave Siguiendo las coordenadas, el grupo encuentra una misteriosa llave en el recorrido.                 El hallazgo confirma que el psicópata guía cada paso y vigila todos sus movimientos.",
+            "duration": "11 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e14.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E14/14.m3u8"
+          },
+          {
+            "number": 15,
+            "title": "E15",
+            "description": "La calavera Otra ubicación los conduce hasta una inquietante calavera bajo tierra y siniestra.                 Ese objeto da inicio a una serie de desafíos aún más perturbadores y peligrosos.",
+            "duration": "18 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e15.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E15/15.m3u8"
+          },
+          {
+            "number": 16,
+            "title": "E16",
+            "description": "Los retos de la calavera La calavera contiene retos que parecen regenerarse sin fin. Cuando Frimemo no cumple, el psicópata                 amenaza con hacer algo peor.",
+            "duration": "12 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e16.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E16/16.m3u8"
+          },
+          {
+            "number": 17,
+            "title": "E17",
+            "description": "La cuenta robada Como castigo, el psicópata hackea y roba el Instagram de Frimemo. El grupo comprende que su enemigo                 puede controlarlos a la distancia.",
+            "duration": "14 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e17.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E17/17.m3u8"
+          },
+          {
+            "number": 18,
+            "title": "E18",
+            "description": "La ubicación final El psicópata cita al grupo en una ubicación donde promete estar la cuenta de Frimemo. Ellos asisten,                 temiendo que sea otra trampa más.",
+            "duration": "48 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e18.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E18/18.m3u8"
+          },
+          {
+            "number": 19,
+            "title": "E19",
+            "description": "La montaña El psicópata los obliga a ir a una montaña remota para investigar una cueva extraña. La tensión sube                 cuando un conocido aparece y comienza a asustarlos con piedras.",
+            "duration": "19 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e19.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E19/19.m3u8"
+          },
+          {
+            "number": 20,
+            "title": "E20",
+            "description": "La cueva En la oscuridad, descubren nuevas pistas mientras Ismael, el hermano de Andros, sigue haciendo bromas.                 El miedo crece, pero logran mantenerse juntos pese a todo.",
+            "duration": "10 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e20.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E20/20.m3u8"
+          },
+          {
+            "number": 21,
+            "title": "E21",
+            "description": "La tansformación De repente, Ismael cambia de actitud y, como hipnotizado, lanza una piedra al estómago de Frimemo.                 Herido, el grupo logra escapar del lugar y la situación se vuelve aún más grave.",
+            "duration": "11 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e21.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E21/21.m3u8"
+          },
+          {
+            "number": 22,
+            "title": "E22",
+            "description": "Del Otro Lado - Parte 1 De regreso en la casa, reciben un handy con mensajes firmados como “Del Otro Lado”. El psicópata les da                 nuevas instrucciones y el misterio crece cada vez más.",
+            "duration": "12 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e22.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E22/22.m3u8"
+          },
+          {
+            "number": 23,
+            "title": "E23",
+            "description": "Del Otro Lado - Parte 2 A través del walkie talkie llegan mensajes extraños que aumentan el desconcierto. Cada palabra enreda                 más la situación y sienten que los observan de cerca.",
+            "duration": "12 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e23.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E23/23.m3u8"
+          },
+          {
+            "number": 24,
+            "title": "E24",
+            "description": "Del Otro Lado - Parte 3 Mientras investigan la casa, encuentran un papel oculto en el compartimiento de las pilas del handy.                 Allí descubren coordenadas que los llevan al siguiente destino del psicópata.",
+            "duration": "11 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e24.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E24/24.m3u8"
+          },
+          {
+            "number": 25,
+            "title": "E25",
+            "description": "El mensaje final: ¿Terminó Reite666? El psicópata los envía a una ubicación desconocida en busca de algo importante. Al llegar, Frimemo                 recibe un mensaje misterioso que deja el final completamente abierto.",
+            "duration": "11 min",
+            "thumb": "https://movies.solargentinotv.com.ar/assets/media/images/reite666thumbs/t2/Reite666_thumb_e25.png",
+            "src": "https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t2/E25/25.m3u8"
+          }
+        ]
+      }
+    ]
+  }
+}

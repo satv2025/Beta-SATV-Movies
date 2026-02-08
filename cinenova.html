@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CineNova – Catálogo</title>
+
+    <!-- Fuente Inter (moderna, estilo tech/streaming) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0f12;
+            color: #fff;
+            padding: 40px;
+        }
+
+        /* ===== TÍTULO ===== */
+        .catalog-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 28px;
+            letter-spacing: -0.5px;
+        }
+
+        /* ===== GRID ===== */
+        .nova-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 22px;
+        }
+
+        /* ===== CARD ===== */
+        .nova-tile {
+            background: #17171c;
+            border-radius: 14px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .nova-tile:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, .55);
+        }
+
+        /* ===== IMAGEN ===== */
+        .nova-thumb {
+            width: 100%;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .nova-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .35s ease;
+        }
+
+        .nova-tile:hover img {
+            transform: scale(1.08);
+        }
+
+        /* ===== INFO ===== */
+        .nova-info {
+            padding: 16px 16px 18px;
+        }
+
+        .nova-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .nova-meta {
+            font-size: 12px;
+            opacity: .65;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .nova-desc {
+            font-size: 13px;
+            line-height: 1.4;
+            opacity: .85;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
+            }
+
+            .catalog-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <h2 class="catalog-title">Películas destacadas</h2>
+
+    <section class="nova-grid">
+
+        <!-- CARD 1 -->
+        <article class="nova-tile" id="nova-item-01" onclick="location.href='/matiponcepeli'">
+            <figure class="nova-thumb">
+                <img src="https://old.movies.solargentinotv.com.ar/assets/media/images/mpthumb.jpg"
+                    alt="Matías Ponce – La Película" loading="lazy">
+            </figure>
+
+            <div class="nova-info">
+                <h3 class="nova-title">Matías Ponce – La Película</h3>
+                <span class="nova-meta">Película · 2022 · 1 h</span>
+                <p class="nova-desc">
+                    Matías Ponce se enfrenta a alienígenas y hackers tras la suspensión de su canal,
+                    desatando una aventura tan absurda como divertida.
+                </p>
+            </div>
+        </article>
+
+
+        <!-- CARD 2 -->
+        <article class="nova-tile" id="nova-item-02" onclick="location.href='/100lucha'">
+            <figure class="nova-thumb">
+                <img src="https://old.movies.solargentinotv.com.ar/assets/media/images/100luchathumb.jpg"
+                    alt="100% Lucha – La Película" loading="lazy">
+            </figure>
+
+            <div class="nova-info">
+                <h3 class="nova-title">100% Lucha – La Película</h3>
+                <span class="nova-meta">Película · 2008 · 1 h 20 min</span>
+                <p class="nova-desc">
+                    Un mafioso implacable secuestra a los luchadores para forzarlos a pelear
+                    en su club clandestino.
+                </p>
+            </div>
+        </article>
+
+
+        <!-- CARD 3 -->
+        <article class="nova-tile" id="nova-item-03" onclick="location.href='/100luchaeadc'">
+            <figure class="nova-thumb">
+                <img src="https://media.minutouno.com/p/8f27c301f5e629ec8dab0477e7a75ae0/adjuntos/150/imagenes/026/947/0026947782/1200x675/smart/lucha.png"
+                    alt="100% Lucha – El Amo de los Clones" loading="lazy">
+            </figure>
+
+            <div class="nova-info">
+                <h3 class="nova-title">100% Lucha – El Amo de los Clones</h3>
+                <span class="nova-meta">Película · 2009 · 1 h 20 min</span>
+                <p class="nova-desc">
+                    Un científico obsesionado crea clones de los luchadores para destruir a su ídolo.
+                </p>
+            </div>
+        </article>
+
+    </section>
+
+</body>
+
+</html>

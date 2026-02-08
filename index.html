@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sol Argentino TV Movies</title>
-  <link rel="stylesheet" href="assets/css/desktop.css">
   <link rel="stylesheet" href="assets/css/copyright.css">
+  <link rel="stylesheet" href="assets/css/modal-player.css">
   <link rel="stylesheet" href="assets/css/your-navigator-home.css">
   <link rel="icon" href="https://old.movies.solargentinotv.com.ar/assets/media/images/SolArgentinoTVMOVIES.ico">
 </head>
@@ -40,21 +40,16 @@
   </header>
 
   <!--  CC MODAL -->
-  <!-- Modal de consentimiento -->
   <div id="copyrightModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="copyrightTitle">
-
     <div class="modal-content">
       <h3 id="copyrightTitle">Aviso de derechos de autor</h3>
-
       <p>
         Este sitio pone a tu disposición contenido audiovisual protegido por derechos de autor.<br>
         Podés disfrutarlo exclusivamente para uso personal y privado.<br>
         Queda estrictamente prohibido copiar, grabar, distribuir o publicar el material por cualquier medio.<br>
         Ante la verificación de un uso no autorizado, la plataforma se reserva el derecho de iniciar acciones legales.
       </p>
-
       <p class="question">¿Aceptás estas condiciones y deseás continuar?</p>
-
       <div class="modal-actions">
         <button id="btnAccept" class="primary copybtn">Sí, acepto</button>
         <button id="btnDecline" class="secondary copybtn">No, salir</button>
@@ -63,23 +58,30 @@
   </div>
 
   <main>
-
     <section class="hero">
       <div class="hero-media hero hero-bg">
         <img class="hero-bg">
         <video class="hero-bg"></video>
         <button class="bmt-mute-btn mute-visible"></button>
       </div>
-
       <div class="hero-info">
         <h1 class="hero-title"></h1>
         <span class="hero-film-type film-type"></span>
-        <p class="synopsis hero-synopsis">
-        </p>
-
+        <p class="synopsis hero-synopsis"></p>
         <div class="hero-actions">
           <button class="btn primary">▶ Ver</button>
-          <button class="btn secondary">Esta es nuestra recomendación</button>
+          <button class="btn secondary" id="heroMoreBtn">
+            <div class="default-ltr-iqcdef-cache-1st24vv">
+              <div class="medium default-ltr-iqcdef-cache-iyulz3" role="presentation"><svg viewBox="0 0 24 24"
+                  width="24" height="24" data-icon="CircleIMedium" data-icon-id=":r7:" aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg" fill="none" role="img">
+                  <path fill="currentColor" fill-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2M0 12C0 5.373 5.373 0 12 0s12 5.373 12 12-5.373 12-12 12S0 18.627 0 12m13-2v8h-2v-8zm-1-1.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"
+                    clip-rule="evenodd"></path>
+                </svg></div>
+            </div>Más información
+          </button>
+          <button class="btn tertiary">Esta es nuestra recomendación</button>
         </div>
       </div>
     </section>
@@ -93,12 +95,10 @@
     <div class="grid">
 
       <!-- 1 -->
-      <div class="card" id="mpp" data-type="Película" onclick="location.href='/matiponcepeli'">
+      <div class="card" id="mpp" data-type="Película">
         <div class="media">
-          <img class="card-img" src="https://old.movies.solargentinotv.com.ar/assets/media/images/mpthumb.jpg"
-            alt="Matias Ponce">
-          <button class="bmt-mute-btn bmtMuteBtn">
-          </button>
+          <img class="card-img" src="assets/media/images/mppsvp.jpg" alt="Matias Ponce">
+          <button class="bmt-mute-btn bmtMuteBtn"></button>
         </div>
         <div class="meta">
           <h3>Matias Ponce – La Película</h3>
@@ -111,12 +111,10 @@
       </div>
 
       <!-- 2 -->
-      <div class="card" id="cp1" data-type="Película" onclick="location.href='/100lucha'">
+      <div class="card" id="cp1" data-type="Película">
         <div class="media">
-          <img class="card-img" src="https://old.movies.solargentinotv.com.ar/assets/media/images/100luchathumb.jpg"
-            alt="100 Lucha">
-          <button class="bmt-mute-btn bmtMuteBtn">
-          </button>
+          <img class="card-img" src="assets/media/images/100luchasevapronto.jpg" alt="100 Lucha">
+          <button class="bmt-mute-btn bmtMuteBtn"></button>
         </div>
         <div class="meta">
           <h3>100% Lucha – La Película</h3>
@@ -129,13 +127,10 @@
       </div>
 
       <!-- 3 -->
-      <div class="card" id="cpeadc" data-type="Película" onclick="location.href='/100luchaeadc'">
+      <div class="card" id="cpeadc" data-type="Película">
         <div class="media">
-          <img class="card-img"
-            src="https://media.minutouno.com/p/8f27c301f5e629ec8dab0477e7a75ae0/adjuntos/150/imagenes/026/947/0026947782/1200x675/smart/lucha.png"
-            alt="100 Lucha El Amo De Los Clones">
-          <button class="bmt-mute-btn bmtMuteBtn">
-          </button>
+          <img class="card-img" src="assets/media/images/100luchaclonessvp.webp" alt="100 Lucha El Amo De Los Clones">
+          <button class="bmt-mute-btn bmtMuteBtn"></button>
         </div>
         <div class="meta">
           <h3>100% Lucha – El Amo De Los Clones</h3>
@@ -148,13 +143,12 @@
       </div>
 
       <!-- 4 -->
-      <div class="card" id="mpa" data-type="Película" onclick="location.href='/homealone'">
+      <div class="card" id="mpa" data-type="Película">
         <div class="media">
           <img class="card-img"
             src="https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/a3242080-601c-488b-afd2-1f9bed5f5d99/compose"
             alt="Mi Pobre Angelito">
-          <button class="bmt-mute-btn bmtMuteBtn">
-          </button>
+          <button class="bmt-mute-btn bmtMuteBtn"></button>
         </div>
         <div class="meta">
           <h3>Mi Pobre Angelito</h3>
@@ -167,13 +161,12 @@
       </div>
 
       <!-- 5 -->
-      <div class="card" id="mpa2" data-type="Película" onclick="location.href='/homealone2'">
+      <div class="card" id="mpa2" data-type="Película">
         <div class="media">
           <img class="card-img"
             src="https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/5046911a-aaf2-4d52-8127-438643a35b24/compose"
             alt="Mi Pobre Angelito 2">
-          <button class="bmt-mute-btn bmtMuteBtn">
-          </button>
+          <button class="bmt-mute-btn bmtMuteBtn"></button>
         </div>
         <div class="meta">
           <h3>Mi Pobre Angelito 2</h3>
@@ -186,13 +179,12 @@
       </div>
 
       <!-- 6 -->
-      <div class="card" id="f2fnh" data-type="Película" onclick="location.href='/f2fnh'">
+      <div class="card" id="f2fnh" data-type="Película">
         <div class="media">
           <img class="card-img"
             src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1763050/capsule_616x353.jpg"
             alt="Fears to Fathom: Norwood Hitchhike">
-          <button class="bmt-mute-btn bmtMuteBtn">
-          </button>
+          <button class="bmt-mute-btn bmtMuteBtn"></button>
         </div>
         <div class="meta">
           <h3>Fears to Fathom: Norwood Hitchhike</h3>
@@ -205,12 +197,11 @@
       </div>
 
       <!-- 7 -->
-      <div class="card" id="app" data-type="Serie" onclick="location.href='/asesinatoparaprincipiantes'">
+      <div class="card" id="app" data-type="Serie">
         <div class="media">
           <img class="card-img" src="https://old.movies.solargentinotv.com.ar/assets/media/images/appthumb.webp"
             alt="Asesinato Para Principiantes">
-          <button class="bmt-mute-btn bmtMuteBtn">
-          </button>
+          <button class="bmt-mute-btn bmtMuteBtn"></button>
         </div>
         <div class="meta">
           <h3>Asesinato Para Principiantes</h3>
@@ -223,11 +214,10 @@
       </div>
 
       <!-- 8 -->
-      <div class="card" id="nivelx" data-type="Serie" onclick="location.href='/nivelx-maritokids'">
+      <div class="card" id="nivelx" data-type="Serie">
         <div class="media">
           <img class="card-img" src="assets/media/images/nivelxthumbcard.jpg" alt="Nivel X">
-          <button class="bmt-mute-btn bmtMuteBtn">
-          </button>
+          <button class="bmt-mute-btn bmtMuteBtn"></button>
         </div>
         <div class="meta">
           <h3>Nivel X</h3>
@@ -240,16 +230,12 @@
       </div>
 
       <!-- 9 -->
-      <div class="card" id="reite" data-type="Serie" onclick="location.href='/reite666'">
+      <div class="card" id="reite" data-type="Serie">
         <div class="media">
           <img class="card-img"
             src="https://old.movies.solargentinotv.com.ar/assets/media/images/Logo%20Reite666%202.png" alt="Reite666">
-
-          <!-- video SOLO por JS -->
-
           <button class="bmt-mute-btn bmtMuteBtn"></button>
         </div>
-
         <div class="meta">
           <h3>Reite666</h3>
           <span class="film-type">Serie · 2018 · 2 temporadas</span>
@@ -261,13 +247,12 @@
       </div>
 
       <!-- 10 -->
-      <div class="card" id="ciliocajas" data-type="Película" onclick="location.href='/lascajasmisteriosas'">
+      <div class="card" id="ciliocajas" data-type="Película">
         <div class="media">
           <img class="card-img"
             src="https://i.ytimg.com/vi/BVRfN2xViYs/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDJg6H_YA4V35Pdl8QVuruhW1PQ4A"
             alt="Las Cajas Misteriosas">
-          <button class="bmt-mute-btn bmtMuteBtn">
-          </button>
+          <button class="bmt-mute-btn bmtMuteBtn"></button>
         </div>
         <div class="meta">
           <h3>Las Cajas Misteriosas</h3>
@@ -281,7 +266,89 @@
           <span class="proximamente-span">Pronto · Estreno Especial</span>
         </div>
       </div>
+    </div>
 
+    <!-- ================= NETFLIX STYLE MODAL ================= -->
+    <div id="mediaModal" class="nm-modal" aria-hidden="true">
+      <div class="nm-backdrop"></div>
+
+      <div class="nm-shell" role="dialog" aria-modal="true">
+
+        <button class="nm-close" type="button">✕</button>
+
+        <!-- HERO -->
+        <div class="nm-hero">
+          <video id="nmVideo" playsinline preload="metadata"></video>
+          <a class="nm-play-button" href="#" id="nmPlayButton" target="_blank">
+            <div class="play-icon-container">
+              <svg viewBox="0 0 24 24" width="24" height="24" data-icon="PlayMedium" data-icon-id=":rav:"
+                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" role="img">
+                <path fill="currentColor"
+                  d="M5 2.7a1 1 0 0 1 1.48-.88l16.93 9.3a1 1 0 0 1 0 1.76l-16.93 9.3A1 1 0 0 1 5 21.31z"></path>
+              </svg>
+            </div>
+            <span class="play-button-text">Reproducir</span>
+          </a>
+          <button class="nm-mute-btn bmt-mute-btn mute-visible" aria-label="Mute / Unmute"><svg viewBox="0 0 24 24"
+              id="bmtMuteIcon">
+              <path fill="currentColor" fill-rule="evenodd"
+                d="M24 12a14 14 0 0 0-4.1-9.9l-1.41 1.41a12 12 0 0 1 0 16.98l1.41 1.41A14 14 0 0 0 24 12M11 4a1 1 0 0 0-1.7-.7L4.58 8H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3.59l4.7 4.7A1 1 0 0 0 11 20zM5.7 9.7 9 6.42V17.6l-3.3-3.3-.29-.29H2v-4h3.41zM16 12a6 6 0 0 0-1.76-4.24l-1.41 1.41a4 4 0 0 1 0 5.66l1.41 1.41A6 6 0 0 0 16 12m1.07-7.07a10 10 0 0 1 0 14.14l-1.41-1.41a8 8 0 0 0 0-11.32z"
+                clip-rule="evenodd"></path>
+            </svg></button>
+          <div class="nm-gradient"></div>
+        </div>
+
+        <!-- INFO -->
+        <div class="nm-info">
+          <div class="nm-meta-wrap">
+            <div class="nm-leftdata">
+              <div class="nm-metaLine">
+                <span id="nmYear" class="nm-metaItem"></span>
+                <span id="nmDuration" class="nm-metaItem"></span>
+                <span id="nmRating" class="nm-rating"></span>
+              </div>
+              <span id="nmSynoCuriosity" class="nm-synoCuriosity"></span>
+              <p id="nmSynopsis" class="nm-synopsis"></p>
+            </div>
+            <div class="nm-rightdata">
+              <div class="nm-kv">
+                <div class="nm-kv-row">
+                  <span class="nm-kv-label">Elenco:</span>
+                  <span id="nmCast"></span>
+                </div>
+
+                <div class="nm-kv-row">
+                  <span class="nm-kv-label">Géneros:</span>
+                  <span id="nmDirector"></span>
+                </div>
+
+                <div class="nm-kv-row">
+                  <span class="nm-kv-label">Este título es:</span>
+                  <span id="nmWriter"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SERIES -->
+          <div id="nmSeriesBlock" class="nm-series">
+            <div class="nm-series-head">
+              <div class="nm-series-title">Episodios</div>
+
+              <div class="season-dropdown">
+                <button id="nmSeasonToggle" class="dropdown-toggle">
+                  Temporada
+                </button>
+
+                <div id="nmSeasonMenu" class="dropdown-menu"></div>
+              </div>
+            </div>
+
+            <div id="nmEpisodes" class="nm-episodes"></div>
+            <div id="nmAbout"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
   <script src="assets/js/hero.js"></script>
@@ -289,41 +356,7 @@
   <script src="assets/js/filters.js"></script>
   <script src="assets/js/searcher.js"></script>
   <script src="assets/js/copyright.js"></script>
-  <script src="assets/js/live-btn-header=238x909234dxs2.js"></script>
-
-  <!-- CILIO SCRIPT -->
-  <script>
-    document.getElementById("ciliocajas").addEventListener(
-      "click",
-      function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-      },
-      true // 👈 fase de captura (clave)
-    );
-  </script>
-
-  <script>
-    const isDesktop = !!(
-      window.process?.versions?.electron
-    );
-
-    if (isDesktop) {
-
-      const body = document.body;
-
-      /* 1️⃣ borrar cualquier clase previa relacionada */
-      body.classList.remove("web-app", "mobile-app", "desktop-app");
-
-      /* 2️⃣ agregar la nueva */
-      body.classList.add("desktop-app");
-
-      /* 3️⃣ desactivar css web */
-      const webCSS = document.getElementById("webCSS");
-      if (webCSS) webCSS.remove();
-    }
-  </script>
-
+  <script src="assets/js/modalfunctions.js"></script>
 </body>
 
 </html>

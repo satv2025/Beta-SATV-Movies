@@ -19,26 +19,19 @@ document.addEventListener("DOMContentLoaded", () => {
         f2fnh: "https://dynavod.solargentinotv.com.ar/F2FNHTrailer.mp4"
     };
 
-    /* =========================
-       CARD RANDOM → HERO
-    ========================= */
-
     const randomCard = cards[Math.floor(Math.random() * cards.length)];
 
     const title = randomCard.querySelector("h3")?.textContent || "";
     const filmType = randomCard.querySelector(".film-type")?.textContent || "";
     const synopsis = randomCard.querySelector(".synopsis")?.textContent || "";
     const imageUrl = randomCard.querySelector(".card-img")?.src;
-    const cardId = randomCard.id;
-    const videoSrc = videoUrls[cardId];
 
-    /* =========================
-       HERO ELEMENTS
-    ========================= */
+    const videoSrc = videoUrls[randomCard.id];
+    if (!videoSrc) return;
 
     const hero = document.querySelector(".hero");
     const heroMedia = hero?.querySelector(".hero-media");
-    if (!hero || !heroMedia || !videoSrc) return;
+    if (!hero || !heroMedia) return;
 
     document.querySelector(".hero-title").textContent = title;
     document.querySelector(".hero-film-type").textContent = filmType;
@@ -50,8 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
     heroBg.alt = title;
     heroMedia.prepend(heroBg);
 
+
     /* =========================
-       COPYRIGHT CONSENT
+       CONSENT
     ========================= */
 
     const acceptBtn = document.getElementById("btnAccept");
@@ -62,11 +56,13 @@ document.addEventListener("DOMContentLoaded", () => {
         startHeroVideo();
     }, { once: true });
 
+
     /* =========================
        HERO VIDEO
     ========================= */
 
     function startHeroVideo() {
+
         if (!userAccepted) return;
 
         resetHero();
@@ -74,13 +70,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const video = document.createElement("video");
         video.className = "hero-bg";
         video.src = videoSrc;
-        video.muted = false; // 🔊 empieza con volumen
+        video.muted = true;
         video.playsInline = true;
+        video.autoplay = true;
+        video.loop = true;
 
         heroMedia.prepend(video);
-        video.play().catch(() => { });
 
-        /* ===== BOTÓN MUTE (CREADO OCULTO) ===== */
+
+        /* =====================================================
+           🔊 BOTÓN MUTE ORIGINAL — SIN TOCAR ABSOLUTAMENTE NADA
+        ===================================================== */
 
         const muteButton = document.createElement("button");
         muteButton.className = "bmt-mute-btn"; // ⛔ SIN mute-visible
@@ -93,10 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
         muteButton.appendChild(muteIcon);
         heroMedia.appendChild(muteButton);
 
-        /* ICONO INICIAL → VOLUMEN (TU PATH) */
         muteIcon.innerHTML = `<path fill="currentColor" fill-rule="evenodd" d="M24 12a14 14 0 0 0-4.1-9.9l-1.41 1.41a12 12 0 0 1 0 16.98l1.41 1.41A14 14 0 0 0 24 12M11 4a1 1 0 0 0-1.7-.7L4.58 8H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3.59l4.7 4.7A1 1 0 0 0 11 20zM5.7 9.7 9 6.42V17.6l-3.3-3.3-.29-.29H2v-4h3.41zM16 12a6 6 0 0 0-1.76-4.24l-1.41 1.41a4 4 0 0 1 0 5.66l1.41 1.41A6 6 0 0 0 16 12m1.07-7.07a10 10 0 0 1 0 14.14l-1.41-1.41a8 8 0 0 0 0-11.32z" clip-rule="evenodd"></path>`;
 
-        /* Mostrar botón SOLO DESPUÉS DE CREARSE */
         requestAnimationFrame(() => {
             muteButton.classList.add("mute-visible");
         });
@@ -112,13 +110,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 muteIcon.innerHTML = `<path fill="currentColor" fill-rule="evenodd" d="M11 4a1 1 0 0 0-1.7-.7L4.58 8H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3.59l4.7 4.7A1 1 0 0 0 11 20zM5.7 9.7 9 6.42V17.6l-3.3-3.3-.29-.29H2v-4h3.41zm9.6 0 2.29 2.3-2.3 2.3 1.42 1.4L19 13.42l2.3 2.3 1.4-1.42-2.28-2.3 2.3-2.3-1.42-1.4-2.3 2.28-2.3-2.3z" clip-rule="evenodd"></path>`;
             }
         });
-
-        video.addEventListener("ended", resetHero);
     }
 
-    /* =========================
-       RESET HERO
-    ========================= */
 
     function resetHero() {
         heroMedia.querySelector("video.hero-bg")?.remove();
@@ -129,17 +122,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    /* =========================
-       INTERSECTION OBSERVER
-    ========================= */
-
-    const observer = new IntersectionObserver(
-        ([entry]) => {
-            if (!userAccepted) return;
-            entry.isIntersecting ? startHeroVideo() : resetHero();
-        },
-        { threshold: 0.3 }
-    );
-
-    observer.observe(hero);
 });
