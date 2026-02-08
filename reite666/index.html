@@ -40,12 +40,9 @@
 
     <section class="hero">
       <div class="media">
-        <media-player id="player" title="Reite666"
-          src="https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/reite666/t1/E1/REITE666%20T1%20E1.m3u8">
+        <media-player id="player">
           <media-provider></media-provider>
-          <media-video-layout id="layout"
-            thumbnails="https://movies.solargentinotv.com.ar/assets/media/reite666-episode-plyr-thumbnails/t1/e1/thumbs.vtt">
-          </media-video-layout>
+          <media-video-layout id="layout"></media-video-layout>
         </media-player>
       </div>
 
@@ -944,9 +941,42 @@
     });
 
     // Init
-    episodes = getVisibleEpisodes();
-    if (!loadFromURL()) {
-      loadEpisode(0, false);
+    document.addEventListener('DOMContentLoaded', () => {
+      episodes = getVisibleEpisodes();
+
+      if (!loadFromURL()) {
+        loadEpisode(0, false);
+      }
+    });
+
+    function loadFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const td = params.get('titledata');
+      if (!td) return false;
+
+      const match = td.match(/t(\d+)e(\d+)/i);
+      if (!match) return false;
+
+      const seasonNum = match[1];
+      const epNum = match[2];
+
+      seasons.forEach(s => {
+        s.style.display = s.dataset.season === seasonNum ? 'grid' : 'none';
+      });
+
+      episodes = getVisibleEpisodes();
+
+      const index = episodes.findIndex(card => {
+        const m = card.dataset.src.match(/\/t(\d+)\/E(\d+)/i);
+        return m && m[1] === seasonNum && m[2] === epNum;
+      });
+
+      if (index !== -1) {
+        loadEpisode(index, false);
+        return true;
+      }
+
+      return false;
     }
   </script>
 

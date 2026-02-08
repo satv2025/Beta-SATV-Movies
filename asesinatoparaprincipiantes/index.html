@@ -43,16 +43,9 @@
 
       <!-- PLAYER -->
       <div class="media">
-        <media-player id="player" title="Episodio 1"
-          src="https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/app/e1/Asesinato%20Para%20Principiantes%20-%20T1%20E1.m3u8"
-          poster="https://old.movies.solargentinotv.com.ar/assets/media/images/appthumb.webp">
-
+        <media-player id="player">
           <media-provider></media-provider>
-
-          <media-video-layout id="layout"
-            thumbnails="https://movies.solargentinotv.com.ar/assets/media/app-episode-thumbnails/t1/e1/thumbs.vtt">
-          </media-video-layout>
-
+          <media-video-layout id="layout"></media-video-layout>
         </media-player>
       </div>
 
@@ -309,10 +302,11 @@
       }
     });
 
-    // Cargar ep 1 por defecto (sin autoplay)
-    if (!loadFromURL()) {
-      loadEpisode(0, false);
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!loadFromURL()) {
+        loadEpisode(0, false);
+      }
+    });
   </script>
   <script src="../assets/js/all-episodes.js"></script>
 

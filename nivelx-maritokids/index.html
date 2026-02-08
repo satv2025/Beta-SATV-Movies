@@ -48,15 +48,12 @@
     <section class="hero">
 
       <div class="media">
-        <media-player id="player" title="Programa 1"
-          src="https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t1/E1/playlist.m3u8">
+        <media-player id="player">
 
           <media-provider></media-provider>
 
           <!-- ESTE NO SE TOCA -->
-          <media-video-layout id="layout"
-            thumbnails="https://movies.solargentinotv.com.ar/assets/media/nivelxmarito-episode-thumbnails/t1/e1/thumbs.vtt">
-          </media-video-layout>
+          <media-video-layout id="layout"></media-video-layout>
 
         </media-player>
       </div>
@@ -823,10 +820,13 @@
     });
 
     // Init
-    episodes = getVisibleEpisodes();
-    if (!loadFromURL()) {
-      loadEpisode(0, false);
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+      episodes = getVisibleEpisodes();
+
+      if (!loadFromURL()) {
+        loadEpisode(0, false);
+      }
+    });
   </script>
 
   <script>
