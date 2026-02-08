@@ -1,6 +1,7 @@
 /* =========================
    UNIVERSAL PLAYER ENGINE
-   + JSON AUTO GENERATOR FIXED
+   + cardsData.json (episodios)
+   + vttVidstack.json (thumbnails)
    ========================= */
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -11,35 +12,45 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (!player) return;
 
-    /* =========================================
-       1️⃣ GENERAR EPISODIOS DESDE TU JSON REAL
-    ========================================= */
-
     const seriesId = document.body.dataset.series;
 
     let episodes = [];
+    let vttMap = {};
+
+
+    /* =========================================
+       1️⃣ CARGAR AMBOS JSON
+    ========================================= */
 
     try {
 
-        const res = await fetch('../assets/json/cardsData.json');
-        const data = await res.json();
+        const [cardsRes, vttRes] = await Promise.all([
+            fetch('../assets/json/cardsData.json'),
+            fetch('../assets/json/vttVidstack.json')
+        ]);
 
-        const title = data[seriesId];
+        const cardsData = await cardsRes.json();
+        const vttData = await vttRes.json();
 
-        /* ❌ no existe */
-        if (!title) {
-            console.warn('Serie no encontrada:', seriesId);
-            return;
+        const title = cardsData[seriesId];
+        const vttTitle = vttData[seriesId];
+
+        if (!title) return;
+
+        /* ========= CREAR MAPA RÁPIDO VTT ========= */
+
+        if (vttTitle?.seasons) {
+            vttTitle.seasons.forEach(season => {
+                season.episodes.forEach(ep => {
+                    vttMap[`${season.id}-${ep.number}`] = ep.vtt;
+                });
+            });
         }
 
-        /* 🎬 es película → no generar episodios */
-        if (!title.seasons || !listContainer) {
-            console.log('Película detectada → sin episodios');
-        }
+        /* ========= GENERAR TEMPORADAS ========= */
 
-        /* 📺 es serie */
-        if (title.seasons) {
-            buildSeasons(title.seasons, listContainer);
+        if (title.seasons && listContainer) {
+            buildSeasons(title.seasons, listContainer, vttMap);
         }
 
     } catch (e) {
@@ -49,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
     /* =========================================
-       2️⃣ RELEER EPISODES YA GENERADOS
+       2️⃣ RELEER EPISODIOS
     ========================================= */
 
     episodes = Array.from(document.querySelectorAll('.episode'));
@@ -64,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             await player.play();
         } catch {
-            player.muted = true;
+            player.muted = false;
             await player.play();
         }
     }
@@ -96,7 +107,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     /* ========= LOAD ========= */
 
-    function loadEpisode(index, autoplay = true) {
+    function loadEpisode(index) {
 
         const card = episodes[index];
         if (!card) return;
@@ -108,17 +119,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         player.src = card.dataset.src;
 
-        if (card.dataset.title) player.title = card.dataset.title;
+        if (card.dataset.title)
+            player.title = card.dataset.title;
 
         const info = getSeasonEp(card.dataset.src);
 
         if (info) {
             setURL(info.season, info.ep);
 
-            if (card.dataset.vtt) refreshThumbs(card.dataset.vtt);
+            if (card.dataset.vtt)
+                refreshThumbs(card.dataset.vtt);
         }
 
-        if (autoplay) requestAnimationFrame(autoPlaySafe);
+        requestAnimationFrame(autoPlaySafe);
     }
 
 
@@ -139,7 +152,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     loadEpisode(0);
 
-
 });
 
 
@@ -148,7 +160,7 @@ document.addEventListener('DOMContentLoaded', async () => {
    🔥 GENERADORES
 ========================================= */
 
-function buildSeasons(seasons, container) {
+function buildSeasons(seasons, container, vttMap) {
 
     container.innerHTML = '';
 
@@ -159,37 +171,46 @@ function buildSeasons(seasons, container) {
         seasonDiv.className = 'episodes season';
         seasonDiv.dataset.season = season.id;
 
-        if (index !== 0) seasonDiv.style.display = 'none';
+        if (index !== 0)
+            seasonDiv.style.display = 'none';
 
         season.episodes.forEach(ep => {
-            seasonDiv.appendChild(createEpisode(ep));
+            seasonDiv.appendChild(createEpisode(ep, season.id, vttMap));
         });
 
         container.appendChild(seasonDiv);
-
     });
-
 }
 
 
-function createEpisode(ep) {
+
+function createEpisode(ep, seasonId, vttMap) {
 
     const article = document.createElement('article');
 
     article.className = 'episode';
+
     article.dataset.src = ep.src;
     article.dataset.title = ep.title;
 
+    /* 🔥 MATCH season + number */
+
+    const key = `${seasonId}-${ep.number}`;
+
+    if (vttMap[key])
+        article.dataset.vtt = vttMap[key];
+
+
     article.innerHTML = `
-    <div class="ep-thumb">
-      <img src="${ep.thumb || ''}" loading="lazy">
-    </div>
-    <div class="ep-info">
-      <h3>${ep.number}. ${ep.title}</h3>
-      <p>${ep.description || ''}</p>
-      <span>${ep.duration || ''}</span>
-    </div>
-  `;
+        <div class="ep-thumb">
+            <img src="${ep.thumb || ''}" loading="lazy">
+        </div>
+        <div class="ep-info">
+            <h3>${ep.number}. ${ep.title}</h3>
+            <p>${ep.description || ''}</p>
+            <span>${ep.duration || ''}</span>
+        </div>
+    `;
 
     return article;
 }
