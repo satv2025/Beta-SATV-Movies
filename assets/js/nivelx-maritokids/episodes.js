@@ -1,19 +1,23 @@
-function generateNivelX(season, total) {
+document.addEventListener('DOMContentLoaded', () => {
 
-    const container = document.getElementById(`nivelx-t${season}`);
+    function generateNivelX(season, total) {
 
-    for (let i = 1; i <= total; i++) {
+        const container = document.getElementById(`nivelx-t${season}`);
+        if (!container) return;
 
-        container.insertAdjacentHTML('beforeend', `
-      <article class="episode"
-        data-src="https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx/t${season}/E${i}/${i}.m3u8"
-        data-vtt="https://movies.solargentinotv.com.ar/assets/media/nivelx-episode-thumbnails/t${season}/e${i}/thumbs.vtt"
-        data-title="T${season}E${i}">
-      </article>
-    `);
+        for (let i = 1; i <= total; i++) {
+
+            container.insertAdjacentHTML('beforeend', `
+        <article class="episode"
+          data-src="https://cdn.jsdelivr.net/gh/satv2025/media@main/videos/nivelx-maritokids/t${season}/E${i}/playlist.m3u8"
+          data-title="Programa ${i}">
+        </article>
+      `);
+        }
     }
-}
 
-/* 👇 EDITÁS SOLO ACÁ */
-generateNivelX(1, 29);
-generateNivelX(2, 3);
+    // 👇 SOLO editás cantidades
+    generateNivelX(1, 29);
+    generateNivelX(2, 3);
+
+});
