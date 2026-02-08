@@ -7,8 +7,10 @@
 
     <title>Aviso de disponibilidad | SATV Movies</title>
 
+    <!-- TU CSS -->
     <link rel="stylesheet" href="../assets/css/individual.css">
-    <!-- Fuente Netflix Sans -->
+
+    <!-- Fuente -->
     <link rel="stylesheet" href="https://solargentinotv.com.ar/assets/fonts/NetflixSans/netflixsans.css">
 </head>
 
@@ -24,46 +26,103 @@
     </header>
 
 
-    <!-- CONTENIDO -->
     <main>
 
-        <section class="notice-card">
+        <section class="hero">
 
-            <h1>📢 Aviso sobre disponibilidad de contenidos</h1>
+            <!-- reutilizamos tu .card -->
+            <div class="card">
 
-            <p>
-                Los títulos destacados en el inicio bajo la etiqueta
-                <strong>“Se va pronto”</strong> dejarán de estar disponibles en
-                <strong>Sol Argentino TV MOVIES</strong>.
-            </p>
+                <h1>📢 Aviso sobre disponibilidad de contenidos</h1>
 
-            <div class="separator"></div>
+                <p>
+                    Los títulos destacados bajo la etiqueta <strong>“Se va pronto”</strong>
+                    dejarán de estar disponibles en <strong>Sol Argentino TV MOVIES</strong>.
+                </p>
 
-            <p>
-                Cada contenido indicará su <strong>fecha exacta de salida</strong>
-                dentro del modal informativo. Finalizado ese plazo,
-                será <strong>trasladado al catálogo de CineNova</strong>,
-                donde continuará disponible para su visualización.
-            </p>
+                <span class="separator"></span>
 
-            <p>
-                Esta reorganización responde a decisiones estratégicas y operativas
-                del equipo directivo de SATV MOVIES, con el objetivo de optimizar la
-                distribución del catálogo entre plataformas.
-            </p>
+                <p>
+                    Cada contenido indicará su <strong>fecha exacta de salida</strong> dentro del modal.
+                    Luego será <strong>trasladado al catálogo de CineNova</strong>
+                    por decisiones estratégicas del equipo directivo.
+                </p>
 
-            <div class="separator"></div>
+                <span class="separator"></span>
 
-            <div class="highlight">
-                💡 Recomendamos disfrutar estos títulos antes de la fecha indicada
-                o continuar viéndolos posteriormente en CineNova.
+
+                <!-- ===================================================
+             🔥 DROPDOWN USANDO TUS CLASES EXISTENTES
+             (season-dropdown)
+        ==================================================== -->
+
+                <div class="season-dropdown" id="currencyDropdown">
+
+                    <button class="dropdown-toggle">
+                        Precio en ARS
+                    </button>
+
+                    <div class="dropdown-menu">
+                        <button data-cur="ARS">ARS <span>Peso argentino</span></button>
+                        <button data-cur="USD">USD <span>Dólar blue</span></button>
+                        <button data-cur="EUR">EUR <span>Euro</span></button>
+                        <button data-cur="GBP">GBP <span>Libra est.</span></button>
+                    </div>
+                </div>
+
+
+                <p id="priceBox" style="margin-top:1.5em;">
+                    💡 Costo sugerido: <strong>4.700 ARS</strong>
+                </p>
+
             </div>
-
-            <a href="/" class="cta">Entendido</a>
 
         </section>
 
     </main>
+
+
+    <!-- ===================================================
+       JS mínimo (solo abre/cierra + convierte)
+  ==================================================== -->
+    <script>
+        const base = 4700;
+
+        // dólar blue aprox hoy (dolarhoy)
+        const blue = 1435;
+
+        const rates = {
+            ARS: 1,
+            USD: 1 / blue,
+            EUR: (1 / blue) * 0.93,
+            GBP: (1 / blue) * 0.82
+        };
+
+        const dd = document.getElementById("currencyDropdown");
+        const toggle = dd.querySelector(".dropdown-toggle");
+        const menu = dd.querySelector(".dropdown-menu");
+        const priceBox = document.getElementById("priceBox");
+
+        // abrir/cerrar usando tu clase .open
+        toggle.onclick = () => dd.classList.toggle("open");
+
+        menu.querySelectorAll("button").forEach(btn => {
+            btn.onclick = () => {
+                const cur = btn.dataset.cur;
+                const val = (base * rates[cur]).toFixed(2);
+
+                toggle.textContent = `Precio en ${cur}`;
+                priceBox.innerHTML = `💡 Costo sugerido: <strong>${val} ${cur}</strong>`;
+
+                dd.classList.remove("open");
+            };
+        });
+
+        // cerrar si clic afuera
+        document.addEventListener("click", e => {
+            if (!dd.contains(e.target)) dd.classList.remove("open");
+        });
+    </script>
 
 </body>
 
