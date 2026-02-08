@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const seriesId = document.body.dataset.series; // <body data-series="nivelx">
 
     try {
-        const res = await fetch('../assets/json/series.json');
+        const res = await fetch('../assets/json/cardsData.json');
         const data = await res.json();
 
         const series = data[seriesId];
