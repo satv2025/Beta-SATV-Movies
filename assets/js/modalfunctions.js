@@ -431,7 +431,13 @@
         }
 
         renderAbout(data, fullInfo);
-        curiosity.textContent = data.curiosity || "";
+        if (data.curiosity && data.curiosity.trim() !== "") {
+            curiosity.textContent = data.curiosity;
+            curiosity.style.display = "";
+        } else {
+            curiosity.textContent = "";
+            curiosity.style.display = "none";
+        }
         synopsis.textContent = data.synopsis || "";
         castEl.textContent = (data.cast || []).join(", ");
         directorEl.textContent = (data.genres || []).join(", ");
