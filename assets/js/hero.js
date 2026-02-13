@@ -37,6 +37,16 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".hero-film-type").textContent = filmType;
     document.querySelector(".hero-synopsis").textContent = synopsis;
 
+    /* =========================
+   MÁS INFORMACIÓN → ABRIR MODAL
+========================= */
+
+    const moreBtn = document.getElementById("heroMoreBtn");
+
+    moreBtn?.addEventListener("click", () => {
+        window.openMediaModal(randomCard.id);
+    });
+
     const heroBg = document.createElement("img");
     heroBg.className = "hero-bg";
     heroBg.src = imageUrl;

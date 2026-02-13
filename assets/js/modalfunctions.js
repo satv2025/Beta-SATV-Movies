@@ -108,7 +108,7 @@
         return row;
     }
 
-    function renderEpisodes(season) {
+    ffunction renderEpisodes(season) {
         console.log("Renderizando episodios de la temporada:", season);
         const frag = document.createDocumentFragment();
         season?.episodes?.forEach((ep, i) => frag.appendChild(createEpisodeRow(ep, i)));
@@ -121,6 +121,38 @@
             // Clonamos el grid y lo insertamos dentro del modal
             const gridClone = originalGrid.cloneNode(true);
             gridClone.classList.add("nm-grid-clone"); // Añadimos una clase para identificarlo dentro del modal
+
+            // Limpiamos el video y el mute para evitar que se reproduzcan en el modal
+            gridClone.querySelectorAll("video, .bmt-mute-btn").forEach(el => el.remove());
+
+            // Añadimos el overlay y la duración
+            gridClone.querySelectorAll(".card").forEach(card => {
+
+                const media = card.querySelector(".media");
+                if (!media) return;
+
+                /* ▶ play overlay */
+                const overlay = document.createElement("div");
+                overlay.className = "titleCard-playIcon";
+
+                overlay.innerHTML = ` 
+                <svg viewBox="0 0 24 24" width="42" height="42" fill="none">
+                    <path fill="currentColor" d="M5 2.7a1 1 0 0 1 1.48-.88l16.93 9.3a1 1 0 0 1 0 1.76l-16.93 9.3A1 1 0 0 1 5 21.31z"/>
+                </svg>
+            `;
+
+                media.appendChild(overlay);
+
+                /* duración */
+                const duration = card.querySelector(".film-type")?.textContent.match(/\d+\s*h.*|\d+\s*min/)?.[0];
+
+                if (duration) {
+                    const badge = document.createElement("span");
+                    badge.className = "card-duration";
+                    badge.textContent = duration;
+                    media.appendChild(badge);
+                }
+            });
 
             // Lo insertamos debajo de los episodios dentro del modal
             episodesWrap.appendChild(gridClone);
@@ -158,6 +190,42 @@
             // Clonamos el grid y lo insertamos dentro del modal
             const gridClone = originalGrid.cloneNode(true);
             gridClone.classList.add("nm-grid-clone"); // Añadimos una clase para identificarlo dentro del modal
+
+            /* ===== LIMPIAR VIDEOS DEL CLONE ===== */
+            gridClone.querySelectorAll("video, .bmt-mute-btn").forEach(el => el.remove());
+
+
+            /* ===== ESTILO NETFLIX (overlay + duración) ===== */
+            gridClone.querySelectorAll(".card").forEach(card => {
+
+                const media = card.querySelector(".media");
+                if (!media) return;
+
+                /* ▶ play overlay */
+                const overlay = document.createElement("div");
+                overlay.className = "titleCard-playIcon";
+
+                overlay.innerHTML = `
+        <svg viewBox="0 0 24 24" width="42" height="42" fill="none">
+            <path fill="currentColor"
+            d="M5 2.7a1 1 0 0 1 1.48-.88l16.93 9.3a1 1 0 0 1 0 1.76l-16.93 9.3A1 1 0 0 1 5 21.31z"/>
+        </svg>
+    `;
+
+                media.appendChild(overlay);
+
+                /* duración */
+                const duration =
+                    card.querySelector(".film-type")
+                        ?.textContent.match(/\d+\s*h.*|\d+\s*min/)?.[0];
+
+                if (duration) {
+                    const badge = document.createElement("span");
+                    badge.className = "card-duration";
+                    badge.textContent = duration;
+                    media.appendChild(badge);
+                }
+            });
 
             // Lo insertamos debajo de los episodios dentro del modal
             episodesWrap.appendChild(gridClone);
@@ -582,4 +650,6 @@
 
         })
         .catch(console.error);
+
+    window.openMediaModal = openModal;
 })();

@@ -1,5 +1,5 @@
 // Obtiene todas las cards
-const cards = document.querySelectorAll(".card");
+const cards = document.querySelectorAll(".grid:not(.nm-grid-clone) .card");
 
 // Definir la URL del video para cada tarjeta
 const videoUrls = {
@@ -102,3 +102,54 @@ cards.forEach(card => {
         muteButton.classList.remove('mute-visible');
     });
 });
+
+/* ========================================
+   SOLO GRID DEL MODAL → ESTILO NETFLIX
+======================================== */
+
+function enhanceModalGrid(grid) {
+
+    const cards = grid.querySelectorAll(".card");
+
+    cards.forEach(card => {
+
+        const media = card.querySelector(".media");
+        if (!media) return;
+
+        const overlay = document.createElement("div");
+        overlay.className = "titleCard-playIcon";
+
+        overlay.innerHTML = `
+            <svg viewBox="0 0 24 24" width="42" height="42" fill="none">
+                <path fill="currentColor"
+                d="M5 2.7a1 1 0 0 1 1.48-.88l16.93 9.3a1 1 0 0 1 0 1.76l-16.93 9.3A1 1 0 0 1 5 21.31z"/>
+            </svg>
+        `;
+
+        media.appendChild(overlay);
+
+        const duration =
+            card.querySelector(".film-type")
+                ?.textContent.match(/\d+\s*h.*|\d+\s*min/)?.[0];
+
+        if (duration) {
+            const badge = document.createElement("span");
+            badge.className = "card-duration";
+            badge.textContent = duration;
+            media.appendChild(badge);
+        }
+    });
+}
+
+const observer = new MutationObserver(() => {
+
+    const clone = document.querySelector(".nm-grid-clone");
+
+    if (clone && !clone.dataset.enhanced) {
+        enhanceModalGrid(clone);
+        clone.dataset.enhanced = "true";
+    }
+
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
