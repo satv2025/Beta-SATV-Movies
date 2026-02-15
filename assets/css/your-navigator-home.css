@@ -493,8 +493,8 @@ body.web-app .vivo-btn {
   gap: 8px;
   padding: 10px 14px;
   border-radius: var(--radius);
-  border: 2px solid #f00;
-  color: #f00;
+  border: 2px solid #ff0000;
+  color: #ff0000;
   font-weight: 600;
   transition: all .3s ease;
 }
@@ -503,7 +503,7 @@ body.web-app .dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: red;
+  background-color: #ff0000;
   animation: blink 1s infinite;
 }
 
@@ -522,7 +522,7 @@ body.web-app .dot {
 }
 
 body.web-app .vivo-btn:hover {
-  background: #f00;
+  background: #ff0000;
   color: #fff;
 }
 
@@ -603,7 +603,7 @@ body.web-app .vivo-btn:hover .dot {
     position: absolute;
     inset: auto 0 0 0;
     height: 60%;
-    background: linear-gradient(to top, #ff0000 0%, rgba(24, 24, 24, .70) 30%, rgba(24, 24, 24, 0) 80%);
+    background: linear-gradient(to top, #fff000000 0%, rgba(24, 24, 24, .70) 30%, rgba(24, 24, 24, 0) 80%);
     pointer-events: none;
     top: 37em;
   }
@@ -723,7 +723,7 @@ body.web-app .proximamente-card {
   left: 0;
   width: 100%;
 
-  background: #f00;
+  background: #ff0000;
   padding: 10px 0;
 
   display: flex;
@@ -749,7 +749,7 @@ body.web-app .proximamente-card {
   left: 0;
   width: 100%;
 
-  background: #f00;
+  background: #ff0000;
   padding: 10px 12px;
 
   display: flex;
@@ -795,7 +795,7 @@ body.web-app .proximamente-card::before {
   z-index: 500000;
   position: relative;
   top: 8.59em;
-  background: #f00;
+  background: #ff0000;
   padding: 0.2em 1.5em 0.2em 1.5em;
   margin-left: 4.2em;
   border-top-left-radius: 0.4em;
