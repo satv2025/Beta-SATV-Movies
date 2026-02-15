@@ -795,7 +795,7 @@ body.web-app .proximamente-card::before {
   z-index: 500000;
   position: relative;
   top: 8.59em;
-  background: #f00;
+  background: #ff0000;
   padding: 0.2em 1.5em 0.2em 1.5em;
   margin-left: 4.2em;
   border-top-left-radius: 0.4em;
