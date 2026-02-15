@@ -9,6 +9,86 @@
   <link rel="stylesheet" href="assets/css/modal-player.css">
   <link rel="stylesheet" href="assets/css/your-navigator-home.css">
   <link rel="icon" href="https://old.movies.solargentinotv.com.ar/assets/media/images/SolArgentinoTVMOVIES.ico">
+  <style>
+    /* ===================================
+   Estilo moderno y sutil para el mensaje en el header
+==================================== */
+
+    body.web-app .sol-arg-tv-header-text {
+      background-color: rgba(0, 0, 0, 0.6);
+      /* Fondo oscuro suave */
+      color: #fff;
+      padding: 14px 28px;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-top: 20px;
+
+      /* Bordes redondeados */
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      /* Sombra sutil */
+      opacity: 0.95;
+      /* Levele transparencia para un efecto más suave */
+    }
+
+    body.web-app .sol-arg-tv-header-text .header-message {
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      letter-spacing: 0.8px;
+      /* Sutil espaciado entre letras */
+      color: #f3f4f6;
+      /* Blanco suave */
+    }
+
+    body.web-app .sol-arg-tv-header-text .header-submessage {
+      font-size: 1.1rem;
+      color: #a0a3b1;
+      /* Gris suave */
+      margin-bottom: 15px;
+    }
+
+    body.web-app .sol-arg-tv-header-text .cta-link {
+      background-color: #2563eb;
+      /* Azul moderno */
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      text-transform: capitalize;
+    }
+
+    body.web-app .sol-arg-tv-header-text .cta-link:hover {
+      background-color: #fff;
+      color: #2563eb;
+      transform: translateY(-2px);
+    }
+
+    body.web-app .sol-arg-tv-header-text .cta-link:focus {
+      outline: none;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+      body.web-app .sol-arg-tv-header-text {
+        font-size: 0.95rem;
+      }
+
+      body.web-app .sol-arg-tv-header-text .header-message {
+        font-size: 1.2rem;
+      }
+
+      body.web-app .sol-arg-tv-header-text .cta-link {
+        font-size: 1rem;
+        padding: 8px 16px;
+      }
+    }
+  </style>
 </head>
 
 <body class="web-app">
