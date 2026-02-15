@@ -795,7 +795,7 @@ body.web-app .proximamente-card::before {
   z-index: 500000;
   position: relative;
   top: 8.59em;
-  background: #ff0000;
+  background: #f00;
   padding: 0.2em 1.5em 0.2em 1.5em;
   margin-left: 4.2em;
   border-top-left-radius: 0.4em;
@@ -848,7 +848,7 @@ body.web-app .sol-arg-tv-header-text {
   font-size: 1.05rem;
   font-weight: 500;
   margin-top: 20px;
-  border-radius: 12px;
+
   /* Bordes redondeados */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   /* Sombra sutil */
