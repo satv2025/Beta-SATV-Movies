@@ -108,7 +108,7 @@
         return row;
     }
 
-    ffunction renderEpisodes(season) {
+    function renderEpisodes(season) {
         console.log("Renderizando episodios de la temporada:", season);
         const frag = document.createDocumentFragment();
         season?.episodes?.forEach((ep, i) => frag.appendChild(createEpisodeRow(ep, i)));
